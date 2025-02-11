@@ -11,11 +11,11 @@ const AdminLayout = () => {
     };
     
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div className="flex h-screen bg-admin-white">
             <AdminSidebar isOpen={isSidebarOpen} />
             <div className="flex-1 flex flex-col overflow-hidden">
-                <AdminNavbar onToggleSidebar={handleToggleSidebar} />
-                <div className="flex-1 p-6 bg-gray-100 overflow-y-auto">
+                <AdminNavbar onToggleSidebar={handleToggleSidebar} isOpen={isSidebarOpen} />
+                <div className="flex-1 p-6 bg-admin-gray overflow-y-auto rounded-tl-3xl">
                     <Outlet />
                 </div>
             </div>

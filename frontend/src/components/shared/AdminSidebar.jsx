@@ -14,18 +14,18 @@ const AdminSidebar = ({ isOpen }) => {
 
     return (
         <aside
-            className={`z-50 bg-gray-800 text-white w-64 space-y-6 absolute inset-y-0 left-0 transform ${
+            className={`z-50 text-admin-black bg-admin-white w-64 space-y-6 absolute inset-y-0 left-0 transform ${
                 isOpen ? 'translate-x-0' : '-translate-x-full'
-            } transition-transform duration-200 ease-in-out lg:relative lg:translate-x-0`}
+            } transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0`}
         >
-            <nav className='my-20'>
-                <ul>
+            <nav className='flex flex-col gap-5 my-20 bg-admin-white py-14'>
+                <ul className=''>
                     <NavLink
                         to="/admin" end
                         className={({ isActive }) =>
                             isActive
-                                ? "bg-gray-700 py-2 p-10 hover:bg-gray-500 rounded block"
-                                : "py-2 p-10 hover:bg-gray-600 rounded block"
+                                ? "bg-admin-gray text-primary py-2 p-10 hover:text-primary rounded block"
+                                : "py-2 p-10 hover:text-primary rounded block"
                         }
                     >
                         Dashboard
@@ -34,8 +34,8 @@ const AdminSidebar = ({ isOpen }) => {
                         to="/admin/users"
                         className={({ isActive }) =>
                             isActive
-                                ? "bg-gray-700 py-2 p-10 hover:bg-gray-500 rounded block"
-                                : "py-2 p-10 hover:bg-gray-600 rounded block"
+                                ? "bg-admin-gray py-2 p-10 hover:bg-admin-white rounded block"
+                                : "py-2 p-10 hover:text-primary rounded block"
                         }
                     >
                         Users
@@ -44,37 +44,17 @@ const AdminSidebar = ({ isOpen }) => {
                         to="/admin/reports"
                         className={({ isActive }) =>
                             isActive
-                                ? "bg-gray-700 py-2 p-10 hover:bg-gray-500 rounded block"
-                                : "py-2 p-10 hover:bg-gray-600 rounded block"
+                                ? "bg-admin-gray py-2 p-10 hover:text-primary rounded block"
+                                : "py-2 p-10 hover:text-primary rounded block"
                         }
                     >
                         Reports
                     </NavLink>
-                    {/* <NavLink
-                        to="/admin/notifications"
-                        className={({ isActive }) =>
-                            isActive
-                                ? "bg-gray-700 py-2 p-10 hover:bg-gray-500 rounded block"
-                                : "py-2 p-10 hover:bg-gray-600 rounded block"
-                        }
-                    >
-                        Notifications
-                    </NavLink> */}
-                    {/* <NavLink
-                        to="/admin/profile"
-                        className={({ isActive }) =>
-                            isActive
-                                ? "bg-gray-700 py-2 p-10 hover:bg-gray-500 rounded block"
-                                : "py-2 p-10 hover:bg-gray-600 rounded block"
-                        }
-                    >
-                        Profile
-                    </NavLink> */}
-                    <button className='flex items-center gap-1 py-2 p-10 my-5 text-secondary-light font-semibold text-lg'>
-                        <IoMdLogOut className='font-extrabold' />
-                        Logout
-                    </button>
                 </ul>
+                <button className='flex items-center gap-1 py-2 p-10 my-5 text-red-600 font-semibold text-lg'>
+                    <IoMdLogOut className='font-extrabold' />
+                    Logout
+                </button>
             </nav>
         </aside>
     );
