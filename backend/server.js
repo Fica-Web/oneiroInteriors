@@ -2,11 +2,15 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import cors from 'cors';
+import connectDB from './config/connectDB.js';
 
 dotenv.config();
 
 const port = process.env.PORT || 5000;
 const app = express();
+
+// Connecting MongoDB
+connectDB();
 
 // CORS options to allow requests from specific origin
 const corsOptions = {
