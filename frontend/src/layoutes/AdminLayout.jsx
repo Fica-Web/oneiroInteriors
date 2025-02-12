@@ -15,7 +15,7 @@ const AdminLayout = () => {
             <AdminSidebar isOpen={isSidebarOpen} />
             <div className="flex-1 flex flex-col overflow-hidden">
                 <AdminNavbar onToggleSidebar={handleToggleSidebar} isOpen={isSidebarOpen} />
-                <div className="flex-1 p-6 bg-admin-gray overflow-y-auto rounded-tl-3xl">
+                <div className="flex-1 p-6 bg-admin-gray overflow-y-auto lg:rounded-tl-3xl">
                     <Outlet />
                 </div>
             </div>
