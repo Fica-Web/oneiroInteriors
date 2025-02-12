@@ -16,6 +16,7 @@ const isAdminAuthenticatedApi = async () => {
     try {
         const response = await adminInstance.get('/is-admin-protected');
         console.log('admin auhthenticated response:', response);
+        return response.data;
     } catch (error) {
         console.error("error admin authentication:", error.response.data);
     }

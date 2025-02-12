@@ -24,7 +24,7 @@ const Input = ({ name, Icon, placeholder, type = "text", value, onChange, isPass
                     <button
                         type="button"
                         onClick={togglePasswordVisibility}
-                        className="focus:outline-none"
+                        className="focus:outline-none cursor-pointer"
                     >
                         {passwordVisible ? <FaRegEye /> : <FaRegEyeSlash />}
                     </button>
