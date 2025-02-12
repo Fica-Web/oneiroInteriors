@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaRegUser, FaLock } from "react-icons/fa";
 import { adminLoginApi } from '../../utils/api/adminApi';
 import Input from '../../components/reusable/Input';
@@ -10,6 +11,7 @@ const AdminLogin = () => {
         username: '',
         password: ''
     });
+    const navigate = useNavigate();
 
     // Validation function for username
     const validateUsername = (username) => {
@@ -52,7 +54,19 @@ const AdminLogin = () => {
         
         try {
             // Make the API call
-            await adminLoginApi(formData);
+            const response = await adminLoginApi(formData);
+            
+            if (response && response.admin) {
+            const { username, email } = response.admin;
+
+            if (username && email) {
+                // Optionally, clear the form after successful submission
+                setUsername('');
+                setPassword('');
+                
+                navigate('/admin');
+            }
+        }
 
             // Reset errors on successful submit
             setErrors({
@@ -60,18 +74,9 @@ const AdminLogin = () => {
                 password: ''
             });
 
-            // Optionally, clear the form after successful submission
-            setUsername('');
-            setPassword('');
         } catch (error) {
             console.error('Login failed:', error);
         }
-
-        // Reset errors on successful submit 
-        setErrors({
-            username: '',
-            password: ''
-        });
     };
 
     return (
@@ -99,7 +104,7 @@ const AdminLogin = () => {
                         error={errors.password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button type='submit' className='bg-green-300 hover:bg-green-500 text-white w-full rounded-full p-2'>
+                    <button type='submit' className='bg-green-300 hover:bg-green-500 text-white w-full rounded-full p-2 cursor-pointer'>
                         Login
                     </button>
                 </form>
