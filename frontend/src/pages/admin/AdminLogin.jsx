@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaRegUser, FaLock } from "react-icons/fa";
+import { adminLoginApi } from '../../utils/api/adminApi';
 import Input from '../../components/reusable/Input';
 
 const AdminLogin = () => {
@@ -30,7 +31,7 @@ const AdminLogin = () => {
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Validate the form fields
@@ -47,7 +48,25 @@ const AdminLogin = () => {
         }
 
         // No validation errors, proceed with form submission
-        console.log(username, password);
+        const formData = { username, password };
+        
+        try {
+            // Make the API call
+            await adminLoginApi(formData);
+
+            // Reset errors on successful submit
+            setErrors({
+                username: '',
+                password: ''
+            });
+
+            // Optionally, clear the form after successful submission
+            setUsername('');
+            setPassword('');
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+
         // Reset errors on successful submit 
         setErrors({
             username: '',
