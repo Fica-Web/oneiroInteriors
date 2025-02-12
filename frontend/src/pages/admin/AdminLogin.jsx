@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaRegUser, FaLock } from "react-icons/fa";
 import { adminLoginApi } from '../../utils/api/adminApi';
+import useCheckAuth from '../../utils/auth/AuthenticatedRedirect';
 import Input from '../../components/reusable/Input';
 
 const AdminLogin = () => {
+    useCheckAuth(); // Preventing authorized user to access login page
+    
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({
