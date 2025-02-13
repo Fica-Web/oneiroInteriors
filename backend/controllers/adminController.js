@@ -100,7 +100,7 @@ const uploadImage = async (req, res) => {
         res.json({
             message: "File uploaded successfully!",
             imageUrl: req.file.path, // Cloudinary URL
-          });
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
