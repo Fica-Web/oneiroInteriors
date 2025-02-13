@@ -18,7 +18,8 @@ const isAdminAuthenticatedApi = async () => {
         console.log('admin auhthenticated response:', response);
         return response.data;
     } catch (error) {
-        console.error("error admin authentication:", error.response.data);
+        console.log("error admin authentication:", error.response);
+        return error.response;
     }
 }
 

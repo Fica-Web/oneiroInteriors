@@ -10,11 +10,11 @@ const useCheckAuth = () => {
             try {
                 const response = await isAdminAuthenticatedApi();
                 
-                if (response.isAuthenticated) {
+                if (response?.isAuthenticated) {
                     return navigate('/admin');
                 }
             } catch (error) {
-                console.log('Authentication check failed:', error.response.data);
+                console.log('Authentication check failed:', error);
             }
         };
         checkAuthStatus();

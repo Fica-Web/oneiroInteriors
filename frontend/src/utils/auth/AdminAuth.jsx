@@ -10,7 +10,7 @@ const AdminAuth = () => {
         const checkAuth = async () => {
             try {
                 const response = await isAdminAuthenticatedApi();
-                console.log('response from admin page:', response.isAuthenticated)
+                // console.log('response from admin page:', response.isAuthenticated)
                 setIsAuthenticated(response && response.isAuthenticated);
             } catch (error) {
                 console.error("Error checking admin authentication:", error);
