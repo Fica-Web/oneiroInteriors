@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import AdminTitleCard from '../../components/reusable/AdminTitleCard';
 
 const AdminBlogPage = () => {
     return (
         <div>
-            Admin Blog page
+            <AdminTitleCard title='Blog' />
         </div>
     )
 }
