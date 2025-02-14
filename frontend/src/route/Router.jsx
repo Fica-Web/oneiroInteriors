@@ -5,6 +5,7 @@ import HomeLayout from '../layoutes/HomeLayout';
 import AdminLayout from '../layoutes/AdminLayout';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import AdminBlogPage from '../pages/admin/AdminBlogPage';
+import AdminProjectPage from '../pages/admin/AdminProjectPage';
 import AdminLogin from '../pages/admin/AdminLogin';
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                     {
                         path: 'blog',
                         element: <AdminBlogPage />
+                    },
+                    {
+                        path: 'projects',
+                        element: <AdminProjectPage />
                     },
                 ]
             }

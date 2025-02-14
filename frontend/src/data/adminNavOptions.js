@@ -8,6 +8,10 @@ const adminNavOptions = [
         name: 'Blog',
         path: '/admin/blog'
     },
+    {
+        name: 'Projects',
+        path: '/admin/projects'
+    },
 ]
 
 export default adminNavOptions;
