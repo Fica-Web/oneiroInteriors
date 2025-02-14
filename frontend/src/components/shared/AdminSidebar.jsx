@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { IoMdLogOut } from "react-icons/io";
 import adminNavOptions from '../../data/adminNavOptions';
+import { adminLogoutApi } from '../../utils/api/adminApi';
 
 const AdminSidebar = ({ isOpen }) => {
     const navigate = useNavigate();
@@ -38,7 +39,7 @@ const AdminSidebar = ({ isOpen }) => {
                 </ul>
                 <button
                     onClick={handleLogout}
-                    className='flex items-center gap-1 py-2 p-10 my-5 text-red-600 font-semibold text-lg'
+                    className='flex items-center gap-1 py-2 p-10 my-5 text-red-600 font-semibold text-lg cursor-pointer hover:scale-105 transition-transform duration-300'
                 >
                     <IoMdLogOut className='font-extrabold' />
                     Logout

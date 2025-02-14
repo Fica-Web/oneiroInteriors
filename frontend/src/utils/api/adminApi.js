@@ -23,7 +23,19 @@ const isAdminAuthenticatedApi = async () => {
     }
 }
 
+const adminLogoutApi = async () => {
+    try {
+        const response = await adminInstance.get('/logout');
+        console.log('admin logout', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error admin logout:", error.response);
+        return error.response;
+    }
+}
+
 export {
     adminLoginApi,
     isAdminAuthenticatedApi,
+    adminLogoutApi,
 }

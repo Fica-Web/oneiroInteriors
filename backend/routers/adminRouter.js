@@ -6,6 +6,7 @@ import {
     adminLogin,
     isAdminProtected,
     uploadImage,
+    adminLogout,
 } from "../controllers/adminController.js";
 
 router.post('/login', adminLogin);
@@ -14,5 +15,6 @@ router.post('/login', adminLogin);
 router.use(verifyAdminToken);
 router.get('/is-admin-protected', isAdminProtected);
 router.post('/upload', upload.single('image'), uploadImage);
+router.get('/logout', adminLogout);
 
 export default router;
