@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { IoMdLogOut } from "react-icons/io";
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { IoMdLogOut, IoMdSettings } from "react-icons/io";
 import adminNavOptions from '../../data/adminNavOptions';
 import { adminLogoutApi } from '../../utils/api/adminApi';
 
@@ -37,13 +37,22 @@ const AdminSidebar = ({ isOpen }) => {
                         </NavLink>
                     ))}
                 </ul>
-                <button
-                    onClick={handleLogout}
-                    className='flex items-center gap-1 py-2 p-10 my-5 text-red-600 font-semibold text-lg cursor-pointer hover:scale-105 transition-transform duration-300'
-                >
-                    <IoMdLogOut className='font-extrabold' />
-                    Logout
-                </button>
+                <div className='my-4'>
+                    <Link to={'/admin/settings'}
+                        // onClick={handleLogout}
+                        className='flex items-center gap-3 py-2 p-10 font-semibold text-lg cursor-pointer hover:scale-105 transition-transform duration-300'
+                    >
+                        <IoMdSettings className='font-extrabold' />
+                        Settings
+                    </Link>
+                    <button
+                        onClick={handleLogout}
+                        className='flex items-center gap-3 py-2 p-10 text-red-600 font-semibold text-lg cursor-pointer hover:scale-105 transition-transform duration-300'
+                    >
+                        <IoMdLogOut className='font-extrabold' />
+                        Logout
+                    </button>
+                </div>
             </nav>
         </aside>
     );
