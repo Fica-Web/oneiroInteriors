@@ -68,7 +68,7 @@ const SettingsBox = () => {
                         label='Instagram URL'
                         type='text'
                         name='instagram'
-                        value={socials.facebook}
+                        value={socials.instagram}
                         isEditing={isEditing}
                         placeholder="Enter Facebook URL"
                         handleChange={(e) => handleChange(e, "socials")}
@@ -78,7 +78,7 @@ const SettingsBox = () => {
                         label='Twitter URL'
                         type='text'
                         name='twitter'
-                        value={socials.facebook}
+                        value={socials.twitter}
                         isEditing={isEditing}
                         placeholder="Enter Facebook URL"
                         handleChange={(e) => handleChange(e, "socials")}

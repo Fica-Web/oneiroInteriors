@@ -115,10 +115,33 @@ const adminLogout = async (req, res) => {
     }
 }
 
+const updateAdminData = async (req, res) => {
+    try {
+        const { id } = req.admin;
+        const { email, mobile, instagram, facebook, twitter } = req.body;
+
+        // Find admin and update details
+        const updatedAdmin = await Admin.findByIdAndUpdate(
+            id,
+            { email, mobile, instagram, facebook, twitter },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedAdmin) {
+            return res.status(404).json({ message: "Admin not found" });
+        }
+
+        res.status(200).json({ message: "Admin updated successfully", admin: updatedAdmin });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 export {
     adminSignup,
     adminLogin,
     isAdminProtected,
     uploadImage,
     adminLogout,
+    updateAdminData,
 }

@@ -11,6 +11,22 @@ const adminSchema = new Schema({
         required: [true, 'Email is required'],
         unique: true
     },
+    mobile: {
+        type: String,
+        unique: true
+    },
+    instagram: {
+        type: String,
+        unique: true
+    },
+    facebook: {
+        type: String,
+        unique: true
+    },
+    twitter: {
+        type: String,
+        unique: true
+    },
     password: {
         type: String,
         required: [true, 'Password is required']
