@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FaRegUser, FaLock } from "react-icons/fa";
 import { adminLoginApi } from '../../utils/api/adminApi';
+import { set_credentials } from '../../redux/slices/adminSlice';
 import useCheckAuth from '../../utils/auth/AuthenticatedRedirect';
 import Input from '../../components/reusable/Input';
 
@@ -14,6 +16,8 @@ const AdminLogin = () => {
         username: '',
         password: ''
     });
+
+    const dispatch = useDispatch()
     const navigate = useNavigate();
 
     // Validation function for username
@@ -58,10 +62,13 @@ const AdminLogin = () => {
         try {
             // Make the API call
             const response = await adminLoginApi(formData);
+            console.log('admin login res:', response);
             
             if (response && response.admin) {
             const { username, email } = response.admin;
 
+            dispatch(set_credentials(response.admin));
+            
             if (username && email) {
                 // Optionally, clear the form after successful submission
                 setUsername('');

@@ -1,15 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { IoMdLogOut, IoMdSettings } from "react-icons/io";
 import adminNavOptions from '../../data/adminNavOptions';
 import { adminLogoutApi } from '../../utils/api/adminApi';
+import { clear_credentials } from '../../redux/slices/adminSlice';
 
 const AdminSidebar = ({ isOpen }) => {
+    const dispatch = useDispatch()
     const navigate = useNavigate();
 
     const handleLogout = async () => {
         const response = await adminLogoutApi();
         if (response) {
+            dispatch(clear_credentials())
             navigate('/admin/login');
         }
     };

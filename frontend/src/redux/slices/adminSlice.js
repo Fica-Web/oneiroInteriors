@@ -1,23 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    admin: {
-        username: 'ajmal',
-        email: '',
+    adminInfo: null,
+};
 
-    }
-}
-
-export const adminData = createSlice({
-    name: 'updateAdmin',
+export const adminSlice = createSlice({
+    name: "admin",
     initialState,
     reducers: {
-        updade_admin_data: (state, action) => {
-            
+        set_credentials: (state, action) => {
+            state.adminInfo = action.payload;
         },
-    }
-})
+        clear_credentials: (state) => {
+            state.adminInfo = null;
+        },
+        update_admin_data: (state, action) => {
+            if (state.adminInfo) {
+                state.adminInfo = { ...state.adminInfo, ...action.payload };
+            }
+        },
+    },
+});
 
-export const { updade_admin_data } = adminData.actions
+export const { set_credentials, clear_credentials, update_admin_data } = adminSlice.actions;
 
-export default adminData.reducer
+export default adminSlice.reducer;
