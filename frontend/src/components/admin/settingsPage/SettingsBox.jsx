@@ -7,9 +7,7 @@ import SettingsTab from './SettingsTab';
 import SettingsInput from './SettingsInput';
 
 const SettingsBox = () => {
-    const admin = useSelector(state => state.adminData.adminInfo)
-    console.log('redux setup:', admin);
-
+    const admin = useSelector(state => state.adminData.adminInfo);
     const dispatch = useDispatch();
 
     const [activeTab, setActiveTab] = useState("general");
@@ -20,6 +18,25 @@ const SettingsBox = () => {
         instagram: admin.instagram,
     });
     const [isEditing, setIsEditing] = useState(false);
+    const [errors, setErrors] = useState({}); // 🔹 Store validation errors
+
+    const validateField = (name, value) => {
+        let error = "";
+        if (!value.trim()) {
+            error = `${name} is required.`;
+        } else {
+            if (name === "email" && !/\S+@\S+\.\S+/.test(value)) {
+                error = "Invalid email format.";
+            }
+            if (name === "mobile" && !/^\d{10}$/.test(value)) {
+                error = "Mobile number must be 10 digits.";
+            }
+            if (["facebook", "twitter", "instagram"].includes(name) && !/^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+\/?$/.test(value)) {
+                error = "Enter a valid URL (e.g., https://example.com).";
+            }            
+        }
+        return error;
+    };
 
     const handleChange = (e, section) => {
         const { name, value } = e.target;
@@ -28,29 +45,41 @@ const SettingsBox = () => {
         } else {
             setSocials((prev) => ({ ...prev, [name]: value }));
         }
+
+        // 🔹 Validate on change
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: validateField(name, value),
+        }));
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+        Object.entries({ ...general, ...socials }).forEach(([key, value]) => {
+            const error = validateField(key, value);
+            if (error) newErrors[key] = error;
+        });
+        setErrors(newErrors);
+        console.log('new error:', newErrors)
+        return Object.keys(newErrors).length === 0; // 🔹 Return true if no errors
     };
 
     const updateData = async () => {
+        if (!validateForm()) return; // 🔹 Prevent submission if validation fails
+
         try {
             const updatedInfo = { ...general, ...socials };
-    
-            // Call the API to update admin data
             const response = await updateAdminDataApi(updatedInfo);
-            console.log('updatedInfo:', response)
-    
-            if (response) {
-                // Dispatch the updated data to Redux store
-                dispatch(update_admin_data(response.admin));
 
-                toast.success(response.message)
-    
-                // Disable editing mode
+            if (response) {
+                dispatch(update_admin_data(response.admin));
+                toast.success(response.message);
                 setIsEditing(false);
             }
         } catch (error) {
             console.error("Failed to update admin data:", error);
         }
-    };       
+    };
 
     return (
         <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
@@ -68,6 +97,7 @@ const SettingsBox = () => {
                         isEditing={isEditing}
                         placeholder='Enter new email'
                         handleChange={(e) => handleChange(e, "general")}
+                        error={errors.email} // 🔹 Pass error message
                     />
 
                     <SettingsInput
@@ -78,6 +108,7 @@ const SettingsBox = () => {
                         isEditing={isEditing}
                         placeholder='Enter new mobile number'
                         handleChange={(e) => handleChange(e, "general")}
+                        error={errors.mobile}
                     />
                 </div>
             )}
@@ -93,6 +124,7 @@ const SettingsBox = () => {
                         isEditing={isEditing}
                         placeholder="Enter Facebook URL"
                         handleChange={(e) => handleChange(e, "socials")}
+                        error={errors.facebook}
                     />
 
                     <SettingsInput
@@ -101,8 +133,9 @@ const SettingsBox = () => {
                         name='instagram'
                         value={socials.instagram}
                         isEditing={isEditing}
-                        placeholder="Enter Facebook URL"
+                        placeholder="Enter Instagram URL"
                         handleChange={(e) => handleChange(e, "socials")}
+                        error={errors.instagram}
                     />
 
                     <SettingsInput
@@ -111,8 +144,9 @@ const SettingsBox = () => {
                         name='twitter'
                         value={socials.twitter}
                         isEditing={isEditing}
-                        placeholder="Enter Facebook URL"
+                        placeholder="Enter Twitter URL"
                         handleChange={(e) => handleChange(e, "socials")}
+                        error={errors.twitter}
                     />
                 </div>
             )}
@@ -120,21 +154,21 @@ const SettingsBox = () => {
             {/* Buttons */}
             <div className="flex space-x-4 mt-6">
                 <button
-                    className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-700 transition cursor-pointer"
+                    className={`text-white px-6 py-2 rounded transition cursor-pointer ${isEditing ? 'bg-red-500 hover:bg-red-500' : 'bg-green-600 hover:bg-green-700'}`}
                     onClick={() => setIsEditing(!isEditing)}
                 >
                     {isEditing ? "Cancel" : "Edit"}
                 </button>
                 <button
-                    className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
+                    className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     onClick={updateData}
-                    disabled={!isEditing} // Prevent accidental clicks
+                    disabled={!isEditing || Object.keys(errors).some((key) => errors[key])} // 🔹 Disable if errors exist
                 >
                     Save Changes
                 </button>
             </div>
         </div>
-    )
+    );
 }
 
-export default SettingsBox
+export default SettingsBox;
