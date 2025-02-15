@@ -13,7 +13,7 @@ const SettingsBox = () => {
     });
     const [isEditing, setIsEditing] = useState(false);
     
-    const admin = useSelector(state => state.updateAdminData)
+    const admin = useSelector(state => state.adminData)
     console.log('redux setup:', admin)
 
     const handleChange = (e, section) => {

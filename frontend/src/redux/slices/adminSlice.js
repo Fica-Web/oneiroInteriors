@@ -8,16 +8,16 @@ const initialState = {
     }
 }
 
-export const updateAdminSlice = createSlice({
+export const adminData = createSlice({
     name: 'updateAdmin',
     initialState,
     reducers: {
         updade_admin_data: (state, action) => {
-
-        }
+            
+        },
     }
 })
 
-export const { updade_admin_data } = updateAdminSlice.actions
+export const { updade_admin_data } = adminData.actions
 
-export default updateAdminSlice.reducer
+export default adminData.reducer

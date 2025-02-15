@@ -1,10 +1,20 @@
-import { configureStore } from '@reduxjs/toolkit'
-import updateAdminReducer from './slices/adminSlice'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import rootReducer from './rootReducer'
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['adminData',],
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
-    reducer: {
-        updateAdminData: updateAdminReducer
-    },
+    reducer: persistedReducer,
+    devTools: true
 })
 
-export default store
+export const persistor = persistStore(store);
+export default store;
