@@ -16,7 +16,8 @@ export const adminSlice = createSlice({
         },
         update_admin_data: (state, action) => {
             if (state.adminInfo) {
-                state.adminInfo = { ...state.adminInfo, ...action.payload };
+                console.log('state:', state)
+                state.adminInfo = action.payload;
             }
         },
     },

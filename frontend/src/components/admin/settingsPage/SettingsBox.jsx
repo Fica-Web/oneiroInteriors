@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { update_admin_data } from '../../../redux/slices/adminSlice';
+import { updateAdminDataApi } from '../../../utils/api/adminApi';
 import SettingsTab from './SettingsTab';
 import SettingsInput from './SettingsInput';
 
 const SettingsBox = () => {
+    const admin = useSelector(state => state.adminData.adminInfo)
+    console.log('redux setup:', admin);
+
+    const dispatch = useDispatch();
+
     const [activeTab, setActiveTab] = useState("general");
-    const [general, setGeneral] = useState({ email: "current@example.com", mobile: "123-456-7890" });
+    const [general, setGeneral] = useState({ email: admin.email, mobile: admin.mobile });
     const [socials, setSocials] = useState({
-        facebook: "www.instagram.com",
-        twitter: "www.instagram.com",
-        instagram: "www.instagram.com",
+        facebook: admin.facebook,
+        twitter: admin.twitter,
+        instagram: admin.instagram,
     });
     const [isEditing, setIsEditing] = useState(false);
-    
-    const admin = useSelector(state => state.adminData)
-    console.log('redux setup:', admin)
 
     const handleChange = (e, section) => {
         const { name, value } = e.target;
@@ -24,6 +29,28 @@ const SettingsBox = () => {
             setSocials((prev) => ({ ...prev, [name]: value }));
         }
     };
+
+    const updateData = async () => {
+        try {
+            const updatedInfo = { ...general, ...socials };
+    
+            // Call the API to update admin data
+            const response = await updateAdminDataApi(updatedInfo);
+            console.log('updatedInfo:', response)
+    
+            if (response) {
+                // Dispatch the updated data to Redux store
+                dispatch(update_admin_data(response.admin));
+
+                toast.success(response.message)
+    
+                // Disable editing mode
+                setIsEditing(false);
+            }
+        } catch (error) {
+            console.error("Failed to update admin data:", error);
+        }
+    };       
 
     return (
         <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
@@ -87,26 +114,6 @@ const SettingsBox = () => {
                         placeholder="Enter Facebook URL"
                         handleChange={(e) => handleChange(e, "socials")}
                     />
-
-                    {/* <label className="block text-gray-700 font-medium mt-4">Twitter URL:</label>
-                    <input
-                        type="text"
-                        name="twitter"
-                        value={socials.twitter}
-                        onChange={(e) => handleChange(e, "socials")}
-                        className="w-full p-2 border rounded mt-1"
-                        placeholder="Enter Twitter URL"
-                    />
-
-                    <label className="block text-gray-700 font-medium mt-4">Instagram URL:</label>
-                    <input
-                        type="text"
-                        name="instagram"
-                        value={socials.instagram}
-                        onChange={(e) => handleChange(e, "socials")}
-                        className="w-full p-2 border rounded mt-1"
-                        placeholder="Enter Instagram URL"
-                    /> */}
                 </div>
             )}
 
@@ -118,7 +125,11 @@ const SettingsBox = () => {
                 >
                     {isEditing ? "Cancel" : "Edit"}
                 </button>
-                <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition cursor-pointer">
+                <button
+                    className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
+                    onClick={updateData}
+                    disabled={!isEditing} // Prevent accidental clicks
+                >
                     Save Changes
                 </button>
             </div>

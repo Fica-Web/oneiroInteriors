@@ -131,7 +131,8 @@ const updateAdminData = async (req, res) => {
             return res.status(404).json({ message: "Admin not found" });
         }
 
-        res.status(200).json({ message: "Admin updated successfully", admin: updatedAdmin });
+        updatedAdmin.password = undefined;
+        res.status(200).json({ message: "Data updated successfully", admin: updatedAdmin });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

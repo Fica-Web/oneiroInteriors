@@ -36,7 +36,7 @@ const adminLogoutApi = async () => {
 
 const updateAdminDataApi = async (data) => {
     try {
-        const response = await adminInstance.post('/logout', data);
+        const response = await adminInstance.post('/update', data);
         console.log('updated admin data', response.data);
         return response.data;
     } catch (error) {
