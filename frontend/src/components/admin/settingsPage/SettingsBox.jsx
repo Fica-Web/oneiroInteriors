@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import SettingsTab from './SettingsTab';
 import SettingsInput from './SettingsInput';
 
@@ -11,6 +12,9 @@ const SettingsBox = () => {
         instagram: "www.instagram.com",
     });
     const [isEditing, setIsEditing] = useState(false);
+    
+    const admin = useSelector(state => state.updateAdminData)
+    console.log('redux setup:', admin)
 
     const handleChange = (e, section) => {
         const { name, value } = e.target;

@@ -34,8 +34,20 @@ const adminLogoutApi = async () => {
     }
 }
 
+const updateAdminDataApi = async (data) => {
+    try {
+        const response = await adminInstance.post('/logout', data);
+        console.log('updated admin data', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error updating admin data:", error.response);
+        return error.response;
+    }
+}
+
 export {
     adminLoginApi,
     isAdminAuthenticatedApi,
     adminLogoutApi,
+    updateAdminDataApi,
 }
