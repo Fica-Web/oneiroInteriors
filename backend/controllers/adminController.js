@@ -115,6 +115,24 @@ const adminLogout = async (req, res) => {
     }
 }
 
+const fetchAdminData = async (req, res) => {
+    try {
+        const { id } = req.admin;
+
+        // Find admin and update details
+        const admin = await Admin.findById(id)
+
+        if (!admin) {
+            return res.status(404).json({ message: "Admin not found" });
+        }
+
+        admin.password = undefined;
+        res.status(200).json({ message: "Admin data fetched successfully", admin });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 const updateAdminData = async (req, res) => {
     try {
         const { id } = req.admin;
@@ -144,5 +162,6 @@ export {
     isAdminProtected,
     uploadImage,
     adminLogout,
+    fetchAdminData,
     updateAdminData,
 }

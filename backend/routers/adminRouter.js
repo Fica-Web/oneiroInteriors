@@ -7,6 +7,7 @@ import {
     isAdminProtected,
     uploadImage,
     adminLogout,
+    fetchAdminData,
     updateAdminData,
 } from "../controllers/adminController.js";
 
@@ -17,6 +18,7 @@ router.use(verifyAdminToken);
 router.get('/is-admin-protected', isAdminProtected);
 router.post('/upload', upload.single('image'), uploadImage);
 router.get('/logout', adminLogout);
+router.get('/get-admin-data', fetchAdminData);
 router.post('/update', updateAdminData);
 
 export default router;
