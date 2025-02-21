@@ -38,7 +38,11 @@ const AdminBlogListing = () => {
 
     return (
         <div className='p-5'>
-            <h2 className='text-3xl font-bold text-gray-800 mb-6'>Admin Blog Listing</h2>
+            <div className='flex justify-end mb-5'>
+                <Link to={'/admin/blogs/create'} className='text-white bg-blue-500 px-6 py-2 rounded-xl cursor-pointer hover:bg-blue-600'>
+                    Add Blog
+                </Link>
+            </div>
 
             {loading && <p className='text-gray-600 text-center'>Loading blogs...</p>}
             {error && <p className='text-red-500 text-center'>{error}</p>}
