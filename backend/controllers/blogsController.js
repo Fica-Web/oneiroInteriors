@@ -1,4 +1,5 @@
 import Blog from "../models/blogSchema.js";
+import mongoose from "mongoose";
 
 const getBlogs = async (req, res) => {
     try {
@@ -62,6 +63,12 @@ const updateBlog = async (req, res) => {
 const deleteBlog = async (req, res) => {
     try {
         const { id } = req.params; // Extract blog ID from request params
+
+        console.log('blogId:', id)
+        // Validate ObjectId
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ error: "Invalid blog ID format" });
+        }
         
         const deletedBlog = await Blog.findByIdAndDelete(id); // Find and delete the blog
 

@@ -22,7 +22,7 @@ const createBlogsApi = async (data) => {
 
 const updateBlogsApi = async (data) => {
     try {
-        const response = await blogInstance.put('/', data);
+        const response = await blogInstance.put(`/${id}`, data);
         console.log('updated blogs response:', response);
         return response.data;
     } catch (error) {
@@ -30,9 +30,9 @@ const updateBlogsApi = async (data) => {
     }
 }
 
-const deleteBlogsApi = async () => {
+const deleteBlogsApi = async (id) => {
     try {
-        const response = await blogInstance.delete('/');
+        const response = await blogInstance.delete(`/${id}`);
         console.log('deleted blogs response:', response);
         return response.data;
     } catch (error) {
