@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { getBlogsApi, deleteBlogsApi } from '../../../utils/api/blogApi';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -30,7 +31,7 @@ const AdminBlogListing = () => {
                 setBlogs(blogs.filter(blog => blog._id !== id));
             } catch (err) {
                 console.error("Error deleting blog:", err);
-                alert("Failed to delete blog.");
+                toast.error("Failed to delete blog.");
             }
         }
     };

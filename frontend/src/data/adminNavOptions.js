@@ -6,7 +6,7 @@ const adminNavOptions = [
     },
     {
         name: 'Blog',
-        path: '/admin/blog'
+        path: '/admin/blogs'
     },
     {
         name: 'Projects',

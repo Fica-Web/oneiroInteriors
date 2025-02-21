@@ -1,4 +1,5 @@
 import blogInstance from "../axios_instances/blogInstance";
+import { toast } from "react-toastify";
 
 const getBlogsApi = async () => {
     try {
@@ -20,6 +21,16 @@ const createBlogsApi = async (data) => {
     }
 }
 
+const getSingleBlogApi = async (id) => {
+    try {
+        const response = await blogInstance.get(`/${id}`);
+        console.log('single blog response:', response);
+        return response.data;
+    } catch (error) {
+        console.log("error fetching blog:", error.response.data);
+    }
+}
+
 const updateBlogsApi = async (data) => {
     try {
         const response = await blogInstance.put(`/${id}`, data);
@@ -34,6 +45,7 @@ const deleteBlogsApi = async (id) => {
     try {
         const response = await blogInstance.delete(`/${id}`);
         console.log('deleted blogs response:', response);
+        toast.success(response.data.message)
         return response.data;
     } catch (error) {
         console.log("error deleting blogs:", error.response.data);
@@ -43,6 +55,7 @@ const deleteBlogsApi = async (id) => {
 export {
     getBlogsApi,
     createBlogsApi,
+    getSingleBlogApi,
     updateBlogsApi,
     deleteBlogsApi,
 }

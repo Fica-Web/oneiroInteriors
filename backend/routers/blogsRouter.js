@@ -5,6 +5,7 @@ import upload from '../middlewares/multer.js';
 import {
     getBlogs,
     createBlog,
+    getSingleBlog,
     updateBlog,
     deleteBlog,
 } from '../controllers/blogsController.js';
@@ -14,6 +15,7 @@ router.use(verifyAdminToken);
 
 router.get('/', getBlogs);
 router.post('/', createBlog);
+router.get('/:id', getSingleBlog);
 router.put('/:id', updateBlog);
 router.delete('/:id', deleteBlog);
 

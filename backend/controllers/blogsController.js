@@ -41,6 +41,24 @@ const createBlog = async (req, res) => {
     }
 };
 
+const getSingleBlog = async (req, res) => {
+    try {
+        const { id } = req.params; // Extract blog ID from request params
+
+        // Find and update the blog
+        const blog = await Blog.findById(id);
+
+        if (!blog) {
+            return res.status(404).json({ error: "Blog not found" });
+        }
+
+        res.status(200).json({ blog });
+    } catch (error) {
+        console.error("Error fetching blog:", error);
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const updateBlog = async (req, res) => {
     try {
         const { id } = req.params; // Extract blog ID from request params
@@ -86,6 +104,7 @@ const deleteBlog = async (req, res) => {
 export {
     getBlogs,
     createBlog,
+    getSingleBlog,
     updateBlog,
     deleteBlog,
 }

@@ -8,6 +8,7 @@ import AdminBlogPage from '../pages/admin/AdminBlogPage';
 import AdminProjectPage from '../pages/admin/AdminProjectPage';
 import AdminSettingsPage from '../pages/admin/AdminSettingsPage';
 import AdminLogin from '../pages/admin/AdminLogin';
+import AdminEditBlogPage from '../pages/admin/AdminEditBlogPage';
 
 const router = createBrowserRouter([
     {
@@ -29,8 +30,12 @@ const router = createBrowserRouter([
                         element: <AdminDashboard />
                     },
                     {
-                        path: 'blog',
+                        path: 'blogs',
                         element: <AdminBlogPage />
+                    },
+                    {
+                        path: 'blogs/edit/:id',  
+                        element: <AdminEditBlogPage />
                     },
                     {
                         path: 'projects',
