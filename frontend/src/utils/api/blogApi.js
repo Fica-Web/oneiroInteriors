@@ -2,7 +2,7 @@ import blogInstance from "../axios_instances/blogInstance";
 
 const getBlogsApi = async () => {
     try {
-        const response = await adminInstance.get('/');
+        const response = await blogInstance.get('/');
         console.log('get blogs response:', response);
         return response.data;
     } catch (error) {
@@ -12,7 +12,7 @@ const getBlogsApi = async () => {
 
 const createBlogsApi = async (data) => {
     try {
-        const response = await adminInstance.post('/', data);
+        const response = await blogInstance.post('/', data);
         console.log('Blogs created response:', response);
         return response.data;
     } catch (error) {
@@ -22,7 +22,7 @@ const createBlogsApi = async (data) => {
 
 const updateBlogsApi = async (data) => {
     try {
-        const response = await adminInstance.put('/', data);
+        const response = await blogInstance.put('/', data);
         console.log('updated blogs response:', response);
         return response.data;
     } catch (error) {
@@ -32,7 +32,7 @@ const updateBlogsApi = async (data) => {
 
 const deleteBlogsApi = async () => {
     try {
-        const response = await adminInstance.delete('/');
+        const response = await blogInstance.delete('/');
         console.log('deleted blogs response:', response);
         return response.data;
     } catch (error) {

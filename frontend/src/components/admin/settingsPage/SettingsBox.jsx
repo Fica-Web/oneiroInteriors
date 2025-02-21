@@ -123,8 +123,8 @@ const SettingsBox = () => {
             )}
 
             <div className="flex space-x-4 mt-6">
-                <button className={`text-white px-6 py-2 rounded ${isEditing ? "bg-red-500" : "bg-green-600"}`} onClick={() => setIsEditing(!isEditing)}>{isEditing ? "Cancel" : "Edit"}</button>
-                <button className="bg-blue-500 text-white px-6 py-2 rounded disabled:opacity-50" onClick={updateData} disabled={!isEditing || Object.keys(errors).some((key) => errors[key])}>Save Changes</button>
+                <button className={`text-white px-6 py-2 rounded cursor-pointer ${isEditing ? "bg-red-500" : "bg-green-600"}`} onClick={() => setIsEditing(!isEditing)}>{isEditing ? "Cancel" : "Edit"}</button>
+                <button className="bg-blue-500 text-white px-6 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" onClick={updateData} disabled={!isEditing || Object.keys(errors).some((key) => errors[key])}>Save Changes</button>
             </div>
         </div>
     );
