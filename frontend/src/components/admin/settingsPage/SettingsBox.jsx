@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { update_admin_data } from '../../../redux/slices/adminSlice';
-import { updateAdminDataApi } from '../../../utils/api/adminApi';
+import { fetchAdminDataApi, updateAdminDataApi } from '../../../utils/api/adminApi';
 import SettingsTab from './SettingsTab';
 import SettingsInput from './SettingsInput';
 
@@ -11,14 +11,32 @@ const SettingsBox = () => {
     const dispatch = useDispatch();
 
     const [activeTab, setActiveTab] = useState("general");
-    const [general, setGeneral] = useState({ email: admin.email, mobile: admin.mobile });
+    const [general, setGeneral] = useState({ email: admin?.email || "", mobile: admin?.mobile || "" });
     const [socials, setSocials] = useState({
-        facebook: admin.facebook,
-        twitter: admin.twitter,
-        instagram: admin.instagram,
+        facebook: admin?.facebook || "",
+        twitter: admin?.twitter || "",
+        instagram: admin?.instagram || "",
     });
     const [isEditing, setIsEditing] = useState(false);
     const [errors, setErrors] = useState({}); // 🔹 Store validation errors
+
+    useEffect(() => {
+        if (!admin) {
+            const getAdminData = async () => {
+                const response = await fetchAdminDataApi();
+                if (response?.admin) {
+                    dispatch(update_admin_data(response.admin)); // Update Redux store
+                    setGeneral({ email: response.admin.email, mobile: response.admin.mobile });
+                    setSocials({
+                        facebook: response.admin.facebook,
+                        twitter: response.admin.twitter,
+                        instagram: response.admin.instagram,
+                    });
+                }
+            };
+            getAdminData();
+        }
+    }, [admin]); 
 
     const validateField = (name, value) => {
         let error = "";
@@ -31,9 +49,13 @@ const SettingsBox = () => {
             if (name === "mobile" && !/^\d{10}$/.test(value)) {
                 error = "Mobile number must be 10 digits.";
             }
-            if (["facebook", "twitter", "instagram"].includes(name) && !/^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+\/?$/.test(value)) {
+            if (
+                ["facebook", "twitter", "instagram"].includes(name) &&
+                value.trim() &&
+                !/^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+\/?$/.test(value)
+            ) {
                 error = "Enter a valid URL (e.g., https://example.com).";
-            }            
+            }
         }
         return error;
     };
@@ -60,12 +82,12 @@ const SettingsBox = () => {
             if (error) newErrors[key] = error;
         });
         setErrors(newErrors);
-        console.log('new error:', newErrors)
         return Object.keys(newErrors).length === 0; // 🔹 Return true if no errors
     };
 
     const updateData = async () => {
         if (!validateForm()) return; // 🔹 Prevent submission if validation fails
+        if (Object.keys(errors).some((key) => errors[key])) return; // 🔹 Ensure no existing errors
 
         try {
             const updatedInfo = { ...general, ...socials };
@@ -83,92 +105,29 @@ const SettingsBox = () => {
 
     return (
         <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-            {/* Tabs */}
             <SettingsTab activeTab={activeTab} setActiveTab={setActiveTab} />
 
-            {/* General Settings */}
             {activeTab === "general" && (
                 <div className="mt-6">
-                    <SettingsInput
-                        label='Email'
-                        type='email'
-                        name='email'
-                        value={general.email}
-                        isEditing={isEditing}
-                        placeholder='Enter new email'
-                        handleChange={(e) => handleChange(e, "general")}
-                        error={errors.email} // 🔹 Pass error message
-                    />
-
-                    <SettingsInput
-                        label='Mobile'
-                        type='number'
-                        name='mobile'
-                        value={general.mobile}
-                        isEditing={isEditing}
-                        placeholder='Enter new mobile number'
-                        handleChange={(e) => handleChange(e, "general")}
-                        error={errors.mobile}
-                    />
+                    <SettingsInput label="Email" type="email" name="email" value={general.email} isEditing={isEditing} placeholder="Enter new email" handleChange={(e) => handleChange(e, "general")} error={errors.email} />
+                    <SettingsInput label="Mobile" type="tel" name="mobile" value={general.mobile} isEditing={isEditing} placeholder="Enter new mobile number" handleChange={(e) => handleChange(e, "general")} error={errors.mobile} />
                 </div>
             )}
 
-            {/* Social Settings */}
             {activeTab === "socials" && (
                 <div className="mt-6">
-                    <SettingsInput
-                        label='Facebook URL'
-                        type='text'
-                        name='facebook'
-                        value={socials.facebook}
-                        isEditing={isEditing}
-                        placeholder="Enter Facebook URL"
-                        handleChange={(e) => handleChange(e, "socials")}
-                        error={errors.facebook}
-                    />
-
-                    <SettingsInput
-                        label='Instagram URL'
-                        type='text'
-                        name='instagram'
-                        value={socials.instagram}
-                        isEditing={isEditing}
-                        placeholder="Enter Instagram URL"
-                        handleChange={(e) => handleChange(e, "socials")}
-                        error={errors.instagram}
-                    />
-
-                    <SettingsInput
-                        label='Twitter URL'
-                        type='text'
-                        name='twitter'
-                        value={socials.twitter}
-                        isEditing={isEditing}
-                        placeholder="Enter Twitter URL"
-                        handleChange={(e) => handleChange(e, "socials")}
-                        error={errors.twitter}
-                    />
+                    {["facebook", "instagram", "twitter"].map((platform) => (
+                        <SettingsInput key={platform} label={`${platform.charAt(0).toUpperCase() + platform.slice(1)} URL`} type="text" name={platform} value={socials[platform]} isEditing={isEditing} placeholder={`Enter ${platform} URL`} handleChange={(e) => handleChange(e, "socials")} error={errors[platform]} />
+                    ))}
                 </div>
             )}
 
-            {/* Buttons */}
             <div className="flex space-x-4 mt-6">
-                <button
-                    className={`text-white px-6 py-2 rounded transition cursor-pointer ${isEditing ? 'bg-red-500 hover:bg-red-500' : 'bg-green-600 hover:bg-green-700'}`}
-                    onClick={() => setIsEditing(!isEditing)}
-                >
-                    {isEditing ? "Cancel" : "Edit"}
-                </button>
-                <button
-                    className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                    onClick={updateData}
-                    disabled={!isEditing || Object.keys(errors).some((key) => errors[key])} // 🔹 Disable if errors exist
-                >
-                    Save Changes
-                </button>
+                <button className={`text-white px-6 py-2 rounded ${isEditing ? "bg-red-500" : "bg-green-600"}`} onClick={() => setIsEditing(!isEditing)}>{isEditing ? "Cancel" : "Edit"}</button>
+                <button className="bg-blue-500 text-white px-6 py-2 rounded disabled:opacity-50" onClick={updateData} disabled={!isEditing || Object.keys(errors).some((key) => errors[key])}>Save Changes</button>
             </div>
         </div>
     );
-}
+};
 
 export default SettingsBox;

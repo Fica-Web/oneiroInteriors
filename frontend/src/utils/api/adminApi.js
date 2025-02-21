@@ -34,6 +34,17 @@ const adminLogoutApi = async () => {
     }
 }
 
+const fetchAdminDataApi = async () => {
+    try {
+        const response = await adminInstance.get('/get-admin-data');
+        console.log('Admin data', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error fetching admin data:", error.response);
+        return error.response;
+    }
+}
+
 const updateAdminDataApi = async (data) => {
     try {
         const response = await adminInstance.post('/update', data);
@@ -49,5 +60,6 @@ export {
     adminLoginApi,
     isAdminAuthenticatedApi,
     adminLogoutApi,
+    fetchAdminDataApi,
     updateAdminDataApi,
 }
