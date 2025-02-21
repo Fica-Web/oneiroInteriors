@@ -1,4 +1,4 @@
-import Blog from "../models/blogSchema";
+import Blog from "../models/blogSchema.js";
 
 const getBlogs = async (req, res) => {
     try {
@@ -40,7 +40,45 @@ const createBlog = async (req, res) => {
     }
 };
 
+const updateBlog = async (req, res) => {
+    try {
+        const { id } = req.params; // Extract blog ID from request params
+        const updateData = req.body; // Get update data from request body
+
+        // Find and update the blog
+        const updatedBlog = await Blog.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
+
+        if (!updatedBlog) {
+            return res.status(404).json({ error: "Blog not found" });
+        }
+
+        res.status(200).json({ message: "Blog updated successfully", blog: updatedBlog });
+    } catch (error) {
+        console.error("Error during updating blog:", error);
+        res.status(500).json({ error: error.message });
+    }
+};
+
+const deleteBlog = async (req, res) => {
+    try {
+        const { id } = req.params; // Extract blog ID from request params
+        
+        const deletedBlog = await Blog.findByIdAndDelete(id); // Find and delete the blog
+
+        if (!deletedBlog) {
+            return res.status(404).json({ error: "Blog not found" });
+        }
+
+        res.status(200).json({ message: "Blog deleted successfully", blog: deletedBlog });
+    } catch (error) {
+        console.error("Error during blog deletion:", error);
+        res.status(500).json({ error: error.message });
+    }
+};
+
 export {
     getBlogs,
     createBlog,
+    updateBlog,
+    deleteBlog,
 }
