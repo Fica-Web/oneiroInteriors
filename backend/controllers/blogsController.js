@@ -92,19 +92,32 @@ const deleteBlog = async (req, res) => {
     try {
         const { id } = req.params; // Extract blog ID from request params
 
-        console.log('blogId:', id)
         // Validate ObjectId
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ error: "Invalid blog ID format" });
         }
-        
-        const deletedBlog = await Blog.findByIdAndDelete(id); // Find and delete the blog
 
-        if (!deletedBlog) {
+        // Find the blog first to get coverImageId
+        const blog = await Blog.findById(id);
+        if (!blog) {
             return res.status(404).json({ error: "Blog not found" });
         }
 
-        res.status(200).json({ message: "Blog deleted successfully", blog: deletedBlog });
+        // Delete the cover image from Cloudinary
+        if (blog.coverImageId) {
+            await cloudinary.uploader.destroy(blog.coverImageId, (err, res) => {
+                if (err) {
+                    console.error('Error deleting image:', err);
+                } else {
+                    console.log('Image deleted successfully:', res);
+                }
+            });
+        }
+
+        // Delete the blog from database
+        await Blog.findByIdAndDelete(id);
+
+        res.status(200).json({ message: "Blog and cover image deleted successfully" });
     } catch (error) {
         console.error("Error during blog deletion:", error);
         res.status(500).json({ error: error.message });
