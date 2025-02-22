@@ -9,7 +9,7 @@ import AdminProjectPage from '../pages/admin/AdminProjectPage';
 import AdminSettingsPage from '../pages/admin/AdminSettingsPage';
 import AdminLogin from '../pages/admin/AdminLogin';
 import AdminEditBlogPage from '../pages/admin/AdminEditBlogPage';
-import BlogForm from '../components/admin/blogPage/BlogForm';
+import CreateBlogPage from '../pages/admin/CreateBlogPage';
 
 const router = createBrowserRouter([
     {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'blogs/create/',  
-                        element: <BlogForm />
+                        element: <CreateBlogPage />
                     },
                     {
                         path: 'blogs/edit/:id',  

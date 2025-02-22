@@ -15,6 +15,7 @@ const createBlogsApi = async (data) => {
     try {
         const response = await blogInstance.post('/', data);
         console.log('Blogs created response:', response);
+        toast.success(response.data.message)
         return response.data;
     } catch (error) {
         console.log("error creating blogs:", error.response.data);

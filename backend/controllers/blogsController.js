@@ -17,7 +17,7 @@ const createBlog = async (req, res) => {
         const { title, description, slug, content, author, category, tags, coverImage, publishedAt } = req.body;
 
         // Validate required fields
-        if (!title || !slug || !content || !author || !category) {
+        if (!title || !content || !author || !category) {
             return res.status(400).json({ error: "Missing required fields" });
         }
 

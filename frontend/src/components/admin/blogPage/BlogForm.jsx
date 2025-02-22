@@ -1,23 +1,11 @@
 import React, { useState } from "react";
 
-const BlogForm = ({ onSubmit }) => {
-    const [formData, setFormData] = useState({
-        title: "",
-        description: "",
-        slug: "",
-        author: "",
-        category: "",
-        tags: "",
-        coverImage: "",
-        content: [{ contentTitle: "", contentDescription: "" }],
-    });
-
+const BlogForm = ({ onSubmit, formData, setFormData }) => {
     const [errors, setErrors] = useState({});
 
     const validateForm = () => {
         let newErrors = {};
         if (!formData.title.trim()) newErrors.title = "Title is required";
-        if (!formData.slug.trim()) newErrors.slug = "Slug is required";
         if (!formData.author.trim()) newErrors.author = "Author is required";
         if (!formData.category.trim()) newErrors.category = "Category is required";
 
@@ -98,15 +86,6 @@ const BlogForm = ({ onSubmit }) => {
                         className="w-full border border-gray-500 p-2 rounded-md mt-1"
                     />
                     {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
-                </div>
-
-                {/* Slug */}
-                <div>
-                    <label className="block text-gray-700 font-medium">Slug (URL identifier)</label>
-                    <input type="text" name="slug" value={formData.slug} onChange={handleInputChange}
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
-                    />
-                    {errors.slug && <p className="text-red-500 text-sm">{errors.slug}</p>}
                 </div>
 
                 {/* Author */}
