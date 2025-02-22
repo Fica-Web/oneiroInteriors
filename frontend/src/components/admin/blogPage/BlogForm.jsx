@@ -70,6 +70,15 @@ const BlogForm = ({ onSubmit, reset }) => {
             setErrors({ ...errors, coverImage: null }); // Clear errors if valid
         }
     };
+
+    const handleCroppedImage = (croppedImageBlob) => {
+        const previewURL = URL.createObjectURL(croppedImageBlob);
+        setFormData((prevState) => ({
+            ...prevState,
+            coverImage: croppedImageBlob, // For API upload
+            coverImagePreview: previewURL, // For preview
+        }));
+    };
     
     const handleContentChange = (index, field, value) => {
         const updatedContent = [...formData.content];
@@ -150,11 +159,11 @@ const BlogForm = ({ onSubmit, reset }) => {
                     ></textarea>
                 </div>
 
-                {/* Cover Image */}
                 {/* Cover Image Upload Component */}
                 <CoverImageUpload
                     coverImagePreview={formData.coverImagePreview}
                     onImageChange={handleImageChange}
+                    onCropComplete={handleCroppedImage}
                     error={errors.coverImage}
                 />
 
