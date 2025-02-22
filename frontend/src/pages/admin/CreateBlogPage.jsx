@@ -3,41 +3,22 @@ import { createBlogsApi } from '../../utils/api/blogApi';
 import BlogForm from '../../components/admin/blogPage/BlogForm';
 
 const CreateBlogPage = () => {
-    const [formData, setFormData] = useState({
-        title: "",
-        description: "",
-        author: "",
-        category: "",
-        tags: "",
-        coverImage: "",
-        content: [{ contentTitle: "", contentDescription: "" }],
-    });
+    const [reset, setReset] = useState(false);
 
     const handleSubmit = async (formData) => {
         const response = await createBlogsApi(formData);
-
         if (response) {
-            setFormData({
-                title: "",
-                description: "",
-                author: "",
-                category: "",
-                tags: "",
-                coverImage: "",
-                content: [{ contentTitle: "", contentDescription: "" }],
-            })
+            console.log("Blog Created Successfully!");
+            setReset(true); // Trigger reset
+            setTimeout(() => setReset(false), 500); // Reset the flag to allow future resets
         }
-    }
+    };
 
     return (
         <div>
-            <BlogForm 
-                onSubmit={handleSubmit} 
-                formData={formData}
-                setFormData={setFormData}
-            />
+            <BlogForm onSubmit={handleSubmit} reset={reset} />
         </div>
-    )
-}
+    );
+};
 
-export default CreateBlogPage
+export default CreateBlogPage;

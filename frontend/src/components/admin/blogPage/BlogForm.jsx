@@ -1,7 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const BlogForm = ({ onSubmit, formData, setFormData }) => {
+const BlogForm = ({ onSubmit, reset }) => {
+    const initialState = {
+        title: "",
+        description: "",
+        slug: "",
+        author: "",
+        category: "",
+        tags: "",
+        coverImage: "",
+        coverImagePreview: "",
+        content: [{ contentTitle: "", contentDescription: "" }],
+    };
+
+    const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        if (reset) {
+            setFormData(initialState); // Reset form when reset flag changes
+        }
+    }, [reset]);
 
     const validateForm = () => {
         let newErrors = {};
@@ -160,7 +179,7 @@ const BlogForm = ({ onSubmit, formData, setFormData }) => {
                             </div>
 
                             {index > 0 && (
-                                <button type="button" className="text-red-500 font-semibold mt-2 hover:text-red-700"
+                                <button type="button" className="text-red-500 font-semibold mt-2 hover:text-red-700 cursor-pointer" 
                                     onClick={() => removeContentSection(index)}
                                 >
                                     Remove Section
@@ -170,12 +189,12 @@ const BlogForm = ({ onSubmit, formData, setFormData }) => {
                     ))}
 
                     <button type="button" onClick={addContentSection}
-                        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">
+                        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 cursor-pointer">
                         + Add Section
                     </button>
                 </div>
 
-                <button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md">
+                <button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md cursor-pointer">
                     Submit Blog
                 </button>
             </form>
