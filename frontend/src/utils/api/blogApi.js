@@ -11,16 +11,43 @@ const getBlogsApi = async () => {
     }
 }
 
-const createBlogsApi = async (data) => {
+const createBlogsApi = async (formData) => {
+    const data = new FormData();
+
+    // Append text fields
+    data.append("title", formData.title);
+    data.append("description", formData.description);
+    data.append("slug", formData.slug);
+    data.append("author", formData.author);
+    data.append("category", formData.category);
+    data.append("tags", JSON.stringify(formData.tags)); // Convert tags to JSON string
+    data.append("content", JSON.stringify(formData.content)); // Convert content to JSON string
+
+    // Append image file
+    data.append("coverImage", formData.coverImage);
+
+    const config = {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    };
+
     try {
-        const response = await blogInstance.post('/', data);
-        console.log('Blogs created response:', response);
-        toast.success(response.data.message)
-        return response.data;
+        const response = await blogInstance.post("/", data, config);
+        
+        console.log("Full Response:", response); // 🔍 Debug response
+        
+        if (response.status === 201) {
+            console.log("Success Response Data:", response.data);
+            toast.success(response.data.message);
+            return response.data;
+        } else {
+            console.log("Unexpected Response:", response);
+        }
     } catch (error) {
-        console.log("error creating blogs:", error.response.data);
+        console.error("Error creating blogs:", error);
     }
-}
+};
 
 const getSingleBlogApi = async (id) => {
     try {

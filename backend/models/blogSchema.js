@@ -29,8 +29,13 @@ const blogSchema = new mongoose.Schema(
             default: [],
         },
         coverImage: {
-            type: String, // URL or file path
-            default: "",
+            type: String, 
+            required: true,
+        },
+        coverImageId: {
+            type: String, 
+            unique: true,
+
         },
         publishedAt: {
             type: Date,

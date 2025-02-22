@@ -1,5 +1,6 @@
 import Blog from "../models/blogSchema.js";
 import mongoose from "mongoose";
+import cloudinary from "../config/cloudinary.js";
 
 const getBlogs = async (req, res) => {
     try {
@@ -14,27 +15,36 @@ const getBlogs = async (req, res) => {
 
 const createBlog = async (req, res) => {
     try {
-        const { title, description, slug, content, author, category, tags, coverImage, publishedAt } = req.body;
+        const { title, description, content, author, category, tags, publishedAt } = req.body;
+
+        // Ensure content is an array
+        const parsedContent = typeof content === "string" ? JSON.parse(content) : content;
 
         // Validate required fields
-        if (!title || !content || !author || !category) {
+        if (!title || !parsedContent || !author || !category || !req.file) {
             return res.status(400).json({ error: "Missing required fields" });
         }
 
+        console.log('Content Type:', typeof parsedContent);
+
+        // Upload image to Cloudinary
+        const coverImage = await cloudinary.uploader.upload(req.file.path);
+
+        // Create new blog entry with Cloudinary URL
         const newBlog = new Blog({
             title,
             description,
-            slug,
-            content,
+            content: parsedContent, // ✅ Correct field name
             author,
             category,
             tags,
-            coverImage,
+            coverImage: coverImage.secure_url,
+            coverImageId: coverImage.public_id,
             publishedAt
         });
 
         await newBlog.save();
-        res.status(201).json({ message: "Blog created successfully", blog: newBlog });
+        return res.status(201).json({ message: "Blog created successfully", blog: newBlog });
     } catch (error) {
         console.error("Error during blog creation:", error);
         res.status(500).json({ error: error.message });

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CoverImageUpload from "./CoverImageUpload";
 
 const BlogForm = ({ onSubmit, reset }) => {
     const initialState = {
@@ -43,27 +44,27 @@ const BlogForm = ({ onSubmit, reset }) => {
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-    
+
         if (file) {
             // Validate file type
             if (!file.type.startsWith("image/")) {
                 setErrors({ ...errors, coverImage: "Only image files are allowed" });
                 return;
             }
-    
+
             // Validate file size (2MB limit)
             if (file.size > 2 * 1024 * 1024) {
                 setErrors({ ...errors, coverImage: "File size must be less than 2MB" });
                 return;
             }
-    
-            // Store the file and create a preview URL
-            setFormData({
-                ...formData,
-                coverImage: file,
-                coverImagePreview: URL.createObjectURL(file),
-            });
-    
+
+            // Store the file for submission
+            setFormData((prevState) => ({
+                ...prevState,
+                coverImage: file, // This is needed for the API request
+                coverImagePreview: URL.createObjectURL(file), // Preview
+            }));
+
             setErrors({ ...errors, coverImage: null }); // Clear errors if valid
         }
     };
@@ -142,20 +143,12 @@ const BlogForm = ({ onSubmit, reset }) => {
                 </div>
 
                 {/* Cover Image */}
-                <div>
-                    <label className="block text-gray-700 font-medium">Cover Image</label>
-                    <input type="file" name="coverImage" accept="image/*" onChange={handleImageChange}
-                        className="w-full border p-2 rounded-md mt-1"
-                    />
-                    {errors.coverImage && <p className="text-red-500 text-sm">{errors.coverImage}</p>}
-
-                    {/* Live Preview */}
-                    {formData.coverImagePreview && (
-                        <img src={formData.coverImagePreview} alt="Cover Preview"
-                            className="w-full h-40 object-cover mt-3 rounded-lg shadow-md"
-                        />
-                    )}
-                </div>
+                {/* Cover Image Upload Component */}
+                <CoverImageUpload
+                    coverImagePreview={formData.coverImagePreview}
+                    onImageChange={handleImageChange}
+                    error={errors.coverImage}
+                />
 
                 {/* Content Sections */}
                 <div className="space-y-4">
