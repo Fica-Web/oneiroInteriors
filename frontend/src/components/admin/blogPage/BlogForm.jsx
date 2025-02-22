@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CoverImageUpload from "./CoverImageUpload";
+import LoadingButton from "../../reusable/LoadingButton";
 
 const BlogForm = ({ onSubmit, reset }) => {
     const initialState = {
@@ -16,6 +17,7 @@ const BlogForm = ({ onSubmit, reset }) => {
 
     const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false); 
 
     useEffect(() => {
         if (reset) {
@@ -85,13 +87,19 @@ const BlogForm = ({ onSubmit, reset }) => {
         setFormData({ ...formData, content: updatedContent });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateForm()) {
-            onSubmit({
-                ...formData,
-                tags: formData.tags.split(",").map(tag => tag.trim()), // Convert tags to array
-            });
+            setLoading(true); // 🔹 Show loading state when submitting
+
+            try {
+                await onSubmit({
+                    ...formData,
+                    tags: formData.tags.split(",").map(tag => tag.trim()), // Convert tags to array
+                });
+            } finally {
+                setLoading(false); // 🔹 Hide loading state after response
+            }
         }
     };
 
@@ -187,9 +195,12 @@ const BlogForm = ({ onSubmit, reset }) => {
                     </button>
                 </div>
 
-                <button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md cursor-pointer">
-                    Submit Blog
-                </button>
+                <LoadingButton
+                    loading={loading}
+                    text="Submit Blog"
+                    loadingText="Submitting..."
+                    type="submit"
+                />
             </form>
         </div>
     );
