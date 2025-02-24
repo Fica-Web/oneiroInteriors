@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { HiOutlineShoppingBag } from "react-icons/hi";
-// import logo from '../../assets/images/FlowraLogo.png';
+import logo from '../../assets/images/logo-black.png';
 import navOptions from '../../data/navOptions';
 
 const Navbar = () => {
@@ -13,13 +13,12 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-24">
                     {/* Logo */}
                     <div className="flex items-center">
-                        <NavLink to="/flowra" className="text-xl font-bold">
-                            {/* <img 
+                        <NavLink to="/" className="text-xl font-bold">
+                            <img 
                                 src={logo} 
-                                alt="Flowra Logo"
-                                className='lg:h-12 sm:h-10 h-8'
-                            /> */}
-                            Logo
+                                alt="Oneiro Logo"
+                                className='lg:h-14 h-12'
+                            />
                         </NavLink>
                     </div>
 
@@ -91,10 +90,10 @@ const Navbar = () => {
             {/* Mobile Menu */}
             <div
                 id="mobile-menu"
-                className={`overflow-hidden transition-[max-height] duration-700 ease-in-out bg-gray-100 ${isMobileMenuOpen ? "max-h-screen" : "max-h-0"
+                className={`overflow-hidden transition-[max-height] duration-700 ease-in-out bg-gray-100 absolute top-20 right-0 left-0 z-50  ${isMobileMenuOpen ? "max-h-screen" : "max-h-0"
                     }`}
             >
-                <div className="px-4 py-2 space-y-2">
+                <div className="px-4 py-2 space-y-2 ">
                     {navOptions.map((option) => (
                         <NavLink
                             key={option.name}
