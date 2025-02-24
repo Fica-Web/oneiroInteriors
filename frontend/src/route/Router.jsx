@@ -2,6 +2,11 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import AdminAuth from '../utils/auth/AdminAuth';
 import HomeLayout from '../layoutes/HomeLayout';
+import HomePage from '../pages/user/HomePage';
+import AboutPage from '../pages/user/AboutPage';
+import OurWorksPage from '../pages/user/OurWorksPage';
+import ServicePage from '../pages/user/ServicePage';
+import ContactPage from '../pages/user/ContactPage';
 import AdminLayout from '../layoutes/AdminLayout';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import AdminBlogPage from '../pages/admin/AdminBlogPage';
@@ -16,7 +21,31 @@ const router = createBrowserRouter([
         path: '/',
         element: <HomeLayout />,
         children: [
-            
+            {
+                path: '',
+                element: <HomePage />,
+                index: true // Defines this as the default route for "/"
+            },
+            {
+                path: 'about',
+                element: <AboutPage />
+            },
+            {
+                path: 'about',
+                element: <AboutPage />
+            },
+            {
+                path: 'our-works',
+                element: <OurWorksPage />
+            },
+            {
+                path: 'services',
+                element: <ServicePage />
+            },
+            {
+                path: 'contact',
+                element: <ContactPage />
+            },
         ]
     },
     {
