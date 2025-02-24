@@ -31,7 +31,7 @@ const BlogForm = ({ onSubmit, reset }) => {
                     const response = await getSingleBlogApi(id);
                     setFormData({
                         ...response.blog,
-                        tags: response.blog.tags.join(", "), // Convert array to string
+                        tags: JSON.parse(response.blog.tags).join(", "), // Convert array to string
                         coverImagePreview: response.blog.coverImage, // Set preview
                     });
                 } catch (err) {
@@ -96,6 +96,7 @@ const BlogForm = ({ onSubmit, reset }) => {
 
     const handleCroppedImage = (croppedImageBlob) => {
         const previewURL = URL.createObjectURL(croppedImageBlob);
+        
         setFormData((prevState) => ({
             ...prevState,
             coverImage: croppedImageBlob, // For API upload
@@ -138,7 +139,6 @@ const BlogForm = ({ onSubmit, reset }) => {
                 });
                 console.log('create');
             }
-            // navigate("/admin/blogs");
         } finally {
             setLoading(false); // 🔹 Hide loading state after response
         }

@@ -30,7 +30,8 @@ const CoverImageUpload = ({ coverImagePreview, onImageChange, error, onCropCompl
     }, []);
 
     // Process cropped image
-    const handleCropDone = async () => {
+    const handleCropDone = async (e) => {
+        e.preventDefault(); // Prevent form submission
         try {
             const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels);
             onCropComplete(croppedImage);
