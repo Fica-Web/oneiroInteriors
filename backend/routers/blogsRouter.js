@@ -16,7 +16,7 @@ router.use(verifyAdminToken);
 router.get('/', getBlogs);
 router.post('/', upload.single('coverImage'), createBlog);
 router.get('/:id', getSingleBlog);
-router.put('/:id', updateBlog);
+router.put('/:id', upload.single('coverImage'), updateBlog);
 router.delete('/:id', deleteBlog);
 
 export default router;

@@ -52,20 +52,42 @@ const createBlogsApi = async (formData) => {
 const getSingleBlogApi = async (id) => {
     try {
         const response = await blogInstance.get(`/${id}`);
-        console.log('single blog response:', response);
+        console.log('single blog response:', response.data);
         return response.data;
     } catch (error) {
-        console.log("error fetching blog:", error.response.data);
+        console.log("error fetching blog:", error?.response?.data);
     }
 }
 
-const updateBlogsApi = async (data) => {
+const updateBlogApi = async (id, data) => {
+    const formData = new FormData();
+
+    // Append text fields
+    formData.append("title", formData.title);
+    formData.append("description", formData.description);
+    formData.append("slug", formData.slug);
+    formData.append("author", formData.author);
+    formData.append("category", formData.category);
+    formData.append("tags", JSON.stringify(formData.tags)); // Convert tags to JSON string
+    formData.append("content", JSON.stringify(formData.content)); // Convert content to JSON string
+
+    // Append image file
+    formData.append("coverImage", formData.coverImage);
+
+    const config = {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    };
+
     try {
-        const response = await blogInstance.put(`/${id}`, data);
+        console.log('Update blog works')
+        const response = await blogInstance.put(`/${id}`, data, config);
         console.log('updated blogs response:', response);
+        toast.success(response.data.message)
         return response.data;
     } catch (error) {
-        console.log("error updating blogs:", error.response.data);
+        console.log("error updating blogs:", error?.response?.data);
     }
 }
 
@@ -84,6 +106,6 @@ export {
     getBlogsApi,
     createBlogsApi,
     getSingleBlogApi,
-    updateBlogsApi,
+    updateBlogApi,
     deleteBlogsApi,
 }

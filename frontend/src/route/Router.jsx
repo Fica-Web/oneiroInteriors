@@ -40,7 +40,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'blogs/edit/:id',  
-                        element: <AdminEditBlogPage />
+                        element: <CreateBlogPage />
                     },
                     {
                         path: 'projects',

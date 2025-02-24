@@ -72,14 +72,31 @@ const getSingleBlog = async (req, res) => {
 const updateBlog = async (req, res) => {
     try {
         const { id } = req.params; // Extract blog ID from request params
-        const updateData = req.body; // Get update data from request body
+        let updateData = { ...req.body }; // Get update data from request body
+
+        // Find the existing blog to retrieve the current cover image
+        const existingBlog = await Blog.findById(id);
+        if (!existingBlog) {
+            return res.status(404).json({ error: "Blog not found" });
+        }
+
+        // If a new file is uploaded, replace the old cover image
+        if (req.file) {
+            console.log("Uploading new cover image...");
+
+            // Destroy previous image from Cloudinary if it exists
+            if (existingBlog.coverImage) {
+                await cloudinary.uploader.destroy(existingBlog.coverImageId);
+            }
+
+            // Upload new image to Cloudinary
+            const coverImageUpload = await cloudinary.uploader.upload(req.file.path);
+            updateData.coverImage = coverImageUpload.secure_url; // Save Cloudinary image URL
+            updateData.coverImageId = coverImageUpload.public_id;
+        }
 
         // Find and update the blog
         const updatedBlog = await Blog.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
-
-        if (!updatedBlog) {
-            return res.status(404).json({ error: "Blog not found" });
-        }
 
         res.status(200).json({ message: "Blog updated successfully", blog: updatedBlog });
     } catch (error) {

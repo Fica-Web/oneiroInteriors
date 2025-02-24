@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getSingleBlogApi, updateBlogApi } from "../../../utils/api/blogApi";
 import CoverImageUpload from "./CoverImageUpload";
 import LoadingButton from "../../reusable/LoadingButton";
 
 const BlogForm = ({ onSubmit, reset }) => {
+    const { id } = useParams(); // Get blog ID from URL
+    
     const initialState = {
         title: "",
         description: "",
@@ -18,6 +22,25 @@ const BlogForm = ({ onSubmit, reset }) => {
     const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false); 
+
+    // Fetch blog details if editing
+    useEffect(() => {
+        if (id) {
+            const fetchBlog = async () => {
+                try {
+                    const response = await getSingleBlogApi(id);
+                    setFormData({
+                        ...response.blog,
+                        tags: response.blog.tags.join(", "), // Convert array to string
+                        coverImagePreview: response.blog.coverImage, // Set preview
+                    });
+                } catch (err) {
+                    console.error("Error fetching blog:", err);
+                }
+            };
+            fetchBlog();
+        }
+    }, [id]);
 
     useEffect(() => {
         if (reset) {
@@ -98,23 +121,34 @@ const BlogForm = ({ onSubmit, reset }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validateForm()) {
-            setLoading(true); // 🔹 Show loading state when submitting
+        if (!validateForm()) return;
 
-            try {
-                await onSubmit({
+        setLoading(true); // 🔹 Show loading state when submitting
+        try {
+            if (id) {
+                await updateBlogApi(id, {
                     ...formData,
                     tags: formData.tags.split(",").map(tag => tag.trim()), // Convert tags to array
                 });
-            } finally {
-                setLoading(false); // 🔹 Hide loading state after response
+                console.log(' updated');
+            } else {
+                await createBlogApi({
+                    ...formData,
+                    tags: formData.tags.split(",").map(tag => tag.trim()), // Convert tags to array
+                });
+                console.log('create');
             }
+            // navigate("/admin/blogs");
+        } finally {
+            setLoading(false); // 🔹 Hide loading state after response
         }
     };
 
     return (
         <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 mt-10">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Create New Blog</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+                { id ? "Edit Blog" : "Create New Blog" }
+            </h2>
             <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Blog Title */}
                 <div>
@@ -205,9 +239,10 @@ const BlogForm = ({ onSubmit, reset }) => {
                 </div>
 
                 <LoadingButton
+                    id={id}
                     loading={loading}
-                    text="Submit Blog"
-                    loadingText="Submitting..."
+                    text={id ? 'Update Blog' : 'Submit Blog'}
+                    loadingText={id ? 'Updating...' : 'Submitting...'}
                     type="submit"
                 />
             </form>
