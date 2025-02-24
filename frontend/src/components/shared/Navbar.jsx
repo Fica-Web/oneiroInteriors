@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import logo from '../../assets/images/FlowraLogo.png';
+// import logo from '../../assets/images/FlowraLogo.png';
 import navOptions from '../../data/navOptions';
 
 const Navbar = () => {
@@ -14,12 +14,12 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="flex items-center">
                         <NavLink to="/flowra" className="text-xl font-bold">
-                            <img 
+                            {/* <img 
                                 src={logo} 
                                 alt="Flowra Logo"
                                 className='lg:h-12 sm:h-10 h-8'
-                            />
-                            {/* logo */}
+                            /> */}
+                            Logo
                         </NavLink>
                     </div>
 
@@ -58,7 +58,7 @@ const Navbar = () => {
                     {/* Mobile Menu Button */}
                     <div className="lg:hidden">
                         <button
-                            className="hover:text-secondary p-2 rounded-md"
+                            className="hover:text-secondary p-2 rounded-md cursor-pointer"
                             aria-label="Toggle mobile menu"
                             aria-expanded={isMobileMenuOpen}
                             aria-controls="mobile-menu"
