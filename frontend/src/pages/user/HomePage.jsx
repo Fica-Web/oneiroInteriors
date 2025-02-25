@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import HomeCarousel from '../../components/user/HomeCarousal';
 
 const HomePage = () => {
     return (
-        <div className='ForosMedium foros-medium font-semibold text-5xl'>
-            HOME PAGE Transform
+        <div>
+            <HomeCarousel />
         </div>
     )
 }

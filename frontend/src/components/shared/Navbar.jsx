@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { HiOutlineShoppingBag } from "react-icons/hi";
 import logo from '../../assets/images/logo-black.png';
 import navOptions from '../../data/navOptions';
 
@@ -9,7 +8,7 @@ const Navbar = () => {
 
     return (
         <nav className="">
-            <div className="w-11/12 mx-auto sm:px-4 lg:px-7">
+            <div className="w-full mx-auto sm:px-4 lg:px-7 ">
                 <div className="flex items-center justify-between h-24">
                     {/* Logo */}
                     <div className="flex items-center">
@@ -23,7 +22,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex lg:space-x-6 space-x-2 items-center text-lg text-gray-700 font-medium">
+                    <div className="hidden lg:flex lg:space-x-6 space-x-2 items-center text-sm font-semibold text-gray-700 uppercase">
                         {navOptions.map((option) => (
                             <NavLink
                                 key={option.name}
@@ -39,20 +38,7 @@ const Navbar = () => {
                         ))}
                     </div>
 
-                    {/* Login and Cart */}
-                    <div className="hidden lg:flex items-center space-x-4">
-                        {/* Login Button */}
-                        <NavLink
-                            to="/login"
-                            className="px-4 py-2 rounded-md  hover:bg-secondary-dark"
-                        >
-                            Login
-                        </NavLink>
-                        {/* Cart Icon */}
-                        <NavLink to="/cart" className="text-2xl text-gray-700 hover:text-secondary">
-                            <HiOutlineShoppingBag />
-                        </NavLink>
-                    </div>
+                    <div></div>
 
                     {/* Mobile Menu Button */}
                     <div className="lg:hidden">
@@ -108,23 +94,6 @@ const Navbar = () => {
                             {option.name}
                         </NavLink>
                     ))}
-                    {/* Login Button for Mobile */}
-                    <NavLink
-                        to="/login"
-                        className="block px-4 py-2 rounded-md bg-secondary text-white hover:bg-secondary-dark"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                        Login
-                    </NavLink>
-                    {/* Cart Button for Mobile */}
-                    <NavLink
-                        to="/cart"
-                        className="block px-4 py-2 rounded-md text-gray-700 hover:bg-secondary"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                        <HiOutlineShoppingBag className="inline mr-2" />
-                        Cart
-                    </NavLink>
                 </div>
             </div>
         </nav>
