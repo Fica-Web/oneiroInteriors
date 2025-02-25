@@ -23,7 +23,7 @@ const HomeCarousel = () => {
                 swipeable
             >
                 {slides.map((hero) => (
-                    <div key={hero.id} className="relative w-full h-[90vh]">
+                    <div key={hero.id} className="relative w-full max-h-[90vh]">
                         <img className="w-full h-full object-cover" src={hero.image} alt={`slide ${hero.id}`} />
                     </div>
                 ))}
