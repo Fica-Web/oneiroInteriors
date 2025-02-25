@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'ForosMedium';
+    src: url('./assets/fonts/Foros-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.foros-medium {
+    font-family: 'ForosMedium', sans-serif;
+}
