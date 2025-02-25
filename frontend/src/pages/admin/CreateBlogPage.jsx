@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { createBlogsApi } from '../../utils/api/blogApi';
+import { createBlogApi } from '../../utils/api/blogApi';
 import BlogForm from '../../components/admin/blogPage/BlogForm';
 
 const CreateBlogPage = () => {
     const [reset, setReset] = useState(false);
 
     const handleSubmit = async (formData) => {
-        const response = await createBlogsApi(formData);
+        const response = await createBlogApi(formData);
         if (response) {
             console.log("Blog Created Successfully!");
             setReset(true); // Trigger reset

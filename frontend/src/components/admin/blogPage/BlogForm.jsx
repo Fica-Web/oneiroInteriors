@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleBlogApi, updateBlogApi } from "../../../utils/api/blogApi";
+import { getSingleBlogApi, updateBlogApi, createBlogApi } from "../../../utils/api/blogApi";
 import CoverImageUpload from "./CoverImageUpload";
 import LoadingButton from "../../reusable/LoadingButton";
 
@@ -29,9 +29,10 @@ const BlogForm = ({ onSubmit, reset }) => {
             const fetchBlog = async () => {
                 try {
                     const response = await getSingleBlogApi(id);
+                    console.log('tags:', response.blog.tags)
                     setFormData({
                         ...response.blog,
-                        tags: JSON.parse(response.blog.tags).join(", "), // Convert array to string
+                        // tags: JSON.parse(response.blog.tags).join(", "), // Convert array to string
                         coverImagePreview: response.blog.coverImage, // Set preview
                     });
                 } catch (err) {
@@ -129,13 +130,13 @@ const BlogForm = ({ onSubmit, reset }) => {
             if (id) {
                 await updateBlogApi(id, {
                     ...formData,
-                    tags: formData.tags.split(",").map(tag => tag.trim()), // Convert tags to array
+                    // tags: JSON.stringify(formData.tags.split(",").map(tag => tag.trim())), // Convert tags to array
                 });
-                console.log(' updated');
+                console.log(' updated', tags);
             } else {
                 await createBlogApi({
                     ...formData,
-                    tags: formData.tags.split(",").map(tag => tag.trim()), // Convert tags to array
+                    // tags: JSON.stringify(formData.tags.split(",").map(tag => tag.trim())), // Convert tags to array
                 });
                 console.log('create');
             }

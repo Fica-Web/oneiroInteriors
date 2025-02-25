@@ -11,7 +11,7 @@ const getBlogsApi = async () => {
     }
 }
 
-const createBlogsApi = async (formData) => {
+const createBlogApi = async (formData) => {
     const data = new FormData();
 
     // Append text fields
@@ -104,7 +104,7 @@ const deleteBlogsApi = async (id) => {
 
 export {
     getBlogsApi,
-    createBlogsApi,
+    createBlogApi,
     getSingleBlogApi,
     updateBlogApi,
     deleteBlogsApi,
