@@ -9,14 +9,14 @@ const Navbar = () => {
     return (
         <nav className="">
             <div className="w-full mx-auto sm:px-4 lg:px-7 ">
-                <div className="flex items-center justify-between h-24">
+                <div className="flex items-center justify-between h-24 ">
                     {/* Logo */}
                     <div className="flex items-center">
                         <NavLink to="/" className="text-xl font-bold">
                             <img 
                                 src={logo} 
                                 alt="Oneiro Logo"
-                                className='lg:h-14 h-12'
+                                className='lg:h-8 h-6'
                             />
                         </NavLink>
                     </div>

@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import styles
 const HomeCarousel = () => {
     const slides = [
         { id: 1, image: "https://www.getonecard.app/images/blog/book_affordable_flights.png" },
-        { id: 2, image: "https://www.getonecard.app/images/blog/book_affordable_flights.png" },
+        { id: 2, image: "https://images.livspace-cdn.com/plain/https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2021/06/10131120/interior-wall-design.jpg" },
         { id: 3, image: "https://www.getonecard.app/images/blog/book_affordable_flights.png" },
     ];
 
