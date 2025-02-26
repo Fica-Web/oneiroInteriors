@@ -22,14 +22,15 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex lg:space-x-6 space-x-2 items-center text-sm font-semibold text-gray-700 uppercase">
+                    <div className="hidden lg:flex lg:space-x-6 space-x-2 items-center text-sm font-semibold uppercase">
                         {navOptions.map((option) => (
                             <NavLink
                                 key={option.name}
-                                to={option.link}
-                                end={option.end || false} // Add `end` property for exact matching
+                                to={option.path}  // ✅ FIXED
+                                end={option.end || false}
                                 className={({ isActive }) =>
-                                    `px-3 py-2 rounded-md ${isActive ? "text-primary" : "hover:text-primary"
+                                    `px-3 py-2 rounded-md ${
+                                        isActive ? "text-primary" : "text-gray-700 hover:text-primary"
                                     }`
                                 }
                             >
@@ -38,20 +39,17 @@ const Navbar = () => {
                         ))}
                     </div>
 
-                    <div></div>
-
                     {/* Mobile Menu Button */}
                     <div className="lg:hidden">
                         <button
-                            className="hover:text-secondary p-2 rounded-md cursor-pointer"
+                            className="hover:text-primary p-2 rounded-md cursor-pointer"
                             aria-label="Toggle mobile menu"
                             aria-expanded={isMobileMenuOpen}
                             aria-controls="mobile-menu"
                             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
                         >
                             <svg
-                                className={`h-6 w-6 transition-transform duration-300 ${isMobileMenuOpen ? "rotate-90" : ""
-                                    }`}
+                                className={`h-6 w-6 transition-transform duration-300 ${isMobileMenuOpen ? "rotate-90" : ""}`}
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -76,20 +74,20 @@ const Navbar = () => {
             {/* Mobile Menu */}
             <div
                 id="mobile-menu"
-                className={`overflow-hidden transition-[max-height] duration-700 ease-in-out bg-gray-100 absolute top-20 right-0 left-0 z-50  ${isMobileMenuOpen ? "max-h-screen" : "max-h-0"
-                    }`}
+                className={`overflow-hidden transition-[max-height] duration-700 ease-in-out bg-gray-100 absolute top-20 right-0 left-0 z-50 ${isMobileMenuOpen ? "max-h-screen" : "max-h-0"}`}
             >
-                <div className="px-4 py-2 space-y-2 ">
+                <div className="px-4 py-2 space-y-2">
                     {navOptions.map((option) => (
                         <NavLink
                             key={option.name}
-                            to={option.link}
-                            end={option.end || false} // Add `end` property for exact matching
+                            to={option.path}  // ✅ FIXED
+                            end={option.end || false}
                             className={({ isActive }) =>
-                                `block px-3 py-2 rounded-md text-base font-medium ${isActive ? "text-secondary" : "text-primary hover:text-secondary"
+                                `block px-3 py-2 rounded-md text-base font-medium ${
+                                    isActive ? "text-primary" : "text-gray-700 hover:text-primary"
                                 }`
                             }
-                            onClick={() => setIsMobileMenuOpen(false)} // Close menu on click
+                            onClick={() => setIsMobileMenuOpen(false)}
                         >
                             {option.name}
                         </NavLink>
