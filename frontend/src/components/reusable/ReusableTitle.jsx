@@ -11,7 +11,7 @@ const ReusableTitle = ({ page, title, description }) => {
                 <h2 className='text-5xl ackeler-a'>
                     { title }
                 </h2>
-                <p className='mt-5'>
+                <p className='mt-5 max-w-2xl'>
                     { description }
                 </p>
             </div>

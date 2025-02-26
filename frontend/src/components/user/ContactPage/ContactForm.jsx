@@ -10,9 +10,9 @@ const ContactForm = () => {
                         <div className="col-span-12">
                             <div className="text-center mx-auto max-w-3xl text-lg ">
                                 <h1 className="text-dark-green font-regular text-xl sm:text-3xl lg:text-5xl font-bold mb-10 ackeler-a">Get in touch</h1>
-                                <p className=" text-gray-700">
+                                {/* <p className=" text-gray-700">
                                     Oneiro Interiors is a creative interior design company dedicated to transforming spaces into personalized and functional environments. With a keen eye for detail and a passion for aesthetics, we craft interiors that blend elegance, comfort, and innovation. Whether it's a home, office, or commercial space, we bring your vision to life with thoughtful design solutions tailored to your lifestyle.
-                                </p>
+                                </p> */}
                                 <p className='mb-12 text-gray-700'>
                                     Feel free to reach out to us—we’d love to help design your dream space!
                                 </p>
