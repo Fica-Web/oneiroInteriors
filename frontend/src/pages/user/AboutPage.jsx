@@ -1,6 +1,7 @@
 import React from 'react';
 import ReusableTitle from '../../components/reusable/ReusableTitle';
 import BrandPillar from '../../components/user/AboutPage/BrandPillar';
+import WhyChooseUs from '../../components/user/AboutPage/WhyChoseUs';
 
 const AboutPage = () => {
     return (
@@ -12,6 +13,7 @@ const AboutPage = () => {
                     reflects its owner’s life, memories, and future. Oneiro translates visions into tangible, livable environments where form meets function with artistry."
             />
             <BrandPillar />
+            <WhyChooseUs />
         </div>
     )
 }
