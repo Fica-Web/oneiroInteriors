@@ -13,14 +13,14 @@ const Hero = () => {
                 <img
                     src="https://mojoboutique.com/cdn/shop/articles/what_interior_design_style_uses_plants_1344x.jpg?v=1710240081"
                     alt="Interior Design"
-                    className='h-24 rounded-full object-cover flex-1'
+                    className='h-24 rounded-full object-cover flex-1 hover:scale-105 transition-transform duration-500'
                 />
             </div>
             <div className='xl:flex items-center gap-7 hidden xl:mt-8 mt-5'>
                 <img
                     src="https://www.fabmodula.com/images/Newbanner3.jpg"
                     alt="Interior Design"
-                    className='h-24 rounded-full object-cover flex-1 hidden xl:block'
+                    className='h-24 rounded-full object-cover flex-1 hidden xl:block hover:scale-105 transition-transform duration-500'
                 />
                 <h2 className='xl:text-8xl text-5xl foros-medium font-semibold'>
                     Into Reality
@@ -43,7 +43,7 @@ const Hero = () => {
                     <img
                         src="https://www.fabmodula.com/images/Newbanner3.jpg"
                         alt="Interior Design"
-                        className='object-cover'
+                        className='object-cover hover:scale-105 transition-transform duration-500'
                     />
                 </div>
             </div>
