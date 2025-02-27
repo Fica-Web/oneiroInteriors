@@ -1,5 +1,6 @@
 import React from 'react';
 import ReusableTitle from '../../components/reusable/ReusableTitle';
+import BrandPillar from '../../components/user/AboutPage/BrandPillar';
 
 const AboutPage = () => {
     return (
@@ -10,6 +11,7 @@ const AboutPage = () => {
                 description="Oneiro isn’t just about creating beautiful interiors, it’s about crafting spaces that embody personal stories and aspirations. Each home is more than its walls, it
                     reflects its owner’s life, memories, and future. Oneiro translates visions into tangible, livable environments where form meets function with artistry."
             />
+            <BrandPillar />
         </div>
     )
 }
