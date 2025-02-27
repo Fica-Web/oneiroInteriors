@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 const services = [
     { id: 2, title: "Commercial Spaces", description: "Enhance productivity and brand presence with our innovative commercial space designs.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
     { id: 3, title: "Space Planning", description: "Optimize your space with our expert planning solutions for a functional and aesthetic layout.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
-    { id: 4, title: "Furniture & Decor", description: "Curate the perfect ambiance with our handpicked furniture and decor elements.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" }
+    { id: 4, title: "Furniture & Decor", description: "Curate the perfect ambiance with our handpicked furniture and decor elements.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
+    { id: 1, title: "Commercial Spaces", description: "Enhance productivity and brand presence with our innovative commercial space designs.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 5, title: "Space Planning", description: "Optimize your space with our expert planning solutions for a functional and aesthetic layout.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
+    { id: 6, title: "Furniture & Decor", description: "Curate the perfect ambiance with our handpicked furniture and decor elements.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
 ];
 
 const ServiceListing = () => {
