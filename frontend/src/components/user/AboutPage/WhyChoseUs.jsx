@@ -17,7 +17,7 @@ const WhyChooseUs = () => {
     ];
 
     return (
-        <div ref={sectionRef} className="w-11/12 mx-auto my-16">
+        <div ref={sectionRef} className="w-11/12 mx-auto my-20">
             {/* Heading */}
             <motion.h2
                 className="text-5xl text-center text-gray-900 mb-12 ackeler-a"

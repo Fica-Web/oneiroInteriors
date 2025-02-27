@@ -22,7 +22,7 @@ const BrandsWeWorkWith = () => {
 
     return (
         <div className="w-full overflow-hidden bg-white py-10">
-            <h2 className="text-3xl text-center mb-14 ackeler-a">Brands We Work With</h2>
+            <h2 className="text-5xl text-center mb-14 ackeler-a">Brands We Work With</h2>
             <div className="relative flex items-center">
                 <div ref={scrollRef} className="flex whitespace-nowrap animate-scroll">
                     {brands.concat(brands).map((brand, index) => (

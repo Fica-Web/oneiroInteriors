@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const ReusableTitle = ({ page, title, description }) => {
   return (
-    <div className="w-full border-t border-gray-300 py-12">
+    <div className="w-full border-t border-gray-400 py-12">
       <div className="w-11/12 mx-auto">
         
         {/* Page Indicator */}
