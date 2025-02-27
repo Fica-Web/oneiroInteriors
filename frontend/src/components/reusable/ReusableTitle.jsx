@@ -8,12 +8,12 @@ const ReusableTitle = ({ page, title, description }) => {
         
         {/* Page Indicator */}
         <motion.div 
-          className="flex items-center gap-3"
+          className="flex items-center gap-2"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="h-1 w-14 bg-primary rounded"></div>
+          <div className="h-0.5 w-14 bg-primary rounded"></div>
           <h3 className="text-lg uppercase tracking-wide text-gray-600 font-semibold">
             {page}
           </h3>

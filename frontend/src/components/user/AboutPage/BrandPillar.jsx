@@ -14,7 +14,7 @@ const BrandPillar = () => {
                     transition={{ duration: 1.5 }}
                 >
                     <h2 className="text-5xl text-gray-900 leading-tight ackeler-a">
-                        A Philosophy Rooted in Elegance & Precision
+                        Core Brand Pillars
                     </h2>
 
                     <p className="text-lg text-gray-700 leading-relaxed">

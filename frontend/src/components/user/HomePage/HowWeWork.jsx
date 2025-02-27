@@ -26,7 +26,7 @@ const HowWeWork = () => {
             </motion.h2>
 
             {/* Steps Container */}
-            <div className="relative flex flex-col lg:flex-row items-center lg:justify-between">
+            <div className="relative flex flex-col lg:flex-row items-center lg:justify-between pl-8 lg:pl-0">
                 {steps.map((step, index) => (
                     <motion.div 
                         key={index} 
