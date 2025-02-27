@@ -7,7 +7,8 @@ const AboutPage = () => {
             <ReusableTitle 
                 page='About Us'
                 title='Designing with Purpose'
-                description="At Oneiro Interiors, we believe every space tells a story. Our passion for design, precision, and personalization allows us to create interiors that reflect your unique lifestyle and aspirations."
+                description="Oneiro isn’t just about creating beautiful interiors, it’s about crafting spaces that embody personal stories and aspirations. Each home is more than its walls, it
+                    reflects its owner’s life, memories, and future. Oneiro translates visions into tangible, livable environments where form meets function with artistry."
             />
         </div>
     )
