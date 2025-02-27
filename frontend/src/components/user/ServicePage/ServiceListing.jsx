@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const services = [
@@ -32,8 +32,8 @@ const ServiceListing = ({ isHomePage }) => {
                 {displayedServices.map((service) => (
                     <div
                         key={service.id}
-                        className={`relative overflow-hidden rounded-lg shadow-md cursor-pointer transition-all duration-300 transform hover:scale-105 ${selectedService === service.id ? 'bg-gray-200' : 'bg-white hover:bg-gray-100'}`}
-                        onClick={() => setSelectedService(service.id)}
+                        className="relative overflow-hidden rounded-lg shadow-md cursor-pointer transition-all duration-300 transform hover:scale-105"
+                        onClick={() => setSelectedService(service)}
                     >
                         <div className="relative group">
                             <img src={service.image} alt={service.title} className="w-full h-56 object-cover rounded-md transition-transform duration-500 group-hover:scale-110" />
@@ -62,6 +62,41 @@ const ServiceListing = ({ isHomePage }) => {
                     </motion.div>
                 </div>
             )}
+
+            {/* Modal */}
+            <AnimatePresence>
+                {selectedService && (
+                    <motion.div 
+                        className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        <motion.div 
+                            className="bg-white p-6 rounded-lg shadow-lg relative max-w-lg w-full"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                            {/* Close Button (Replaced Lucide with SVG) */}
+                            <button 
+                                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                                onClick={() => setSelectedService(null)}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                            {/* Modal Content */}
+                            <img src={selectedService.image} alt={selectedService.title} className="w-full h-auto object-cover rounded-md shadow-lg mt-5" />
+                            <h3 className="text-2xl font-semibold mt-4 text-gray-900">{selectedService.title}</h3>
+                            <p className="text-gray-600 mt-2">{selectedService.description}</p>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
