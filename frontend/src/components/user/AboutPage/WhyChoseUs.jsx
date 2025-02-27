@@ -20,7 +20,7 @@ const WhyChooseUs = () => {
         <div ref={sectionRef} className="w-11/12 mx-auto my-16">
             {/* Heading */}
             <motion.h2
-                className="text-5xl font-bold text-center text-gray-900 mb-12"
+                className="text-5xl text-center text-gray-900 mb-12 ackeler-a"
                 initial={{ opacity: 0, y: -40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.9 }}
