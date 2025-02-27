@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const services = [
@@ -18,7 +19,15 @@ const ServiceListing = ({ isHomePage }) => {
 
     return (
         <div className="w-11/12 mx-auto my-10 lg:my-20">
-            <h2 className="text-5xl text-center mb-8 ackeler-a">Our Services</h2>
+            <motion.h2 
+                className="text-5xl text-center mb-12 text-gray-900 ackeler-a"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                Our Services
+            </motion.h2>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {displayedServices.map((service) => (
                     <div
@@ -37,15 +46,22 @@ const ServiceListing = ({ isHomePage }) => {
                 ))}
             </div>
 
-            {
-                isHomePage && (
-                    <div className='flex justify-center my-10'>
-                        <Link to={'/services'} className='bg-gray-500 p-2 px-8 rounded-md text-white font-semibold hover:scale-105 transition-transform duration-300'>
+            {isHomePage && (
+                <div className="flex justify-center my-10">
+                    <motion.div
+                        whileHover={{ scale: 1.1, rotate: 2 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                    >
+                        <Link
+                            to="/services"
+                            className="bg-gray-500 py-3 px-8 rounded-lg text-white font-semibold shadow-md transition-all duration-300"
+                        >
                             Explore More
                         </Link>
-                    </div>
-                )
-            }
+                    </motion.div>
+                </div>
+            )}
         </div>
     );
 };
