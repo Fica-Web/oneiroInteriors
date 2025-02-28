@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div
             // style={{ backgroundImage: 'linear-gradient(#FDECF0 40%, #F598A6 120%)' }}
-            className="text-brown sm:pt-10 pt-6 lg:px-4 w-full"
+            className="text-brown sm:pt-10 pt-6 lg:px-4 w-full bg-admin-gray"
         >
             <div className="mx-auto py-10 px-4 sm:px-10 lg:px-16">
                 {/* Top Section */}
