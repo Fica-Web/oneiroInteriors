@@ -14,7 +14,7 @@ const HowWeWork = () => {
 
     // Ref for animations
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref, { once: false });
 
     return (
         <div ref={ref} className="w-11/12 mx-auto my-20">
