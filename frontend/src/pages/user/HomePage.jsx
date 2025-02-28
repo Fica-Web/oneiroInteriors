@@ -5,6 +5,7 @@ import WhyChooseUs from '../../components/user/AboutPage/WhyChoseUs';
 import ServiceListing from '../../components/user/ServicePage/ServiceListing';
 import HowWeWork from '../../components/user/HomePage/HowWeWork';
 import BrandsWeWorkWith from '../../components/user/HomePage/BrandsWeWorkWith';
+import CompletedVideos from '../../components/user/HomePage/CompletedVideos';
 
 const HomePage = () => {
     return (
@@ -15,6 +16,7 @@ const HomePage = () => {
             <ServiceListing isHomePage={true} />
             <HowWeWork />
             <BrandsWeWorkWith />
+            <CompletedVideos />
         </div>
     )
 }
