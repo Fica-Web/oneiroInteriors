@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const services = [
-    { id: 2, title: "Commercial Spaces", description: "Enhance productivity and brand presence with our innovative commercial space designs.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
-    { id: 3, title: "Space Planning", description: "Optimize your space with our expert planning solutions for a functional and aesthetic layout.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
-    { id: 4, title: "Furniture & Decor", description: "Curate the perfect ambiance with our handpicked furniture and decor elements.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
-    { id: 1, title: "Residential Interiors", description: "Transform your home into a personalized haven with our interior solutions.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
-    { id: 5, title: "Office Interiors", description: "Design efficient and inspiring office spaces tailored to your business needs.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
-    { id: 6, title: "Luxury Interiors", description: "Experience sophistication with our exclusive luxury interior designs.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
+    { id: 1, title: "Crockery Unit", description: "Elegant and space-efficient crockery units to showcase and store your fine china.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 2, title: "Modular Kitchen", description: "Modern, efficient, and stylish modular kitchen designs tailored to your needs.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 3, title: "Storage & Wardrobe", description: "Customized wardrobes and storage solutions for a clutter-free and organized space.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
+    { id: 4, title: "Study Table", description: "Ergonomic and stylish study tables designed for comfort and productivity.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
+    { id: 5, title: "False Ceiling", description: "Decorative false ceiling designs that add elegance and sophistication to your interiors.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 6, title: "Bathroom", description: "Luxury and functional bathroom designs with a touch of elegance.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
+    { id: 7, title: "Space Saving Furniture", description: "Innovative space-saving furniture solutions for compact homes.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
+    { id: 8, title: "Lights", description: "Stylish lighting solutions that enhance the ambiance of your home.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 9, title: "Wallpaper", description: "Trendy and durable wallpapers that add character to your walls.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 10, title: "Foyer", description: "Beautifully designed foyers that create a lasting first impression.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
+    { id: 11, title: "Movable Furniture", description: "Flexible and modular furniture solutions that adapt to your changing needs.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
+    { id: 12, title: "TV Unit", description: "Sleek and stylish TV units designed for modern living spaces.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 13, title: "Paints", description: "Premium quality wall paints for a vibrant and durable finish.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
+    { id: 14, title: "Kids Bedroom", description: "Creative and fun kids' bedroom designs with smart storage solutions.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
+    { id: 15, title: "Pooja Unit", description: "Beautifully crafted pooja units designed to bring a spiritual touch to your home.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
 ];
 
 const ServiceListing = ({ isHomePage }) => {
