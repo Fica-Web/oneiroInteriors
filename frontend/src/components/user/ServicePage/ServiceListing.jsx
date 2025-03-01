@@ -1,10 +1,15 @@
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import kitchen2 from '../../../assets/images/kitchen2.png';
+import KidsRoom1 from '../../../assets/images/kids-room1.png';
+import crockery1 from '../../../assets/images/crockery1.png';
+import livingRoom2 from '../../../assets/images/living-room2.png';
 
 const services = [
-    { id: 1, title: "Crockery Unit", description: "Elegant and space-efficient crockery units to showcase and store your fine china.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
-    { id: 2, title: "Modular Kitchen", description: "Modern, efficient, and stylish modular kitchen designs tailored to your needs.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 1, title: "Crockery Unit", description: "Elegant and space-efficient crockery units to showcase and store your fine china.", image: crockery1 },
+    { id: 2, title: "Modular Kitchen", description: "Modern, efficient, and stylish modular kitchen designs tailored to your needs.", image: kitchen2 },
+    { id: 14, title: "Kids Bedroom", description: "Creative and fun kids' bedroom designs with smart storage solutions.", image: KidsRoom1 },
     { id: 3, title: "Storage & Wardrobe", description: "Customized wardrobes and storage solutions for a clutter-free and organized space.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
     { id: 4, title: "Study Table", description: "Ergonomic and stylish study tables designed for comfort and productivity.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
     { id: 5, title: "False Ceiling", description: "Decorative false ceiling designs that add elegance and sophistication to your interiors.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
@@ -14,9 +19,8 @@ const services = [
     { id: 9, title: "Wallpaper", description: "Trendy and durable wallpapers that add character to your walls.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
     { id: 10, title: "Foyer", description: "Beautifully designed foyers that create a lasting first impression.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
     { id: 11, title: "Movable Furniture", description: "Flexible and modular furniture solutions that adapt to your changing needs.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
-    { id: 12, title: "TV Unit", description: "Sleek and stylish TV units designed for modern living spaces.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
+    { id: 12, title: "TV Unit", description: "Sleek and stylish TV units designed for modern living spaces.", image: livingRoom2 },
     { id: 13, title: "Paints", description: "Premium quality wall paints for a vibrant and durable finish.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
-    { id: 14, title: "Kids Bedroom", description: "Creative and fun kids' bedroom designs with smart storage solutions.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
     { id: 15, title: "Pooja Unit", description: "Beautifully crafted pooja units designed to bring a spiritual touch to your home.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
 ];
 
@@ -76,7 +80,7 @@ const ServiceListing = ({ isHomePage }) => {
             <AnimatePresence>
                 {selectedService && (
                     <motion.div 
-                        className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md"
+                        className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md z-50"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}

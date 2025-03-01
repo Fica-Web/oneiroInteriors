@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import kitchen1 from '../../../assets/images/kitchen1.png';
 
 const BrandPillar = () => {
     return (
@@ -42,7 +43,7 @@ const BrandPillar = () => {
                     transition={{ duration: 1.5 }}
                 >
                     <img
-                        src="https://aitiinterieurs.com/wp-content/uploads/2024/09/R1_12-e1725883932723-964x1024.jpg"
+                        src={kitchen1}
                         alt="Elegant Interior Design"
                         className="w-full h-auto rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105"
                     />

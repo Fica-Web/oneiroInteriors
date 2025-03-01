@@ -46,7 +46,7 @@ const HowWeWork = () => {
                         >
                             {/* Step Circle */}
                             <div 
-                                className={`w-16 h-16 flex items-center justify-center rounded-full text-white text-lg font-bold cursor-pointer transition-all duration-500 shadow-lg z-50 mt-10 lg:mt-0
+                                className={`w-16 h-16 flex items-center justify-center rounded-full text-white text-lg font-bold cursor-pointer transition-all duration-500 shadow-lg z-10 mt-10 lg:mt-0
                                     ${index <= currentStep ? "bg-primary" : "bg-gray-400"} hover:scale-110`}
                                 onClick={() => setCurrentStep(index)}
                             >
