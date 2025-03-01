@@ -15,4 +15,4 @@ const OurWorksPage = () => {
     )
 }
 
-export default OurWorksPage
+export default OurWorksPage;

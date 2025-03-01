@@ -1,16 +1,37 @@
 import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import kitchen1 from '../../../assets/images/kitchen1.png';
+import kitchen2 from '../../../assets/images/kitchen2.png';
+import kitchen3 from '../../../assets/images/kitchen3.png';
+import bedRoom1 from '../../../assets/images/bed-room1.png';
+import bedRoom2 from '../../../assets/images/bed-room2.png';
+// import img4 from '../../../assets/images/bed-room3.png';
+import KidsRoom1 from '../../../assets/images/kids-room1.png';
+import KidsRoom2 from '../../../assets/images/kids-room2.png';
+import KidsRoom3 from '../../../assets/images/kids-room3.png';
+import crockery1 from '../../../assets/images/crockery1.png';
+import crockery2 from '../../../assets/images/crockery2.png';
+import crockery3 from '../../../assets/images/crockery3.png';
+import crockery4 from '../../../assets/images/crockery4.png';
+import livingRoom1 from '../../../assets/images/living-room1.png';
+import livingRoom2 from '../../../assets/images/living-room2.png';
+
 
 const images = [
     "https://5.imimg.com/data5/SELLER/Default/2023/12/365864781/HG/BT/BC/70161538/bedroom-interior-design-decor-services.jpeg",
+    kitchen1,
+    KidsRoom3,
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqjzVj2OG7oU8K72QUdpBABuQRG7NMzZEw9w&s",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdcWgIPTgzHX1e028GmekiFbKUFlF0DWP5g9-mjFuuPTKoxNdj3MepDu4wYXUpDHIwwcY&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg3NusAIJCZUD9V8vJZ5uDt3D2_0khrzmQxg&s",
+    bedRoom1,
     "https://5.imimg.com/data5/SELLER/Default/2023/10/351500615/IB/FE/DW/193487231/2id-interiors-showcase-their-contemporary-golden-isles-project.jpg",
     "https://5.imimg.com/data5/SELLER/Default/2023/12/365864781/HG/BT/BC/70161538/bedroom-interior-design-decor-services.jpeg",
+    bedRoom2,
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdcWgIPTgzHX1e028GmekiFbKUFlF0DWP5g9-mjFuuPTKoxNdj3MepDu4wYXUpDHIwwcY&usqp=CAU",
     "https://5.imimg.com/data5/SELLER/Default/2023/12/365864781/HG/BT/BC/70161538/bedroom-interior-design-decor-services.jpeg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqjzVj2OG7oU8K72QUdpBABuQRG7NMzZEw9w&s",
+    KidsRoom1,
+    KidsRoom2,
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdcWgIPTgzHX1e028GmekiFbKUFlF0DWP5g9-mjFuuPTKoxNdj3MepDu4wYXUpDHIwwcY&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg3NusAIJCZUD9V8vJZ5uDt3D2_0khrzmQxg&s",
     "https://5.imimg.com/data5/SELLER/Default/2023/10/351500615/IB/FE/DW/193487231/2id-interiors-showcase-their-contemporary-golden-isles-project.jpg",
