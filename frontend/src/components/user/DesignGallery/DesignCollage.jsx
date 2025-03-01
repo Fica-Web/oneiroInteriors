@@ -15,28 +15,25 @@ import crockery3 from '../../../assets/images/crockery3.png';
 import crockery4 from '../../../assets/images/crockery4.png';
 import livingRoom1 from '../../../assets/images/living-room1.png';
 import livingRoom2 from '../../../assets/images/living-room2.png';
+import livingRoom3 from '../../../assets/images/living-room3.png';
 
 
 const images = [
-    "https://5.imimg.com/data5/SELLER/Default/2023/12/365864781/HG/BT/BC/70161538/bedroom-interior-design-decor-services.jpeg",
+    crockery1,
     kitchen1,
+    crockery2,
     KidsRoom3,
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqjzVj2OG7oU8K72QUdpBABuQRG7NMzZEw9w&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdcWgIPTgzHX1e028GmekiFbKUFlF0DWP5g9-mjFuuPTKoxNdj3MepDu4wYXUpDHIwwcY&usqp=CAU",
+    livingRoom1,
+    kitchen2,
     bedRoom1,
-    "https://5.imimg.com/data5/SELLER/Default/2023/10/351500615/IB/FE/DW/193487231/2id-interiors-showcase-their-contemporary-golden-isles-project.jpg",
-    "https://5.imimg.com/data5/SELLER/Default/2023/12/365864781/HG/BT/BC/70161538/bedroom-interior-design-decor-services.jpeg",
+    crockery3,
+    livingRoom2,
     bedRoom2,
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdcWgIPTgzHX1e028GmekiFbKUFlF0DWP5g9-mjFuuPTKoxNdj3MepDu4wYXUpDHIwwcY&usqp=CAU",
-    "https://5.imimg.com/data5/SELLER/Default/2023/12/365864781/HG/BT/BC/70161538/bedroom-interior-design-decor-services.jpeg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqjzVj2OG7oU8K72QUdpBABuQRG7NMzZEw9w&s",
+    crockery4,
+    kitchen3,
     KidsRoom1,
     KidsRoom2,
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdcWgIPTgzHX1e028GmekiFbKUFlF0DWP5g9-mjFuuPTKoxNdj3MepDu4wYXUpDHIwwcY&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg3NusAIJCZUD9V8vJZ5uDt3D2_0khrzmQxg&s",
-    "https://5.imimg.com/data5/SELLER/Default/2023/10/351500615/IB/FE/DW/193487231/2id-interiors-showcase-their-contemporary-golden-isles-project.jpg",
-    "https://5.imimg.com/data5/SELLER/Default/2023/12/365864781/HG/BT/BC/70161538/bedroom-interior-design-decor-services.jpeg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdcWgIPTgzHX1e028GmekiFbKUFlF0DWP5g9-mjFuuPTKoxNdj3MepDu4wYXUpDHIwwcY&usqp=CAU",
+    livingRoom3,
 ];
 
 const DesignCollage = () => {
