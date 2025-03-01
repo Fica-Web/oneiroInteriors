@@ -1,5 +1,8 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import bedRoom2 from '../../../assets/images/bed-room2.png';
+import KidsRoom1 from '../../../assets/images/kids-room1.png';
+import livingRoom from '../../../assets/images/living-room1.png';
 
 const Hero = () => {
     const ref = useRef(null);
@@ -29,7 +32,7 @@ const Hero = () => {
                     Transforming Dream
                 </motion.h2>
                 <motion.img
-                    src="https://mojoboutique.com/cdn/shop/articles/what_interior_design_style_uses_plants_1344x.jpg?v=1710240081"
+                    src={KidsRoom1}
                     alt="Interior Design"
                     className="h-24 rounded-full object-cover flex-1 shadow-lg"
                     initial={{ scale: 0.8, opacity: 0 }}
@@ -40,7 +43,7 @@ const Hero = () => {
 
             <div className="xl:flex items-center gap-7 hidden xl:mt-8 mt-5">
                 <motion.img
-                    src="https://www.fabmodula.com/images/Newbanner3.jpg"
+                    src={bedRoom2}
                     alt="Interior Design"
                     className="h-24 rounded-full object-cover flex-1 hidden xl:block shadow-lg"
                     initial={{ scale: 0.8, opacity: 0 }}
@@ -60,7 +63,7 @@ const Hero = () => {
             {/* Content Section */}
             <div className="lg:flex xl:mt-24 gap-12">
                 <motion.div 
-                    className="lg:w-1/3 w-full lg:p-5 lg:text-lg flex flex-col lg:gap-8 gap-4"
+                    className="lg:w-1/2 w-full lg:p-5 lg:text-lg flex flex-col justify-center lg:gap-8 gap-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8 }}
@@ -78,15 +81,15 @@ const Hero = () => {
 
                 {/* Right Image */}
                 <motion.div 
-                    className="lg:w-2/3 w-full lg:mt-0 mt-8"
+                    className="lg:w-1/2 w-full lg:mt-0 mt-8"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.8, delay: 0.5 }}
                 >
                     <img
-                        src="https://www.fabmodula.com/images/Newbanner3.jpg"
+                        src={livingRoom}
                         alt="Interior Design"
-                        className="object-cover rounded-lg shadow-xl hover:scale-105 transition-transform duration-500"
+                        className="object-cover rounded-lg shadow-xl hover:scale-105 transition-transform duration-500 max-h-[80vh] "
                     />
                 </motion.div>
             </div>

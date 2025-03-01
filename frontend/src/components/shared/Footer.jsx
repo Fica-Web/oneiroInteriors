@@ -104,13 +104,13 @@ const Footer = () => {
                     <div className='flex flex-col lg:items-center'>
                         <div>
                             <h4 className="font-semibold text-lg mb-7" >Contact Us</h4>
-                            <div className='flex gap-3 items-center text-lg my-1'>
-                                <IoIosMail className='text-2xl ' />
-                                <p>oneirointeriors.in@gmail.com</p>
-                            </div>
                             <div className='flex gap-3 items-center text-lg mb-1'>
                                 <FaPhoneAlt className='text-lg ' />
                                 <p>+91 98754 32100</p>
+                            </div>
+                            <div className='flex gap-3 items-center text-lg my-1'>
+                                <IoIosMail className='text-2xl ' />
+                                <p>oneirointeriors.in@gmail.com</p>
                             </div>
                             <div className='flex gap-3 items-center text-lg mb-1'>
                                 <IoLocationSharp className='text-xl ' />

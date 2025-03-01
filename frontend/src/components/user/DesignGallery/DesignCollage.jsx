@@ -5,7 +5,6 @@ import kitchen2 from '../../../assets/images/kitchen2.png';
 import kitchen3 from '../../../assets/images/kitchen3.png';
 import bedRoom1 from '../../../assets/images/bed-room1.png';
 import bedRoom2 from '../../../assets/images/bed-room2.png';
-// import img4 from '../../../assets/images/bed-room3.png';
 import KidsRoom1 from '../../../assets/images/kids-room1.png';
 import KidsRoom2 from '../../../assets/images/kids-room2.png';
 import KidsRoom3 from '../../../assets/images/kids-room3.png';

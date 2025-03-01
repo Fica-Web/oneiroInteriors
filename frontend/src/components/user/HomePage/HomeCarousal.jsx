@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import styles
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import crockery1 from '../../../assets/images/crockery1.png';
+import crockery2 from '../../../assets/images/crockery2.png';
+import crockery3 from '../../../assets/images/crockery3.png';
+import crockery4 from '../../../assets/images/crockery4.png';
 
 const HomeCarousel = () => {
     const slides = [
-        { id: 1, image: "https://www.getonecard.app/images/blog/book_affordable_flights.png" },
+        { id: 1, image: "https://chiedesign.in/wp-content/uploads/2022/05/Luxury-Interior-Design-Living-Room-1080x675.jpg" },
         { id: 2, image: "https://images.livspace-cdn.com/plain/https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2021/06/10131120/interior-wall-design.jpg" },
-        { id: 3, image: "https://www.getonecard.app/images/blog/book_affordable_flights.png" },
+        { id: 3, image: "https://sumesshmenonassociates.com/wp-content/uploads/2024/08/1-2.webp" },
     ];
 
     return (
