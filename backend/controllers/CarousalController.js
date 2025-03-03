@@ -12,9 +12,30 @@ const getCarousal = async (req, res) => {
 
 const createCarousal = async (req, res) => {
     try {
-        // const carousals = await Carousal.find();
+        if (!req.file) {
+            return res.status(400).json({ error: "File upload failed" });
+        }
+        
+        // Upload image to Cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            folder: "carousals", // Optional: Organizes images in Cloudinary
+        });
 
-        // res.status(200).json({ carousals });
+        console.log("Cloudinary Upload Result:", result);
+
+        // Save image data to MongoDB
+        const newImage = new Carousal({
+            imageUrl: result.secure_url, // Cloudinary URL
+            imageId: result.public_id,   // Cloudinary Image ID
+        });
+
+        await newImage.save();
+
+        res.status(201).json({
+            message: "Image uploaded successfully!",
+            imageUrl: result.secure_url,
+            imageId: result.public_id,
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

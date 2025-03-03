@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const carousalSchema = new mongoose.Schema(
     {
-        ImageUrl: {
-            type: String, 
+        imageUrl: {  
+            type: String,
             required: true,
         },
-        imageId: {
-            type: String, 
+        imageId: {  
+            type: String,
+            required: true, 
             unique: true,
-
         },
     },
     { timestamps: true }
