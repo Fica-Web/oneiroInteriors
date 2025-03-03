@@ -15,7 +15,7 @@ const CompletedVideos = () => {
         <div className="w-11/12 mx-auto my-20">
             <motion.h2
                 ref={headingRef}
-                className="text-5xl text-center text-gray-900 mb-12 ackeler-a"
+                className="sm:text-5xl text-4xl text-center text-gray-900 mb-12 ackeler-a"
                 initial={{ opacity: 0, y: -40 }}
                 animate={isHeadingInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.9 }}

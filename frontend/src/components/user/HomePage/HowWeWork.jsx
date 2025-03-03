@@ -21,7 +21,7 @@ const HowWeWork = () => {
             
             {/* Section Title */}
             <motion.h2 
-                className="text-5xl text-center mb-12 text-gray-900 ackeler-a"
+                className="sm:text-5xl text-4xl text-center mb-12 text-gray-900 ackeler-a"
                 initial={{ opacity: 0, y: -30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8 }}
