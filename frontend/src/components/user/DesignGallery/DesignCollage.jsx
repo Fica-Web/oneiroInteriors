@@ -3,35 +3,43 @@ import { motion, useInView } from "framer-motion";
 import kitchen1 from '../../../assets/images/kitchen1.png';
 import kitchen2 from '../../../assets/images/kitchen2.png';
 import kitchen3 from '../../../assets/images/kitchen3.png';
+import kitchen4 from '../../../assets/images/kitchen4.png';
+import kitchen5 from '../../../assets/images/kitchen5.png';
+import kitchen6 from '../../../assets/images/kitchen6.png';
+import kitchen7 from '../../../assets/images/kitchen7.png';
+import kitchen8 from '../../../assets/images/kitchen8.png';
+import kitchen9 from '../../../assets/images/kitchen9.png';
 import bedRoom1 from '../../../assets/images/bed-room1.png';
 import bedRoom2 from '../../../assets/images/bed-room2.png';
 import KidsRoom1 from '../../../assets/images/kids-room1.png';
 import KidsRoom2 from '../../../assets/images/kids-room2.png';
 import KidsRoom3 from '../../../assets/images/kids-room3.png';
+import KidsRoom4 from '../../../assets/images/kids-room4.png';
+import KidsRoom5 from '../../../assets/images/kids-room5.png';
+import KidsRoom6 from '../../../assets/images/kids-room6.png';
+import KidsRoom7 from '../../../assets/images/kids-room7.png';
+import KidsRoom8 from '../../../assets/images/kids-room8.png';
+import KidsRoom9 from '../../../assets/images/kids-room9.png';
 import crockery1 from '../../../assets/images/crockery1.png';
 import crockery2 from '../../../assets/images/crockery2.png';
 import crockery3 from '../../../assets/images/crockery3.png';
 import crockery4 from '../../../assets/images/crockery4.png';
+import crockery5 from '../../../assets/images/crockery5.png';
+import crockery6 from '../../../assets/images/crockery6.png';
+import crockery7 from '../../../assets/images/crockery7.png';
+import crockery8 from '../../../assets/images/crockery8.png';
+import crockery9 from '../../../assets/images/crockery9.png';
 import livingRoom1 from '../../../assets/images/living-room1.png';
 import livingRoom2 from '../../../assets/images/living-room2.png';
 import livingRoom3 from '../../../assets/images/living-room3.png';
 
 const images = [
-    crockery1,
-    kitchen1,
-    livingRoom3,
-    KidsRoom3,
-    livingRoom1,
-    kitchen2,
-    bedRoom1,
-    crockery3,
-    crockery2,
-    KidsRoom1,
-    crockery4,
-    bedRoom2,
-    kitchen3,
-    KidsRoom2,
-    livingRoom2,
+    crockery1, livingRoom3, kitchen1, KidsRoom3, livingRoom1,
+    kitchen2, bedRoom1, crockery3, crockery2, KidsRoom1, crockery4,
+    bedRoom2, kitchen3, KidsRoom2, livingRoom2, crockery5, KidsRoom4,
+    KidsRoom5, kitchen4, kitchen5, kitchen6, kitchen7, kitchen8,
+    kitchen9, KidsRoom6, KidsRoom7, KidsRoom8, KidsRoom9, crockery6,
+    crockery7, crockery8, crockery9
 ];
 
 const DesignCollage = () => {
