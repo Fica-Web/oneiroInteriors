@@ -12,7 +12,7 @@ const AdminTitleCard = ({ title }) => {
                     Admin
                 </p>
                 <MdOutlineKeyboardArrowRight />
-                <p className='text-primary'>
+                <p className='text-admin-primary'>
                     { title }
                 </p>
             </div>

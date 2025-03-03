@@ -33,8 +33,8 @@ const AdminSidebar = ({ isOpen }) => {
                             end={option.end || false} 
                             className={({ isActive }) =>
                                 isActive
-                                    ? " text-primary font-semibold py-2 p-10 hover:text-primary rounded-full border-4 border-admin-gray block"
-                                    : "py-2 p-10 hover:text-primary rounded block"
+                                    ? " text-admin-primary font-semibold py-2 p-10 hover:text-admin-primary rounded-full border-4 border-admin-gray block"
+                                    : "py-2 p-10 hover:text-admin-primary rounded block"
                             }
                         >
                             {option.name}
