@@ -87,25 +87,6 @@ const isAdminProtected = async (req, res) => {
     }
 }
 
-const uploadImage = async (req, res) => {
-    try {
-        if (!req.file) {
-            return res.status(400).json({ error: "File upload failed" });
-        }
-        
-        // Upload image to Cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path);
-        console.log('req.file:', result)
-
-        res.json({
-            message: "File uploaded successfully!",
-            imageUrl: req.file.path, // Cloudinary URL
-        });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-}
-
 const adminLogout = async (req, res) => {
     try {
         res.clearCookie('adminToken');
@@ -156,11 +137,31 @@ const updateAdminData = async (req, res) => {
     }
 }
 
+// HomePage Carousal 
+const uploadCarousalImage = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: "File upload failed" });
+        }
+        
+        // Upload image to Cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path);
+        console.log('req.file:', result)
+
+        res.json({
+            message: "File uploaded successfully!",
+            imageUrl: req.file.path, // Cloudinary URL
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 export {
     adminSignup,
     adminLogin,
     isAdminProtected,
-    uploadImage,
+    uploadCarousalImage,
     adminLogout,
     fetchAdminData,
     updateAdminData,
