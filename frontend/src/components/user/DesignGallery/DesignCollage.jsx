@@ -11,6 +11,7 @@ import kitchen8 from '../../../assets/images/kitchen8.png';
 import kitchen9 from '../../../assets/images/kitchen9.png';
 import bedRoom1 from '../../../assets/images/bed-room1.png';
 import bedRoom2 from '../../../assets/images/bed-room2.png';
+import bedRoom3 from '../../../assets/images/bed-room3.png';
 import KidsRoom1 from '../../../assets/images/kids-room1.png';
 import KidsRoom2 from '../../../assets/images/kids-room2.png';
 import KidsRoom3 from '../../../assets/images/kids-room3.png';
@@ -34,12 +35,12 @@ import livingRoom2 from '../../../assets/images/living-room2.png';
 import livingRoom3 from '../../../assets/images/living-room3.png';
 
 const images = [
-    crockery1, livingRoom3, kitchen1, KidsRoom3, livingRoom1,
-    kitchen2, bedRoom1, crockery3, crockery2, KidsRoom1, crockery4,
-    bedRoom2, kitchen3, KidsRoom2, livingRoom2, crockery5, KidsRoom4,
-    KidsRoom5, kitchen4, kitchen5, kitchen6, kitchen7, kitchen8,
-    kitchen9, KidsRoom6, KidsRoom7, KidsRoom8, KidsRoom9, crockery6,
-    crockery7, crockery8, crockery9
+    livingRoom3, kitchen1, KidsRoom3, livingRoom1, kitchen2, bedRoom3,
+    bedRoom1, crockery3, crockery2, kitchen8, KidsRoom1, crockery4,
+    crockery8, bedRoom2, kitchen3, KidsRoom2, livingRoom2, crockery5, KidsRoom4,
+    KidsRoom5, kitchen4, crockery1, kitchen6, kitchen7, KidsRoom8,
+    kitchen9, KidsRoom6, KidsRoom7, KidsRoom9, crockery6,
+    crockery7, crockery9, kitchen5,
 ];
 
 const DesignCollage = () => {
@@ -59,7 +60,7 @@ const DesignCollage = () => {
                 Design Gallery 
             </motion.h2>
 
-            {/* Masonry Layout */}
+            {/* Masonry Layout with Lazy Loading */}
             <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
                 {images.map((img, index) => (
                     <motion.div
@@ -75,6 +76,7 @@ const DesignCollage = () => {
                             src={img}
                             alt={`Design ${index + 1}`}
                             className="w-full h-auto object-cover transition-transform duration-500 rounded-lg"
+                            loading="lazy" // ✅ Lazy loading added
                         />
                         <div className="absolute inset-0 bg-black opacity-0 hover:opacity-40 transition-opacity duration-300"></div>
                     </motion.div>
