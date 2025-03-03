@@ -16,23 +16,22 @@ import livingRoom1 from '../../../assets/images/living-room1.png';
 import livingRoom2 from '../../../assets/images/living-room2.png';
 import livingRoom3 from '../../../assets/images/living-room3.png';
 
-
 const images = [
     crockery1,
     kitchen1,
-    crockery2,
+    livingRoom3,
     KidsRoom3,
     livingRoom1,
     kitchen2,
     bedRoom1,
     crockery3,
-    livingRoom2,
-    bedRoom2,
-    crockery4,
-    kitchen3,
+    crockery2,
     KidsRoom1,
+    crockery4,
+    bedRoom2,
+    kitchen3,
     KidsRoom2,
-    livingRoom3,
+    livingRoom2,
 ];
 
 const DesignCollage = () => {
@@ -52,31 +51,25 @@ const DesignCollage = () => {
                 Design Gallery 
             </motion.h2>
 
-            {/* 3-Column Flexbox Layout */}
-            <div className="flex gap-5">
-                {[0, 1, 2].map((colIndex) => (
-                    <div key={colIndex} className="flex flex-col gap-5 w-1/3">
-                        {images
-                            .filter((_, index) => index % 3 === colIndex)
-                            .map((img, index) => (
-                                <motion.div
-                                    key={index}
-                                    whileHover={{ scale: 1.05 }}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                                    className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
-                                    onClick={() => setSelectedImage(img)}
-                                >
-                                    <motion.img
-                                        src={img}
-                                        alt={`Design ${index + 1}`}
-                                        className="w-full h-auto object-cover transition-transform duration-500 rounded-lg"
-                                    />
-                                    <div className="absolute inset-0 bg-black opacity-0 hover:opacity-40 transition-opacity duration-300"></div>
-                                </motion.div>
-                            ))}
-                    </div>
+            {/* Masonry Layout */}
+            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
+                {images.map((img, index) => (
+                    <motion.div
+                        key={index}
+                        whileHover={{ scale: 1.05 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer break-inside-avoid"
+                        onClick={() => setSelectedImage(img)}
+                    >
+                        <motion.img
+                            src={img}
+                            alt={`Design ${index + 1}`}
+                            className="w-full h-auto object-cover transition-transform duration-500 rounded-lg"
+                        />
+                        <div className="absolute inset-0 bg-black opacity-0 hover:opacity-40 transition-opacity duration-300"></div>
+                    </motion.div>
                 ))}
             </div>
 
