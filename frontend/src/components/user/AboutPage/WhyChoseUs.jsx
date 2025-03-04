@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { FaCheckCircle } from 'react-icons/fa'
 
 const WhyChooseUs = () => {
     const sectionRef = useRef(null);
@@ -32,15 +33,24 @@ const WhyChooseUs = () => {
                 {benefits.map((item, index) => (
                     <motion.div
                         key={item.id}
-                        className="flex items-center gap-4 bg-gray-100 p-5 rounded-lg shadow-md transition-all duration-300 hover:bg-gray-200 hover:scale-105"
-                        initial={{ opacity: 0, y: 20 }}
+                        className="flex items-center gap-4  p-5 rounded-lg shadow-xl transition-all duration-300 hover:scale-105"
+                        initial={{ opacity: 0, y: 20, background: "linear-gradient(90deg, #d80d0d, #f7501f, #fea034)" }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
+                        whileHover={{
+                            scale: 1.05,
+                            background: [
+                                "linear-gradient(90deg, #d80d0d, #fea034, #f7501f)",
+                                "linear-gradient(90deg, #f7501f, #d80d0d, #fea034)",
+                                "linear-gradient(90deg, #fea034, #f7501f, #d80d0d)",
+                            ],
+                            transition: { duration: 0.8, repeat: Infinity, repeatType: "reverse" }
+                        }}
                     >
-                        {/* Check Icon */}
-                        <span className="text-green-500 text-2xl">✔️</span>
+                        {/* Icon */}
+                        <FaCheckCircle className="text-white text-3xl" />
                         {/* Text */}
-                        <p className="text-lg font-medium text-gray-800">{item.text}</p>
+                        <p className="text-lg font-semibold text-white">{item.text}</p>
                     </motion.div>
                 ))}
             </div>

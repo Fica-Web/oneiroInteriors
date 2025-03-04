@@ -32,7 +32,7 @@ const ServiceListing = ({ isHomePage }) => {
 
     return (
         <div className="w-11/12 mx-auto my-10 lg:my-20">
-            <motion.h2 
+            <motion.h2
                 className="sm:text-5xl text-4xl text-center mb-12 text-gray-900 ackeler-a"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ const ServiceListing = ({ isHomePage }) => {
                     >
                         <Link
                             to="/services"
-                            className="bg-gray-500 py-3 px-8 rounded-lg text-white font-semibold shadow-md transition-all duration-300"
+                            className="bg-gradient-to-r from-[#fea034] via-[#f7501f] to-[#d80d0d] py-3 px-8 rounded-lg text-white font-semibold shadow-md transition-all duration-300 hover:opacity-90"
                         >
                             Explore More
                         </Link>
@@ -79,13 +79,13 @@ const ServiceListing = ({ isHomePage }) => {
             {/* Modal */}
             <AnimatePresence>
                 {selectedService && (
-                    <motion.div 
+                    <motion.div
                         className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md z-50"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
-                        <motion.div 
+                        <motion.div
                             className="bg-white p-6 rounded-lg shadow-lg relative max-w-lg w-full"
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -93,7 +93,7 @@ const ServiceListing = ({ isHomePage }) => {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
                             {/* Close Button (Replaced Lucide with SVG) */}
-                            <button 
+                            <button
                                 className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
                                 onClick={() => setSelectedService(null)}
                             >
