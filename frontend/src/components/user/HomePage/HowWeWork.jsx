@@ -6,7 +6,7 @@ const steps = [
     { title: "Concept & Design", description: "Crafting detailed layouts and 3D visualizations." },
     { title: "Material Selection", description: "Choosing the best materials and finishes." },
     { title: "Execution", description: "Bringing ideas to life with expert craftsmanship." },
-    { title: "Final Touches", description: "Ensuring perfection before handover." }
+    { title: "Hand Over", description: "Final walkthrough and ensuring your satisfaction." }
 ];
 
 const HowWeWork = () => {

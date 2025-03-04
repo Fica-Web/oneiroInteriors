@@ -56,7 +56,7 @@ const ContactForm = () => {
                                     <FaMapMarkerAlt className="text-easy-secondary text-2xl mr-4" />
                                     <div className='flex flex-col gap-2'>
                                         <h4 className="text-xl font-semibold text-dark-green">Address</h4>
-                                        <p className="text-gray-600">Oneiro Interiors LLP, Shivaram karanth Nagar, Bangalore-77
+                                        <p className="text-gray-600">Oneiro Interiors, Shivaram karanth Nagar, Bangalore-77
                                         </p>
                                     </div>
                                 </div>

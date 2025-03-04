@@ -7,7 +7,7 @@ import crockery1 from '../../../assets/images/crockery1.png';
 import livingRoom2 from '../../../assets/images/living-room2.png';
 
 const services = [
-    { id: 1, title: "Crockery Unit", description: "Elegant and space-efficient crockery units to showcase and store your fine china.", image: crockery1 },
+    { id: 1, title: "Crockery Unit", description: "Elegant and space-efficient crockery units for organized and stylish dining spaces.", image: crockery1 },
     { id: 2, title: "Modular Kitchen", description: "Modern, efficient, and stylish modular kitchen designs tailored to your needs.", image: kitchen2 },
     { id: 14, title: "Kids Bedroom", description: "Creative and fun kids' bedroom designs with smart storage solutions.", image: KidsRoom1 },
     { id: 3, title: "Storage & Wardrobe", description: "Customized wardrobes and storage solutions for a clutter-free and organized space.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },

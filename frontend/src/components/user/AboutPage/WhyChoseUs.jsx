@@ -10,10 +10,9 @@ const WhyChooseUs = () => {
         { id: 2, text: "A client-centric approach" },
         { id: 3, text: "High-quality materials and craftsmanship" },
         { id: 4, text: "30-day delivery promise" },
-        { id: 5, text: "2,000+ happy homes" },
-        { id: 6, text: "No-cost EMI options" },
-        { id: 7, text: "End-to-end interior solutions" },
-        { id: 8, text: "10-year warranty" },
+        { id: 5, text: "No-cost EMI options" },
+        { id: 6, text: "End-to-end interior solutions" },
+        { id: 7, text: "12-year warranty" },
     ];
 
     return (
