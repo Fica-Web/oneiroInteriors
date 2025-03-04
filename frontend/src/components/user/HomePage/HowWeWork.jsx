@@ -17,11 +17,11 @@ const HowWeWork = () => {
     const isInView = useInView(ref, { once: false });
 
     return (
-        <div ref={ref} className="w-11/12 mx-auto my-20">
+        <div ref={ref} className="w-11/12 mx-auto my-20 mt-32">
             
             {/* Section Title */}
             <motion.h2 
-                className="sm:text-5xl text-4xl text-center mb-12 text-gray-900 ackeler-a"
+                className="sm:text-5xl text-4xl text-center mb-12 text-gray-900 font-bold"
                 initial={{ opacity: 0, y: -30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8 }}
@@ -47,7 +47,8 @@ const HowWeWork = () => {
                             {/* Step Circle */}
                             <div 
                                 className={`w-16 h-16 flex items-center justify-center rounded-full text-white text-lg font-bold cursor-pointer transition-all duration-500 shadow-lg z-10 mt-10 lg:mt-0
-                                    ${index <= currentStep ? "bg-primary" : "bg-gray-400"} hover:scale-110`}
+                                    ${index <= currentStep ? "bg-gradient-to-r from-[#fea034] via-[#f7501f] to-[#d80d0d]" : "bg-gray-400"} 
+                                    hover:scale-110`}
                                 onClick={() => setCurrentStep(index)}
                             >
                                 {index + 1}
@@ -57,7 +58,7 @@ const HowWeWork = () => {
                             {index < steps.length - 1 && (
                                 <div 
                                     className={`absolute transition-all duration-500 
-                                        ${index < currentStep ? "bg-primary" : "bg-gray-300"} 
+                                        ${index < currentStep ? "bg-gradient-to-r from-[#fea034] to-[#f7501f]" : "bg-gray-300"} 
                                         lg:w-full lg:h-1 lg:top-8 lg:left-1/2 
                                         w-1 h-24 top-16 left-7 transform -translate-x-1/2 lg:translate-x-0`}
                                 />
@@ -65,7 +66,7 @@ const HowWeWork = () => {
 
                             {/* Step Title */}
                             <div className="ml-6 lg:ml-0 lg:mt-4 mt-9 text-left lg:text-center">
-                                <p className={`text-lg font-semibold transition-all duration-300 ${index <= currentStep ? "text-primary" : "text-gray-500"}`}>
+                                <p className={`text-lg font-semibold transition-all duration-300 ${index <= currentStep ? "text-[#f7501f]" : "text-gray-500"}`}>
                                     {step.title}
                                 </p>
                             </div>
@@ -76,12 +77,16 @@ const HowWeWork = () => {
 
             {/* Step Description */}
             <motion.div 
-                className="mt-10 text-center max-w-lg mx-auto p-6 bg-gray-100 rounded-lg shadow-md border border-gray-300"
+                className="mt-10 text-center max-w-lg mx-auto p-6 rounded-lg shadow-md border border-gray-300"
+                style={{
+                    background: "linear-gradient(90deg, #fea034, #f7501f, #d80d0d)",
+                    color: "white"
+                }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <p className="text-lg text-gray-800">{steps[currentStep].description}</p>
+                <p className="text-lg font-medium">{steps[currentStep].description}</p>
             </motion.div>
 
         </div>
