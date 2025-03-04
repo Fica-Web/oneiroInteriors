@@ -6,6 +6,7 @@ import ServiceListing from '../../components/user/ServicePage/ServiceListing';
 import HowWeWork from '../../components/user/HomePage/HowWeWork';
 import BrandsWeWorkWith from '../../components/user/HomePage/BrandsWeWorkWith';
 import CompletedVideos from '../../components/user/HomePage/CompletedVideos';
+import FAQ from '../../components/user/HomePage/FAQ';
 
 const HomePage = () => {
     return (
@@ -17,6 +18,7 @@ const HomePage = () => {
             <HowWeWork />
             <BrandsWeWorkWith />
             <CompletedVideos />
+            <FAQ />
         </div>
     )
 }
