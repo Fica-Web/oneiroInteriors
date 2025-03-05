@@ -2,21 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaTag, FaUser, FaCalendarAlt } from "react-icons/fa";
-import { getSingleBlogApi } from "../../utils/api/blogApi";
+import { getLatestBlogApi, getSingleBlogApi } from "../../utils/api/blogApi";
+import LatestBlog from "../../components/user/BlogPage/LatestBlog";
 
 const SingleBlogPage = () => {
     const { id } = useParams(); // Get blog ID from URL
     const [blog, setBlog] = useState(null);
+    const [latestBlogs, setLatestBlogs] = useState([]);
 
     useEffect(() => {
         // Fetch blog data by ID
         const fetchBlog = async () => {
             const response = await getSingleBlogApi(id);
-            console.log('res from front:', response)
             setBlog(response.blog);
         };
 
+        // Fetch latest blog data by ID
+        const fetchLatestBlog = async () => {
+            const response = await getLatestBlogApi(id);
+            console.log('res from front:', response)
+            setLatestBlogs(response.latestBlogs);
+        };
+
         fetchBlog();
+        fetchLatestBlog();
     }, [id]);
 
     if (!blog) {
@@ -99,6 +108,8 @@ const SingleBlogPage = () => {
                     </motion.div>
                 )}
             </div>
+
+            <LatestBlog latestBlogs={latestBlogs} />
         </div>
     );
 };

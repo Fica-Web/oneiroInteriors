@@ -13,7 +13,7 @@ import {
 
 router.get('/', getBlogs);
 router.get('/:id', getSingleBlog);
-router.get('/:id', getLatestBlogs);
+router.get('/latest/:id', getLatestBlogs);
 
 // This middleware will be applied to all the route below this middleware
 router.use(verifyAdminToken);

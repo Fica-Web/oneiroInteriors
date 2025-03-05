@@ -59,6 +59,16 @@ const getSingleBlogApi = async (id) => {
     }
 }
 
+const getLatestBlogApi = async (id) => {
+    try {
+        const response = await blogInstance.get(`/latest/${id}`);
+        console.log('latest blog response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error fetching blog:", error?.response?.data);
+    }
+}
+
 const updateBlogApi = async (id, data) => {
     const formData = new FormData();
 
@@ -106,6 +116,7 @@ export {
     getBlogsApi,
     createBlogApi,
     getSingleBlogApi,
+    getLatestBlogApi,
     updateBlogApi,
     deleteBlogsApi,
 }
