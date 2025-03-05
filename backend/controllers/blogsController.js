@@ -69,6 +69,22 @@ const getSingleBlog = async (req, res) => {
     }
 };
 
+const getLatestBlogs = async (req, res) => {
+    try {
+        const { id } = req.params; // Blog ID to exclude
+
+        // Fetch latest blogs, excluding the current one, sorted by createdAt (newest first)
+        const latestBlogs = await Blog.find({ _id: { $ne: id } }) // Exclude the current blog
+            .sort({ createdAt: -1 }) // Sort by latest createdAt
+            .limit(3); // Limit to 3 latest blogs
+
+        res.status(200).json({ latestBlogs });
+    } catch (error) {
+        console.error("Error fetching latest blogs:", error);
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const updateBlog = async (req, res) => {
     try {
         const { id } = req.params; // Extract blog ID from request params
@@ -145,6 +161,7 @@ export {
     getBlogs,
     createBlog,
     getSingleBlog,
+    getLatestBlogs,
     updateBlog,
     deleteBlog,
 }

@@ -6,12 +6,14 @@ import {
     getBlogs,
     createBlog,
     getSingleBlog,
+    getLatestBlogs,
     updateBlog,
     deleteBlog,
 } from '../controllers/blogsController.js';
 
 router.get('/', getBlogs);
 router.get('/:id', getSingleBlog);
+router.get('/:id', getLatestBlogs);
 
 // This middleware will be applied to all the route below this middleware
 router.use(verifyAdminToken);

@@ -73,7 +73,7 @@ const SingleBlogPage = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     {blog.content.map((section, index) => (
-                        <div key={index} className="p-6">
+                        <div key={index} className="lg:p-6 p-3">
                             <h2 className="text-3xl font-semibold text-gray-900">{section.contentTitle}</h2>
                             <p className="mt-3 text-lg text-gray-700">{section.contentDescription}</p>
                         </div>
