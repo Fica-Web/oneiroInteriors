@@ -10,12 +10,13 @@ import {
     deleteBlog,
 } from '../controllers/blogsController.js';
 
+router.get('/', getBlogs);
+router.get('/:id', getSingleBlog);
+
 // This middleware will be applied to all the route below this middleware
 router.use(verifyAdminToken);
 
-router.get('/', getBlogs);
 router.post('/', upload.single('coverImage'), createBlog);
-router.get('/:id', getSingleBlog);
 router.put('/:id', upload.single('coverImage'), updateBlog);
 router.delete('/:id', deleteBlog);
 

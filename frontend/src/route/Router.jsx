@@ -7,6 +7,7 @@ import AboutPage from '../pages/user/AboutPage';
 import OurWorksPage from '../pages/user/OurWorksPage';
 import ServicePage from '../pages/user/ServicePage';
 import BlogPage from '../pages/user/BlogPage';
+import SingleBlogPage from '../pages/user/SingleBlogPage';
 import ContactPage from '../pages/user/ContactPage';
 import AdminLayout from '../layoutes/AdminLayout';
 import AdminDashboard from '../pages/admin/AdminDashboard';
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: 'blog',
                 element: <BlogPage />
+            },
+            {
+                path: 'blog/:id',
+                element: <SingleBlogPage />
             },
             {
                 path: 'contact',
