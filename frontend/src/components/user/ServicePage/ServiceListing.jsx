@@ -68,7 +68,7 @@ const ServiceListing = ({ isHomePage }) => {
                     >
                         <Link
                             to="/services"
-                            className="bg-gradient-to-r from-[#fea034] via-[#f7501f] to-[#d80d0d] py-3 px-8 rounded-lg text-white font-semibold shadow-md transition-all duration-300 hover:opacity-90"
+                            className="bg-gradient-to-r from-[#fea034] via-[#f7501f] to-[#d80d0d] py-3 px-8 rounded-lg text-white font-semibold shadow-md transition-all duration-300 hover:opacity-90 opacity-80"
                         >
                             Explore More
                         </Link>
