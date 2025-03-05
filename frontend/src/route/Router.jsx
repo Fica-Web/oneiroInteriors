@@ -6,6 +6,7 @@ import HomePage from '../pages/user/HomePage';
 import AboutPage from '../pages/user/AboutPage';
 import OurWorksPage from '../pages/user/OurWorksPage';
 import ServicePage from '../pages/user/ServicePage';
+import BlogPage from '../pages/user/BlogPage';
 import ContactPage from '../pages/user/ContactPage';
 import AdminLayout from '../layoutes/AdminLayout';
 import AdminDashboard from '../pages/admin/AdminDashboard';
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: 'services',
                 element: <ServicePage />
+            },
+            {
+                path: 'blog',
+                element: <BlogPage />
             },
             {
                 path: 'contact',
