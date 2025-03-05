@@ -11,6 +11,7 @@ import SingleBlogPage from '../pages/user/SingleBlogPage';
 import ContactPage from '../pages/user/ContactPage';
 import AdminLayout from '../layoutes/AdminLayout';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import AdminCarouselPage from '../pages/admin/AdminCarouselPage';
 import AdminBlogPage from '../pages/admin/AdminBlogPage';
 import AdminProjectPage from '../pages/admin/AdminProjectPage';
 import AdminSettingsPage from '../pages/admin/AdminSettingsPage';
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
                     {
                         index: true,
                         element: <AdminDashboard />
+                    },
+                    {
+                        path: 'carousel',
+                        element: <AdminCarouselPage />
                     },
                     {
                         path: 'blogs',

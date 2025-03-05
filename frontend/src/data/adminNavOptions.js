@@ -5,6 +5,10 @@ const adminNavOptions = [
         end: true
     },
     {
+        name: 'Carousel',
+        path: '/admin/carousel',
+    },
+    {
         name: 'Blog',
         path: '/admin/blogs'
     },

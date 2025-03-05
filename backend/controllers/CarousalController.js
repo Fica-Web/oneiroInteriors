@@ -24,17 +24,16 @@ const createCarousal = async (req, res) => {
         console.log("Cloudinary Upload Result:", result);
 
         // Save image data to MongoDB
-        const newImage = new Carousal({
+        const carousal = new Carousal({
             imageUrl: result.secure_url, // Cloudinary URL
             imageId: result.public_id,   // Cloudinary Image ID
         });
 
-        await newImage.save();
+        await carousal.save();
 
         res.status(201).json({
             message: "Image uploaded successfully!",
-            imageUrl: result.secure_url,
-            imageId: result.public_id,
+            carousal
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
