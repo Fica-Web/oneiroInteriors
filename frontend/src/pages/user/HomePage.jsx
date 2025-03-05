@@ -7,6 +7,7 @@ import HowWeWork from '../../components/user/HomePage/HowWeWork';
 import BrandsWeWorkWith from '../../components/user/HomePage/BrandsWeWorkWith';
 import CompletedVideos from '../../components/user/HomePage/CompletedVideos';
 import FAQ from '../../components/user/HomePage/FAQ';
+import BlogListing from '../../components/user/BlogPage/BlogListing';
 
 const HomePage = () => {
     return (
@@ -19,6 +20,7 @@ const HomePage = () => {
             <BrandsWeWorkWith />
             <CompletedVideos />
             <FAQ />
+            <BlogListing isHomePage={true} />
         </div>
     )
 }
