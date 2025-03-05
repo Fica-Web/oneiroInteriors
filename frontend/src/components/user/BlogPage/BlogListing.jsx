@@ -25,7 +25,7 @@ const BlogListing = ({ isHomePage }) => {
         <div ref={ref} className='w-11/12 mx-auto my-20'>
             <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10'>
                 {isHomePage && (
-                    <div className="w-full mt-16">
+                    <div className="w-full lg:mt-16">
 
                         {/* Page Indicator */}
                         <motion.div
@@ -42,7 +42,7 @@ const BlogListing = ({ isHomePage }) => {
 
                         {/* Title */}
                         <motion.h2
-                            className="text-5xl foros-medium text-gray-900 mt-4 leading-tight"
+                            className="lg:text-5xl text-4xl foros-medium text-gray-900 mt-4 leading-tight"
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.6, delay: 0.2 }}
