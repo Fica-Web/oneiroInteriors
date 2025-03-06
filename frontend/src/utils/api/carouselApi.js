@@ -34,18 +34,26 @@ const createCarouselApi = async (data) => {
         toast.success(response.data.message)
         return response.data;
     } catch (error) {
-        toast.error('Failed to Upload image')
+        toast.error('Failed to Create carousel')
         console.log("error creating carousel:", error.response.data);
     }
 }
 
-const updateCarouselApi = async () => {
+const updateCarouselApi = async (id, data) => {
     try {
-        const response = await carouselInstance.get('/');
-        console.log('get blogs response:', response);
+        const config = {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        };
+
+        const response = await carouselInstance.put(`/${id}`, data, config);
+        console.log('update carousel response:', response);
+        toast.success(response.data.message);
         return response.data;
     } catch (error) {
-        console.log("error fetching blogs:", error.response.data);
+        toast.error('Failed to update carousel')
+        console.log("error updating carousel:", error.response.data);
     }
 }
 

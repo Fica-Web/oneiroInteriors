@@ -57,20 +57,18 @@ const AddCarouselPage = () => {
             if (id) {
                 // Editing existing carousel
                 response = await updateCarouselApi(id, formData);
+
+                navigate("/admin/carousel"); // Redirect to carousel list
             } else {
                 // Creating new carousel
                 response = await createCarouselApi(formData);
             }
 
             if (response.message) {
-                alert(`Carousel ${id ? "updated" : "added"} successfully!`);
-
                 // Reset form fields after success
                 setTitle("");
                 setImage(null);
                 setPreview(null);
-
-                navigate("/admin/carousel"); // Redirect to carousel list
             }
         } finally {
             setLoading(false);
