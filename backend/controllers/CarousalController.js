@@ -11,6 +11,22 @@ const getCarousal = async (req, res) => {
     }
 }
 
+const getCarouselById = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const carousel = await Carousel.findById(id);
+
+        if (!carousel) {
+            return res.status(404).json({ error: 'Carousel not found'})
+        }
+
+        res.status(200).json({ carousel });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 const createCarousal = async (req, res) => {
     try {
         const { title } = req.body;
@@ -66,6 +82,7 @@ const deleteCarousal = async (req, res) => {
 
 export {
     getCarousal,
+    getCarouselById,
     createCarousal,
     updateCarousal,
     deleteCarousal,

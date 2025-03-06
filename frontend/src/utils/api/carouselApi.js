@@ -11,6 +11,16 @@ const getCarouselApi = async () => {
     }
 }
 
+const getCarouselByIdApi = async (id) => {
+    try {
+        const response = await carouselInstance.get(`/${id}`);
+        console.log('get carousel response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error fetching carousel:", error.response);
+    }
+}
+
 const createCarouselApi = async (data) => {
     try {
         const config = {
@@ -51,6 +61,7 @@ const deleteCarouselApi = async () => {
 
 export  {
     getCarouselApi,
+    getCarouselByIdApi,
     createCarouselApi,
     updateCarouselApi,
     deleteCarouselApi,

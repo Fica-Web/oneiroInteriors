@@ -80,6 +80,10 @@ const router = createBrowserRouter([
                         element: <AddCarouselPage />
                     },
                     {
+                        path: 'carousel/edit/:id',
+                        element: <AddCarouselPage />
+                    },
+                    {
                         path: 'blogs',
                         element: <AdminBlogPage />
                     },

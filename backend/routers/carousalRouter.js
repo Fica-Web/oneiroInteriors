@@ -4,12 +4,14 @@ import verifyAdminToken from '../middlewares/adminAuthMiddleware.js';
 import upload from '../middlewares/multer.js';
 import {
     getCarousal,
+    getCarouselById,
     createCarousal,
     updateCarousal,
     deleteCarousal
 } from '../controllers/CarousalController.js';
 
-router.get('/', getCarousal)
+router.get('/', getCarousal);
+router.get('/:id', getCarouselById);
 
 // This middleware will be applied to all the route below this middleware
 router.use(verifyAdminToken);
