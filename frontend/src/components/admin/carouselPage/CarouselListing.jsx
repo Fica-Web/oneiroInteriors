@@ -13,6 +13,7 @@ const CarouselListing = () => {
         const fetchCarousel = async () => {
             try {
                 const response = await getCarouselApi();
+                console.log("Carousel frontend:", response);
                 setCarousels(response.carousels);
             } catch (err) {
                 console.error("Error fetching carousels:", err);
@@ -64,7 +65,7 @@ const CarouselListing = () => {
                         {/* Carousel Image */}
                         <div className="w-full h-48 bg-gray-200">
                             <img
-                                src={carousel.image || "https://via.placeholder.com/400"}
+                                src={carousel.imageUrl || "https://via.placeholder.com/400"}
                                 alt={carousel.title}
                                 className="w-full h-full object-cover"
                             />

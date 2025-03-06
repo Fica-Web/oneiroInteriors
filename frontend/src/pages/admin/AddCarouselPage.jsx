@@ -37,11 +37,11 @@ const AddCarouselPage = () => {
 
             const response = await createCarouselApi(formData);
             
-            if (response.success) {
-                alert("Carousel added successfully!");
-                navigate("/admin/carousel"); // Redirect
-            } else {
-                throw new Error(response.message || "Failed to add carousel");
+            if (response.message) {
+                // Reset form fields
+                setTitle("");
+                setImage(null);
+                setPreview(null);
             }
         }  finally {
             setLoading(false);
@@ -65,7 +65,6 @@ const AddCarouselPage = () => {
                         placeholder="Enter carousel title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        required
                     />
                 </div>
 

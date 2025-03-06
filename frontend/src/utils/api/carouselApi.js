@@ -24,6 +24,7 @@ const createCarouselApi = async (data) => {
         toast.success(response.data.message)
         return response.data;
     } catch (error) {
+        toast.error('Failed to Upload image')
         console.log("error creating carousel:", error.response.data);
     }
 }
