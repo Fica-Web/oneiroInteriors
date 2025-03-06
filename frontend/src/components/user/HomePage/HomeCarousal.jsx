@@ -53,9 +53,9 @@ const HomeCarousel = () => {
                     swipeable
                 >
                     {slides.map((hero) => (
-                        <div key={hero._id} className="relative w-full max-h-[90vh]">
+                        <div key={hero._id} className="relative w-full ">
                             <img
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                                 src={hero.imageUrl}
                                 alt={`slide ${hero._id}`}
                                 onError={(e) => (e.target.src = "https://via.placeholder.com/800x400")}

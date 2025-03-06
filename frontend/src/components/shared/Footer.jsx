@@ -12,26 +12,27 @@ const Footer = () => {
             <div className="mx-auto py-12 px-6 sm:px-12 lg:px-20">
                 {/* Top Section */}
                 <div className="pb-6 mb-6 border-b border-white/50">
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                         {/* Logo Section */}
-                        <div className="w-full lg:w-1/4">
-                            <Link to={'/'} className='flex items-center'>
+                        <div className="w-full lg:w-1/4 flex justify-center sm:justify-start">
+                            <Link to={'/'} className="flex items-center">
                                 <img
                                     src={logo}
                                     alt="Oneiro Logo"
-                                    className='lg:h-12 h-10 drop-shadow-lg'
+                                    className="h-10 lg:h-12 drop-shadow-lg"
                                 />
                             </Link>
                         </div>
+
                         {/* Social Icons */}
-                        <div className="w-full lg:w-1/4 flex justify-end space-x-4">
+                        <div className="w-full lg:w-1/4 flex justify-center sm:justify-end space-x-4">
                             <a
                                 className="p-3 bg-white/20 hover:bg-white hover:text-primary transition rounded-full"
                                 href="https://www.instagram.com/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <FaInstagram className='text-2xl' />
+                                <FaInstagram className="text-2xl" />
                             </a>
                             <a
                                 className="p-3 bg-white/20 hover:bg-white hover:text-primary transition rounded-full"
@@ -39,7 +40,7 @@ const Footer = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <FaFacebook className='text-2xl' />
+                                <FaFacebook className="text-2xl" />
                             </a>
                             <a
                                 className="p-3 bg-white/20 hover:bg-white hover:text-primary transition rounded-full"
@@ -47,7 +48,7 @@ const Footer = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <FaLinkedin className='text-2xl' />
+                                <FaLinkedin className="text-2xl" />
                             </a>
                         </div>
                     </div>
