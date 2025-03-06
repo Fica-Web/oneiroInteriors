@@ -2,9 +2,9 @@ import Carousal from "../models/CarousalSchema.js";
 
 const getCarousal = async (req, res) => {
     try {
-        const carousals = await Carousal.find();
+        const carousels = await Carousal.find();
 
-        res.status(200).json({ carousals });
+        res.status(200).json({ carousels });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

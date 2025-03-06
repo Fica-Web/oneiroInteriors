@@ -38,7 +38,7 @@ app.use(cors(corsOptions)); // Enable CORS using the specified options
 // app.use('/notification', notificationRouter); // Routes for notification-specific functionalities
 app.use('/api/admin', adminRouter); // Routes for admin-specific functionalities
 app.use('/api/blogs', blogsRouter); // Routes for blogs-specific functionalities
-app.use('/api/carousal', carousalRouter); // Routes for carousal-specific functionalities
+app.use('/api/carousel', carousalRouter); // Routes for carousal-specific functionalities
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)

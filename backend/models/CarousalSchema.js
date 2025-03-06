@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const carousalSchema = new mongoose.Schema(
     {
+        title: {  
+            type: String,
+            required: true,
+        },
         imageUrl: {  
             type: String,
             required: true,
