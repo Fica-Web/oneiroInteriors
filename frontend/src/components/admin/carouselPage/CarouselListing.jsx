@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getCarouselApi, deleteCarouselApi } from "../../../utils/api/carouselApi";
 
 const CarouselListing = () => {
@@ -30,11 +31,14 @@ const CarouselListing = () => {
         if (!window.confirm("Are you sure you want to delete this carousel?")) return;
 
         try {
-            await deleteCarouselApi(id); // Call API to delete
-            setCarousels(carousels.filter((carousel) => carousel._id !== id)); // Remove locally
+            const response = await deleteCarouselApi(id); // Call API to delete
+            if (response) {
+                toast.success(response.message);
+                setCarousels(carousels.filter((carousel) => carousel._id !== id)); // Remove locally
+            }
         } catch (err) {
             console.error("Error deleting carousel:", err);
-            alert("Failed to delete carousel.");
+            toast.error("Failed to delete carousel.");
         }
     };
 

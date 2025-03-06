@@ -110,13 +110,26 @@ const updateCarousel = async (req, res) => {
 
 const deleteCarousel = async (req, res) => {
     try {
-        const carousals = await Carousel.find();
+        const { id } = req.params;
 
-        res.status(200).json({ carousals });
+        const carousel = await Carousel.findById(id);
+        if (!carousel) {
+            return res.status(404).json({ error: "Carousel not found" });
+        }
+
+        // Delete the image from Cloudinary
+        await cloudinary.uploader.destroy(carousel.imageId);
+
+        // Delete the carousel from the database
+        await Carousel.findByIdAndDelete(id);
+
+        res.status(200).json({ message: "Carousel deleted successfully!" });
+
     } catch (error) {
+        console.error("Error deleting carousel:", error);
         res.status(500).json({ error: error.message });
     }
-}
+};
 
 export {
     getCarousel,

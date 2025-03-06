@@ -57,13 +57,13 @@ const updateCarouselApi = async (id, data) => {
     }
 }
 
-const deleteCarouselApi = async () => {
+const deleteCarouselApi = async (id) => {
     try {
-        const response = await carouselInstance.get('/');
-        console.log('get blogs response:', response);
+        const response = await carouselInstance.delete(`/${id}`);
+        console.log('Delete carousel response:', response);
         return response.data;
     } catch (error) {
-        console.log("error fetching blogs:", error.response.data);
+        console.log("error deleting carousel:", error.response.data);
     }
 }
 
