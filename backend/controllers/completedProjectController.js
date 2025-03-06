@@ -1,5 +1,15 @@
 import CompletedProject from "../models/completedProjectSchema.js";
 
+export const getCompletedProject = async (req, res) => {
+    try {
+        const completedProjects = await CompletedProject.find();
+
+        res.status(201).json({ completedProjects });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 // ✅ Create a New Completed Project
 export const createCompletedProject = async (req, res) => {
     try {
