@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const carousalSchema = new mongoose.Schema(
+const carouselSchema = new mongoose.Schema(
     {
         title: {  
             type: String,
@@ -19,6 +19,6 @@ const carousalSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const Carousal = mongoose.model("Carousal", carousalSchema);
+const Carousal = mongoose.model("Carousel", carouselSchema);
 
 export default Carousal;

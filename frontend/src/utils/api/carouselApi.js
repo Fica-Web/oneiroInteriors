@@ -1,4 +1,5 @@
 import carouselInstance from "../axios_instances/carouselInstance";
+import { toast } from "react-toastify";
 
 const getCarouselApi = async () => {
     try {
@@ -10,13 +11,20 @@ const getCarouselApi = async () => {
     }
 }
 
-const createCarouselApi = async () => {
+const createCarouselApi = async (data) => {
     try {
-        const response = await carouselInstance.get('/');
-        console.log('get blogs response:', response);
+        const config = {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        };
+
+        const response = await carouselInstance.post('/', data, config);
+        console.log('creating carousel response:', response);
+        toast.success(response.data.message)
         return response.data;
     } catch (error) {
-        console.log("error fetching blogs:", error.response.data);
+        console.log("error creating carousel:", error.response.data);
     }
 }
 
