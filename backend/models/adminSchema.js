@@ -15,6 +15,9 @@ const adminSchema = new Schema({
         type: String,
         unique: true
     },
+    location: {
+        type: String,
+    },
     instagram: {
         type: String,
         unique: true

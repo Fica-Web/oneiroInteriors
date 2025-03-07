@@ -117,12 +117,12 @@ const fetchAdminData = async (req, res) => {
 const updateAdminData = async (req, res) => {
     try {
         const { id } = req.admin;
-        const { email, mobile, instagram, facebook, twitter } = req.body;
+        const { email, mobile, location, instagram, facebook, twitter } = req.body;
 
         // Find admin and update details
         const updatedAdmin = await Admin.findByIdAndUpdate(
             id,
-            { email, mobile, instagram, facebook, twitter },
+            { email, mobile, location, instagram, facebook, twitter },
             { new: true, runValidators: true }
         );
 

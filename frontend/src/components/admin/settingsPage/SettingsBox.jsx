@@ -11,22 +11,32 @@ const SettingsBox = () => {
     const dispatch = useDispatch();
 
     const [activeTab, setActiveTab] = useState("general");
-    const [general, setGeneral] = useState({ email: admin?.email || "", mobile: admin?.mobile || "" });
+    const [general, setGeneral] = useState({
+        email: admin?.email || "",
+        mobile: admin?.mobile || "",
+        location: admin?.location || "",
+    });
+
     const [socials, setSocials] = useState({
         facebook: admin?.facebook || "",
         twitter: admin?.twitter || "",
         instagram: admin?.instagram || "",
     });
+
     const [isEditing, setIsEditing] = useState(false);
-    const [errors, setErrors] = useState({}); // 🔹 Store validation errors
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         if (!admin) {
             const getAdminData = async () => {
                 const response = await fetchAdminDataApi();
                 if (response?.admin) {
-                    dispatch(update_admin_data(response.admin)); // Update Redux store
-                    setGeneral({ email: response.admin.email, mobile: response.admin.mobile });
+                    dispatch(update_admin_data(response.admin));
+                    setGeneral({
+                        email: response.admin.email,
+                        mobile: response.admin.mobile,
+                        location: response.admin.location, // 🔹 Ensure location is fetched
+                    });
                     setSocials({
                         facebook: response.admin.facebook,
                         twitter: response.admin.twitter,
@@ -36,7 +46,7 @@ const SettingsBox = () => {
             };
             getAdminData();
         }
-    }, [admin]); 
+    }, [admin]);
 
     const validateField = (name, value) => {
         let error = "";
@@ -68,7 +78,6 @@ const SettingsBox = () => {
             setSocials((prev) => ({ ...prev, [name]: value }));
         }
 
-        // 🔹 Validate on change
         setErrors((prevErrors) => ({
             ...prevErrors,
             [name]: validateField(name, value),
@@ -82,12 +91,12 @@ const SettingsBox = () => {
             if (error) newErrors[key] = error;
         });
         setErrors(newErrors);
-        return Object.keys(newErrors).length === 0; // 🔹 Return true if no errors
+        return Object.keys(newErrors).length === 0;
     };
 
     const updateData = async () => {
-        if (!validateForm()) return; // 🔹 Prevent submission if validation fails
-        if (Object.keys(errors).some((key) => errors[key])) return; // 🔹 Ensure no existing errors
+        if (!validateForm()) return;
+        if (Object.keys(errors).some((key) => errors[key])) return;
 
         try {
             const updatedInfo = { ...general, ...socials };
@@ -111,6 +120,7 @@ const SettingsBox = () => {
                 <div className="mt-6">
                     <SettingsInput label="Email" type="email" name="email" value={general.email} isEditing={isEditing} placeholder="Enter new email" handleChange={(e) => handleChange(e, "general")} error={errors.email} />
                     <SettingsInput label="Mobile" type="tel" name="mobile" value={general.mobile} isEditing={isEditing} placeholder="Enter new mobile number" handleChange={(e) => handleChange(e, "general")} error={errors.mobile} />
+                    <SettingsInput label="Location" type="text" name="location" value={general.location} isEditing={isEditing} placeholder="Enter location" handleChange={(e) => handleChange(e, "general")} error={errors.location} /> 
                 </div>
             )}
 
