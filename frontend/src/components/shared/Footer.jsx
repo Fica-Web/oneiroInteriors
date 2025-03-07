@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { FaInstagram, FaLinkedin, FaFacebook, FaPhoneAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
@@ -7,6 +8,9 @@ import logo from '../../assets/images/logo-black.png';
 import navOptions from '../../data/navOptions';
 
 const Footer = () => {
+    const companyInfo = useSelector(state => state.companyInfo)
+        console.log('companyInfo:', companyInfo);
+
     return (
         <div className="text-white sm:pt-10 pt-6 lg:px-4 w-full bg-gradient-to-r from-[#fea034] via-[#f7501f] to-[#d80d0d] opacity-90">
             <div className="mx-auto py-12 px-6 sm:px-12 lg:px-20">
