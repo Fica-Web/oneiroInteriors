@@ -8,8 +8,7 @@ import logo from '../../assets/images/logo-black.png';
 import navOptions from '../../data/navOptions';
 
 const Footer = () => {
-    const companyInfo = useSelector(state => state.companyInfo)
-        console.log('companyInfo:', companyInfo);
+    const companyInfo = useSelector(state => state.companyInfo.companyInfo);
 
     return (
         <div className="text-white sm:pt-10 pt-6 lg:px-4 w-full bg-gradient-to-r from-[#fea034] via-[#f7501f] to-[#d80d0d] opacity-90">
@@ -94,15 +93,15 @@ const Footer = () => {
                             <h4 className="font-semibold text-lg mb-5">Contact Us</h4>
                             <div className='flex gap-3 items-center text-lg mb-2 opacity-80'>
                                 <FaPhoneAlt className='text-lg' />
-                                <p>+91 98754 32100</p>
+                                <p>+91 { companyInfo.mobile }</p>
                             </div>
                             <div className='flex gap-3 items-center text-lg my-2 opacity-80'>
                                 <IoIosMail className='text-2xl' />
-                                <p>oneirointeriors.in@gmail.com</p>
+                                <p>{ companyInfo.email }</p>
                             </div>
                             <div className='flex gap-3 items-center text-lg mb-2 opacity-80'>
                                 <IoLocationSharp className='text-xl' />
-                                <p>Kozhikode, Kerala, India</p>
+                                <p>{ companyInfo.location }</p>
                             </div>
                         </div>
                     </div>

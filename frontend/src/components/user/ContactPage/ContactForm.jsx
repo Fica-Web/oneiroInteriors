@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 const ContactForm = () => {
+    const companyInfo = useSelector(state => state.companyInfo.companyInfo);
+
     return (
         <div>
             <div className="w-11/12 mx-auto sm:px-4 lg:px-7 my-20 mb-32">
@@ -42,7 +45,7 @@ const ContactForm = () => {
                                 ></textarea>
                                 <button
                                     type="submit"
-                                    className="w-full py-3 text-white font-semibold bg-primary rounded-lg hover:scale-105 transition duration-200 cursor-pointer"
+                                    className="w-full py-3 text-white font-semibold bg-gradient-to-r from-[#d80d0d] via-[#f7501f] to-[#fea034] opacity-90 rounded-lg hover:scale-105 transition duration-200 cursor-pointer"
                                 >
                                     Submit
                                 </button>
@@ -56,7 +59,7 @@ const ContactForm = () => {
                                     <FaMapMarkerAlt className="text-easy-secondary text-2xl mr-4" />
                                     <div className='flex flex-col gap-2'>
                                         <h4 className="text-xl font-semibold text-dark-green">Address</h4>
-                                        <p className="text-gray-600">Oneiro Interiors, Shivaram karanth Nagar, Bangalore-77
+                                        <p className="text-gray-600">{ companyInfo.location }
                                         </p>
                                     </div>
                                 </div>
@@ -64,14 +67,14 @@ const ContactForm = () => {
                                     <FaEnvelope className="text-easy-secondary text-2xl mr-4" />
                                     <div className='flex flex-col gap-2'>
                                         <h4 className="text-xl font-semibold text-dark-green">Mail Us</h4>
-                                        <p className="text-gray-600">info@easy-live.in</p>
+                                        <p className="text-gray-600">{ companyInfo.email }</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-1 items-center p-4 bg-white border rounded-lg shadow-md">
                                     <FaPhoneAlt className="text-easy-secondary text-2xl mr-4" />
                                     <div className='flex flex-col gap-2'>
                                         <h4 className="text-xl font-semibold text-dark-green">Telephone</h4>
-                                        <p className="text-gray-600">(+91) 9847483333</p>
+                                        <p className="text-gray-600">(+91) { companyInfo.mobile }</p>
                                     </div>
                                 </div>
                             </div>
