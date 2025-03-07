@@ -3,7 +3,9 @@ const router = express.Router();
 import verifyAdminToken from '../middlewares/adminAuthMiddleware.js';
 import {
     getCompletedProject,
-    createCompletedProject, 
+    createCompletedProject,
+    getCompletedProjectById,
+    updateCompletedProject, 
     deleteCompletedProject,
 } from '../controllers/completedProjectController.js';
 
@@ -13,6 +15,8 @@ router.get('/', getCompletedProject)
 router.use(verifyAdminToken);
 
 router.post("/", createCompletedProject); // Route to create a new completed project
+router.get("/:id", getCompletedProjectById); // Get project by ID
+router.put("/:id", updateCompletedProject);  // Update project
 router.delete("/:id", deleteCompletedProject); // Route to delete a completed project
 
 export default router;
