@@ -105,6 +105,10 @@ const router = createBrowserRouter([
                         element: <AdminProjectForm />
                     },
                     {
+                        path: 'projects/edit/:id',
+                        element: <AdminProjectForm />
+                    },
+                    {
                         path: 'settings',
                         element: <AdminSettingsPage />
                     },

@@ -1,4 +1,5 @@
 import projectInstance from "../axios_instances/projectInstance";
+import { toast } from 'react-toastify';
 
 const getProjectsApi = async () => {
     try {
@@ -20,18 +21,41 @@ const createProjectApi = async (data) => {
     }
 }
 
-const deleteProjectApi = async () => {
+const getProjectByIdApi = async (id) => {
     try {
         const response = await projectInstance.get(`/${id}`);
-        console.log('single blog response:', response.data);
+        console.log('single project response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error fetching single project:", error?.response?.data);
+    }
+}
+
+const updateProjectApi = async (data) => {
+    try {
+        const response = await projectInstance.put(`/${id}`, data);
+        console.log('updated Project response:', response.data);
         return response.data;
     } catch (error) {
         console.log("error fetching blog:", error?.response?.data);
     }
 }
 
+const deleteProjectApi = async (id) => {
+    try {
+        const response = await projectInstance.delete(`/${id}`);
+        console.log('project deleted response:', response.data);
+        toast.success(response.data.message)
+        return response.data;
+    } catch (error) {
+        console.log("error deleting project:", error?.response?.data);
+    }
+}
+
 export {
     getProjectsApi,
     createProjectApi,
+    getProjectByIdApi,
+    updateProjectApi,
     deleteProjectApi,
 }

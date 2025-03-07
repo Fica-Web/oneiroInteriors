@@ -83,7 +83,7 @@ const ProjectListing = () => {
                             <div className="mt-3 flex justify-between">
                                 {/* Edit Button */}
                                 <Link
-                                    to={`/admin/project/edit/${project._id}`}
+                                    to={`/admin/projects/edit/${project._id}`}
                                     className="bg-green-600 text-white px-7 py-2 rounded-lg hover:bg-green-700 transition duration-200"
                                 >
                                     Edit
