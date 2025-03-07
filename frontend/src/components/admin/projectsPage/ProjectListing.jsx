@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getProjectsApi, deleteProjectApi } from "../../../utils/api/projectApi";
+import LoadingButton from "../../reusable/LoadingButton";
 
 const ProjectListing = () => {
     const [projects, setProjects] = useState([]);
@@ -43,7 +44,7 @@ const ProjectListing = () => {
             {/* Add Project Button */}
             <div className="flex justify-end mb-5">
                 <Link
-                    to={"/admin/project/create"}
+                    to={"/admin/projects/create"}
                     className="text-white bg-blue-500 px-6 py-2 rounded-xl cursor-pointer hover:bg-blue-600"
                 >
                     Add Project
@@ -62,14 +63,6 @@ const ProjectListing = () => {
                         key={project._id}
                         className="bg-white shadow-lg rounded-2xl overflow-hidden cursor-pointer transition-transform transform duration-300 hover:scale-105"
                     >
-                        {/* Project Thumbnail */}
-                        <div className="w-full h-48 bg-gray-200">
-                            <img
-                                src={project.thumbnail || "https://via.placeholder.com/400"}
-                                alt={project.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
 
                         {/* Project Content */}
                         <div className="p-4">

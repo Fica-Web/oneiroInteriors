@@ -15,6 +15,7 @@ import AdminCarouselPage from '../pages/admin/AdminCarouselPage';
 import AddCarouselPage from '../pages/admin/AddCarouselPage';
 import AdminBlogPage from '../pages/admin/AdminBlogPage';
 import AdminProjectPage from '../pages/admin/AdminProjectPage';
+import AdminProjectForm from '../pages/admin/AdminProjectForm';
 import AdminSettingsPage from '../pages/admin/AdminSettingsPage';
 import AdminLogin from '../pages/admin/AdminLogin';
 import AdminEditBlogPage from '../pages/admin/AdminEditBlogPage';
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
                     {
                         path: 'projects',
                         element: <AdminProjectPage />
+                    },
+                    {
+                        path: 'projects/create',
+                        element: <AdminProjectForm />
                     },
                     {
                         path: 'settings',
