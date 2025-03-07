@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { getBlogsApi, deleteBlogsApi } from '../../../utils/api/blogApi';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const AdminBlogListing = () => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -53,7 +52,6 @@ const AdminBlogListing = () => {
                     <div 
                         key={blog._id} 
                         className='bg-white shadow-lg rounded-2xl overflow-hidden cursor-pointer transition-transform transform duration-300 hover:scale-105'
-                        onClick={() => navigate(`/admin/blogs/${blog._id}`)} // Navigate on card click
                     >
                         <div className='w-full h-48 bg-gray-200'>
                             <img 

@@ -24,6 +24,7 @@ const SingleBlog = ({ blog }) => {
                 <Link
                     to={`/blog/${blog._id}`}
                     className="uppercase bg-gradient-to-r from-[#fea034] via-[#f7501f] to-[#d80d0d] py-3 px-8 text-white font-semibold shadow-md transition-all duration-300 hover:opacity-90 opacity-80"
+                    onClick={() => window.scrollTo(0, 0)} // Ensure scroll to top on click
                 >
                     Read Full Post
                 </Link>
