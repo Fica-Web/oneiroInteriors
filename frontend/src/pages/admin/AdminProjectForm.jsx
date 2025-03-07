@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { createProjectApi, getProjectByIdApi, updateProjectApi } from "../../utils/api/projectApi";
 import LoadingButton from "../../components/reusable/LoadingButton";
 
@@ -10,7 +11,6 @@ const AdminProjectForm = () => {
     // Form State
     const [project, setProject] = useState({
         title: "",
-        thumbnail: "",
         youtubeUrl: ""
     });
 
@@ -58,10 +58,6 @@ const AdminProjectForm = () => {
         let errors = {};
         if (!project.title.trim()) errors.title = "Title is required.";
 
-        if (project.thumbnail && !/^https?:\/\/.*\.(jpeg|jpg|png|gif|webp)$/.test(project.thumbnail)) {
-            errors.thumbnail = "Invalid thumbnail URL. Use a valid image link.";
-        }
-
         if (!project.youtubeUrl) {
             errors.youtubeUrl = "Please enter a valid YouTube URL.";
         }
@@ -79,15 +75,19 @@ const AdminProjectForm = () => {
         try {
             if (isEditMode) {
                 await updateProjectApi(id, project);
-                alert("Project updated successfully!");
+                toast.success("Project updated successfully!");
+                navigate("/admin/projects");
             } else {
                 await createProjectApi(project);
-                alert("Project added successfully!");
+                setProject({
+                    title: "",
+                    youtubeUrl: ""
+                })
+                toast.success("Project added successfully!");
             }
-            navigate("/admin/projects");
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("Failed to save project.");
+            toast.error("Failed to save project.");
         } finally {
             setLoading(false);
         }
@@ -139,7 +139,7 @@ const AdminProjectForm = () => {
                 </div>
 
                 {/* Submit Button */}
-                <div>
+                {/* <div>
                     <button
                         type="submit"
                         className="w-full bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
@@ -147,7 +147,13 @@ const AdminProjectForm = () => {
                     >
                         {loading ? "Saving..." : isEditMode ? "Update Project" : "Add Project"}
                     </button>
-                </div>
+                </div> */}
+                <LoadingButton 
+                    loading={loading}
+                    text={id ? 'Update Project' : 'Submit Project'}
+                    loadingText={id ? 'Updating...' : 'Submitting...'}
+                    type="submit"
+                />
             </form>
         </div>
     );

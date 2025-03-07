@@ -31,13 +31,13 @@ const getProjectByIdApi = async (id) => {
     }
 }
 
-const updateProjectApi = async (data) => {
+const updateProjectApi = async (id, data) => {
     try {
         const response = await projectInstance.put(`/${id}`, data);
         console.log('updated Project response:', response.data);
         return response.data;
     } catch (error) {
-        console.log("error fetching blog:", error?.response?.data);
+        console.log("error updating Project:", error?.response?.data);
     }
 }
 
