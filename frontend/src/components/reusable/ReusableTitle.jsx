@@ -31,7 +31,7 @@ const ReusableTitle = ({ page, title, description }) => {
 
         {/* Description */}
         <motion.p 
-          className="mt-5 text-lg text-gray-700 max-w-2xl leading-relaxed"
+          className="mt-5 text-lg text-gray-700 max-w-4xl leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
