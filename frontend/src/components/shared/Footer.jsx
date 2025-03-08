@@ -31,7 +31,7 @@ const Footer = () => {
                         <div className="w-full lg:w-1/4 flex justify-center sm:justify-end space-x-4">
                             <a
                                 className="p-3 bg-white/20 hover:bg-white hover:text-primary transition rounded-full"
-                                href="https://www.instagram.com/"
+                                href={companyInfo.instagram}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -39,7 +39,7 @@ const Footer = () => {
                             </a>
                             <a
                                 className="p-3 bg-white/20 hover:bg-white hover:text-primary transition rounded-full"
-                                href="https://www.facebook.com/"
+                                href={companyInfo.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -47,7 +47,7 @@ const Footer = () => {
                             </a>
                             <a
                                 className="p-3 bg-white/20 hover:bg-white hover:text-primary transition rounded-full"
-                                href="https://www.linkedin.com/"
+                                href={companyInfo.linkedIn}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

@@ -26,7 +26,7 @@ const adminSchema = new Schema({
         type: String,
         unique: true
     },
-    twitter: {
+    linkedIn: {
         type: String,
         unique: true
     },

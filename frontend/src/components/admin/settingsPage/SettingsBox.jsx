@@ -19,7 +19,7 @@ const SettingsBox = () => {
 
     const [socials, setSocials] = useState({
         facebook: admin?.facebook || "",
-        twitter: admin?.twitter || "",
+        linkedIn: admin?.linkedIn || "",
         instagram: admin?.instagram || "",
     });
 
@@ -39,7 +39,7 @@ const SettingsBox = () => {
                     });
                     setSocials({
                         facebook: response.admin.facebook,
-                        twitter: response.admin.twitter,
+                        linkedIn: response.admin.linkedIn,
                         instagram: response.admin.instagram,
                     });
                 }
@@ -60,7 +60,7 @@ const SettingsBox = () => {
                 error = "Mobile number must be 10 digits.";
             }
             if (
-                ["facebook", "twitter", "instagram"].includes(name) &&
+                ["facebook", "linkedIn", "instagram"].includes(name) &&
                 value.trim() &&
                 !/^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+\/?$/.test(value)
             ) {
@@ -126,7 +126,7 @@ const SettingsBox = () => {
 
             {activeTab === "socials" && (
                 <div className="mt-6">
-                    {["facebook", "instagram", "twitter"].map((platform) => (
+                    {["facebook", "instagram", "linkedIn"].map((platform) => (
                         <SettingsInput key={platform} label={`${platform.charAt(0).toUpperCase() + platform.slice(1)} URL`} type="text" name={platform} value={socials[platform]} isEditing={isEditing} placeholder={`Enter ${platform} URL`} handleChange={(e) => handleChange(e, "socials")} error={errors[platform]} />
                     ))}
                 </div>
