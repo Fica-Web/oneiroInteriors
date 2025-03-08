@@ -17,6 +17,10 @@ const navOptions = [
         path: '/services'
     },
     {
+        name: 'Blog',
+        path: '/blog'
+    },
+    {
         name: 'Contact Us',
         path: '/contact'
     },
