@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { fetchAdminDataApi } from '../utils/api/adminApi';
+import { fetchCompanyInfoApi } from '../utils/api/adminApi';
 import { set_company_info } from '../redux/slices/companySlice';
 import Navbar from '../components/shared/Navbar';
 import Footer from '../components/shared/Footer';
@@ -13,7 +13,7 @@ const HomeLayout = () => {
     useEffect(() => {
         const getCompanyInfo = async () => {
             try {
-                const response = await fetchAdminDataApi();
+                const response = await fetchCompanyInfoApi();
                 if (response?.admin) {
                     dispatch(set_company_info(response.admin)); // ✅ Set company info in Redux
                 }

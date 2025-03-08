@@ -34,6 +34,17 @@ const adminLogoutApi = async () => {
     }
 }
 
+const fetchCompanyInfoApi = async () => {
+    try {
+        const response = await adminInstance.get('/info');
+        console.log('Company Inof response', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error fetching company info:", error.response);
+        return error.response;
+    }
+}
+
 const fetchAdminDataApi = async () => {
     try {
         const response = await adminInstance.get('/get-admin-data');
@@ -62,4 +73,5 @@ export {
     adminLogoutApi,
     fetchAdminDataApi,
     updateAdminDataApi,
+    fetchCompanyInfoApi,
 }

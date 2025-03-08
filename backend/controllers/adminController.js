@@ -101,7 +101,7 @@ const fetchAdminData = async (req, res) => {
         const { id } = req.admin;
 
         // Find admin and update details
-        const admin = await Admin.findById(id)
+        const admin = await Admin.findById(id);
 
         if (!admin) {
             return res.status(404).json({ message: "Admin not found" });
@@ -113,6 +113,28 @@ const fetchAdminData = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
+
+const getCompanyInfo = async (req, res) => {
+    try {
+        // Fetch the first admin data (assuming only one admin exists)
+        const companyInfo = await Admin.findOne();
+
+        if (!companyInfo) {
+            return res.status(404).json({ message: "Company Info not found" });
+        }
+
+        // Remove password before sending response
+        companyInfo.password = undefined;
+
+        res.status(200).json({
+            message: "Company data fetched successfully",
+            admin: companyInfo
+        });
+    } catch (error) {
+        console.error("Error fetching company info:", error);
+        res.status(500).json({ error: error.message });
+    }
+};
 
 const updateAdminData = async (req, res) => {
     try {
@@ -163,6 +185,7 @@ export {
     isAdminProtected,
     uploadCarousalImage,
     adminLogout,
+    getCompanyInfo,
     fetchAdminData,
     updateAdminData,
 }

@@ -9,9 +9,11 @@ import {
     adminLogout,
     fetchAdminData,
     updateAdminData,
+    getCompanyInfo,
 } from "../controllers/adminController.js";
 
 router.post('/login', adminLogin);
+router.get('/info', getCompanyInfo);
 
 // This middleware will be applied to all the route below this middleware
 router.use(verifyAdminToken);
