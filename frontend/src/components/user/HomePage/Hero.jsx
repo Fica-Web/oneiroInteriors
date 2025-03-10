@@ -29,7 +29,7 @@ const Hero = () => {
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.8 }}
                 >
-                    Transforming Dream
+                    Transforming Dreams
                 </motion.h2>
                 <motion.img
                     src={KidsRoom1}
