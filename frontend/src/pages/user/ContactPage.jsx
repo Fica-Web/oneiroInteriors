@@ -1,7 +1,7 @@
 import React from 'react';
 import ReusableTitle from '../../components/reusable/ReusableTitle';
 import ContactForm from '../../components/user/ContactPage/ContactForm';
-import LocationMap from '../../components/user/ContactPage/LocationMap';
+// import LocationMap from '../../components/user/ContactPage/LocationMap';
 
 const ContactPage = () => {
     return (

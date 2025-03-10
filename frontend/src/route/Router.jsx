@@ -20,6 +20,7 @@ import AdminSettingsPage from '../pages/admin/AdminSettingsPage';
 import AdminLogin from '../pages/admin/AdminLogin';
 import AdminEditBlogPage from '../pages/admin/AdminEditBlogPage';
 import CreateBlogPage from '../pages/admin/CreateBlogPage';
+import Error404 from '../pages/user/Error404';
 
 const router = createBrowserRouter([
     {
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
     {
         path: '/admin/login',
         element: <AdminLogin />,
+    },
+    {
+        path: '*',
+        element: <Error404 />
     }
 ])
 

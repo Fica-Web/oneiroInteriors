@@ -59,7 +59,7 @@ const ContactForm = () => {
                                     <FaMapMarkerAlt className="text-easy-secondary text-2xl mr-4" />
                                     <div className='flex flex-col gap-2'>
                                         <h4 className="text-xl font-semibold text-dark-green">Address</h4>
-                                        <p className="text-gray-600">{ companyInfo.location }
+                                        <p className="text-gray-600">{ companyInfo?.location }
                                         </p>
                                     </div>
                                 </div>
