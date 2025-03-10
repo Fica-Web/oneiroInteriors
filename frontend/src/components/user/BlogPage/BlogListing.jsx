@@ -22,10 +22,13 @@ const BlogListing = ({ isHomePage }) => {
     const blogsToShow = isHomePage ? blogs.slice(0, 2) : blogs;
 
     return (
-        <div ref={ref} className='w-11/12 mx-auto my-20' >
+        <div ref={ref} className='w-11/12 mx-auto my-20 lg:my-32' >
             <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10'>
                 {isHomePage && blogs.length > 0 && (
-                    <div className="w-full lg:mt-16">
+                    <div className="w-full lg:pt-16 p-3 relative group">
+
+                    {/* Overlay Effect */}
+                    {/* <div className="absolute inset-0 bg-gradient-to-r from-secondary via-ternary to-primary opacity-0 group-hover:opacity-80 transition-opacity duration-500 -z-10"></div> */}
 
                         {/* Page Indicator */}
                         <motion.div

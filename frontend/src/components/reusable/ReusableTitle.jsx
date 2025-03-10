@@ -13,7 +13,7 @@ const ReusableTitle = ({ page, title, description }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="h-1 w-16 bg-white rounded-full"></div>
+          <div className="h-0.5 w-20 bg-white rounded-full"></div>
           <h3 className="text-lg uppercase tracking-wider text-white font-semibold">
             {page}
           </h3>
