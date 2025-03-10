@@ -51,7 +51,7 @@ const ServiceListing = ({ isHomePage }) => {
                         <div className="relative group">
                             <img src={service.image} alt={service.title} className="w-full h-56 object-cover rounded-t-md transition-transform duration-500 " />
                         </div>
-                        <div className='p-6 bg-gradient-to-r from-secondary via-ternary to-primary opacity-80 '>
+                        <div className='p-6 bg-gradient-to-r from-secondary via-ternary to-primary opacity-80 h-full'>
                             <h3 className="text-xl font-semibold mt-4 mb-2 text-white">{service.title}</h3>
                             <p className="text-gray-100">{service.description}</p>
                         </div>
