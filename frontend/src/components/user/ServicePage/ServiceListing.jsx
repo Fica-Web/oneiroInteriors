@@ -49,11 +49,11 @@ const ServiceListing = ({ isHomePage }) => {
                         onClick={() => setSelectedService(service)}
                     >
                         <div className="relative group">
-                            <img src={service.image} alt={service.title} className="w-full h-56 object-cover rounded-md transition-transform duration-500 group-hover:scale-110" />
+                            <img src={service.image} alt={service.title} className="w-full h-56 object-cover rounded-t-md transition-transform duration-500 " />
                         </div>
-                        <div className='p-6'>
-                            <h3 className="text-xl font-semibold mt-4 mb-2 text-gray-900">{service.title}</h3>
-                            <p className="text-gray-600">{service.description}</p>
+                        <div className='p-6 bg-gradient-to-r from-secondary via-ternary to-primary opacity-80 '>
+                            <h3 className="text-xl font-semibold mt-4 mb-2 text-white">{service.title}</h3>
+                            <p className="text-gray-100">{service.description}</p>
                         </div>
                     </div>
                 ))}
@@ -68,7 +68,7 @@ const ServiceListing = ({ isHomePage }) => {
                     >
                         <Link
                             to="/services"
-                            className="bg-gradient-to-r from-[#fea034] via-[#f7501f] to-[#d80d0d] py-3 px-8 rounded-lg text-white font-semibold shadow-md transition-all duration-300 hover:opacity-90 opacity-80"
+                            className="bg-gradient-to-r from-secondary via-ternary to-primary py-3 px-8 rounded-lg text-white font-semibold shadow-md transition-all duration-300 hover:opacity-90 opacity-80"
                         >
                             Explore More
                         </Link>
