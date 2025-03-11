@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import AdminAuth from '../utils/auth/AdminAuth';
 import HomeLayout from '../layoutes/HomeLayout';
 import AdminLayout from '../layoutes/AdminLayout';
+import Loading from '../components/reusable/Loading';
 
 // Lazy-loaded components
 const HomePage = lazy(() => import('../pages/user/HomePage'));
@@ -13,7 +14,6 @@ const BlogPage = lazy(() => import('../pages/user/BlogPage'));
 const SingleBlogPage = lazy(() => import('../pages/user/SingleBlogPage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const Error404 = lazy(() => import('../pages/user/Error404'));
-const Loading = lazy(() => import('../components/reusable/Loading'));
 
 const AdminDashboard = lazy(() => import('../pages/admin/AdminDashboard'));
 const AdminCarouselPage = lazy(() => import('../pages/admin/AdminCarouselPage'));
@@ -24,13 +24,6 @@ const AdminProjectPage = lazy(() => import('../pages/admin/AdminProjectPage'));
 const AdminProjectForm = lazy(() => import('../pages/admin/AdminProjectForm'));
 const AdminSettingsPage = lazy(() => import('../pages/admin/AdminSettingsPage'));
 const AdminLogin = lazy(() => import('../pages/admin/AdminLogin'));
-
-// Loading fallback component
-// const Loading = () => (
-//     <div className="flex justify-center items-center h-screen text-lg text-gray-700">
-//         Loading...
-//     </div>
-// );
 
 const router = createBrowserRouter([
     {

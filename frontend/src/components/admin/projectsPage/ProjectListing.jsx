@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getProjectsApi, deleteProjectApi } from "../../../utils/api/projectApi";
-import LoadingButton from "../../reusable/LoadingButton";
 
 const ProjectListing = () => {
     const [projects, setProjects] = useState([]);

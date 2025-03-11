@@ -18,7 +18,7 @@ const HomePage = () => {
             <ServiceListing isHomePage={true} />
             <HowWeWork />
             <BrandsWeWorkWith />
-            <CompletedVideos />
+            <CompletedVideos isHomePage={true} />
             <BlogListing isHomePage={true} />
             <FAQ />
         </div>
