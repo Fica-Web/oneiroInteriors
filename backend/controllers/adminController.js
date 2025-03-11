@@ -168,7 +168,21 @@ const fetchStats = async (req, res) => {
         const totalBlogs = await Blog.countDocuments();
         // const totalClients = await Client.countDocuments();
 
-        res.json({ totalProjects, totalBlogs, });
+        res.status(200).json({ totalProjects, totalBlogs, });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
+const fetchLatestData = async (req, res) => {
+    try {
+        try {
+            const projects = await Project.find().sort({ createdAt: -1 }).limit(5);
+            const blogs = await Blog.find().sort({ createdAt: -1 }).limit(5);
+            res.status(200).json({ projects, blogs });
+        } catch (err) {
+            res.status(500).json({ error: err.message });
+        }
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -204,4 +218,5 @@ export {
     fetchAdminData,
     updateAdminData,
     fetchStats,
+    fetchLatestData,
 }

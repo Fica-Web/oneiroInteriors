@@ -78,6 +78,17 @@ const fetchStatsApi = async () => {
     }
 }
 
+const fetchLatestDataApi = async () => {
+    try {
+        const response = await adminInstance.get('/latest-data');
+        console.log('fetched latest data:', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error fetching latest data:", error.response);
+        return error.response;
+    }
+}
+
 export {
     adminLoginApi,
     isAdminAuthenticatedApi,
@@ -86,4 +97,5 @@ export {
     updateAdminDataApi,
     fetchCompanyInfoApi,
     fetchStatsApi,
+    fetchLatestDataApi,
 }
