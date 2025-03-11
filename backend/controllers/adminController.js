@@ -2,6 +2,8 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import cloudinary from '../config/cloudinary.js';
 import Admin from "../models/adminSchema.js";
+import Blog from '../models/blogSchema.js';
+import Project from '../models/completedProjectSchema.js';
 
 const adminSignup = async (req, res) => {
     try {
@@ -159,6 +161,19 @@ const updateAdminData = async (req, res) => {
     }
 }
 
+const fetchStats = async (req, res) => {
+    try {
+        const totalProjects = await Project.countDocuments();
+        // const ongoingProjects = await Project.countDocuments({ status: "ongoing" });
+        const totalBlogs = await Blog.countDocuments();
+        // const totalClients = await Client.countDocuments();
+
+        res.json({ totalProjects, totalBlogs, });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
 // HomePage Carousal 
 const uploadCarousalImage = async (req, res) => {
     try {
@@ -188,4 +203,5 @@ export {
     getCompanyInfo,
     fetchAdminData,
     updateAdminData,
+    fetchStats,
 }

@@ -10,6 +10,7 @@ import {
     fetchAdminData,
     updateAdminData,
     getCompanyInfo,
+    fetchStats,
 } from "../controllers/adminController.js";
 
 router.post('/login', adminLogin);
@@ -20,6 +21,7 @@ router.use(verifyAdminToken);
 router.get('/is-admin-protected', isAdminProtected);
 router.get('/logout', adminLogout);
 router.get('/get-admin-data', fetchAdminData);
+router.get('/stats', fetchStats);
 router.post('/update', updateAdminData);
 
 // HomePage Carousal

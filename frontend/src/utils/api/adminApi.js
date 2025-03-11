@@ -67,6 +67,17 @@ const updateAdminDataApi = async (data) => {
     }
 }
 
+const fetchStatsApi = async () => {
+    try {
+        const response = await adminInstance.get('/stats');
+        console.log('fetched stats:', response.data);
+        return response.data;
+    } catch (error) {
+        console.log("error fetching stats:", error.response);
+        return error.response;
+    }
+}
+
 export {
     adminLoginApi,
     isAdminAuthenticatedApi,
@@ -74,4 +85,5 @@ export {
     fetchAdminDataApi,
     updateAdminDataApi,
     fetchCompanyInfoApi,
+    fetchStatsApi,
 }
