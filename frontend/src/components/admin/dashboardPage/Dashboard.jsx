@@ -44,11 +44,6 @@ const Dashboard = () => {
                 <RecentProjects projects={projects} />
                 <RecentBlogs blogs={blogs} />
             </div>
-
-            {/* Messages & Activity Log */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <ActivityLog />
-            </div>
         </div>
     );
 };
@@ -84,33 +79,15 @@ const RecentBlogs = ({ blogs }) => {
                     {blogs.map((blog, index) => (
                         <li key={index} className="border-b py-2 flex justify-between">
                             <span>{blog.title}</span>
-                            <span className="text-sm text-gray-500">{new Date(blog.createdAt).toLocaleDateString()}</span>
+                            <span className="text-sm text-gray-500 ml-3 whitespace-nowrap">
+                                {new Date(blog.createdAt).toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" })}
+                            </span>
                         </li>
                     ))}
                 </ul>
             ) : (
                 <p className="text-gray-500">No recent blog posts.</p>
             )}
-        </div>
-    );
-};
-
-/* 🏗️ Activity Log Section */
-const ActivityLog = () => {
-    const activities = [
-        "New project added: 'Luxury Living Room'",
-        "Blog post published: '5 Tips for Small Spaces'",
-        "Inquiry replied to: John Doe",
-    ];
-
-    return (
-        <div className="bg-white shadow-md p-6 rounded-xl">
-            <h2 className="text-xl font-bold mb-4">Recent Activities</h2>
-            <ul className="text-sm text-gray-600">
-                {activities.map((activity, index) => (
-                    <li key={index} className="border-b py-2">{activity}</li>
-                ))}
-            </ul>
         </div>
     );
 };
