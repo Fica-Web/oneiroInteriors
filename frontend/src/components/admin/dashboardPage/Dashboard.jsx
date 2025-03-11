@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 import { FaPlus, FaBlog, FaEnvelope, FaTasks } from "react-icons/fa";
 import { fetchStatsApi } from "../../../utils/api/adminApi";
 import StatCard from "./StatCard";
@@ -40,9 +41,9 @@ const Dashboard = () => {
             {/* Stats Overview */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <StatCard title="Total Projects" value={stats?.totalProjects || 0} />
-                <StatCard title="Ongoing Projects" value={stats?.ongoingProjects || 0} />
+                <ActionButton icon={<FaPlus />} label="Add Project" path={'/admin/projects/create'} />
                 <StatCard title="Total Blogs" value={stats?.totalBlogs || 0} />
-                <StatCard title="Total Clients" value={stats?.totalClients || 0} />
+                <ActionButton icon={<FaBlog />} label="Create Blog" path={'/admin/blogs/create'} />
             </div>
 
             {/* Recent Projects & Blog Posts */}
@@ -142,8 +143,7 @@ const ActivityLog = () => {
 const QuickActions = () => {
     return (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-6">
-            <ActionButton icon={<FaPlus />} label="Add Project" />
-            <ActionButton icon={<FaBlog />} label="Create Blog" />
+
             <ActionButton icon={<FaEnvelope />} label="View Messages" />
             <ActionButton icon={<FaTasks />} label="Manage Tasks" />
         </div>
@@ -151,15 +151,17 @@ const QuickActions = () => {
 };
 
 // Reusable Quick Action Button
-const ActionButton = ({ icon, label }) => {
+const ActionButton = ({ icon, label, path }) => {
     return (
-        <motion.button
-            className="bg-orange-500 text-white p-4 rounded-xl flex flex-col items-center justify-center shadow-md hover:bg-orange-600 transition duration-300"
-            whileHover={{ scale: 1.1 }}
-        >
-            <span className="text-2xl">{icon}</span>
-            <span className="mt-2 text-sm">{label}</span>
-        </motion.button>
+        <Link to={path}>
+            <motion.button
+                className="bg-primary w-full h-full text-white p-4 rounded-xl flex flex-col items-center justify-center shadow-md hover:bg-orange-600 transition duration-300"
+                whileHover={{ scale: 1.1 }}
+            >
+                <span className="text-2xl">{icon}</span>
+                <span className="mt-2 text-sm">{label}</span>
+            </motion.button>
+        </Link>
     );
 };
 
