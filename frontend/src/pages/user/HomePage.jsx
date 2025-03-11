@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeCarousel from '../../components/user/HomePage/HomeCarousal';
 import Hero from '../../components/user/HomePage/Hero';
+import DesigningDreams from '../../components/user/HomePage/DesigningDreams';
 import WhyChooseUs from '../../components/user/AboutPage/WhyChoseUs';
 import ServiceListing from '../../components/user/ServicePage/ServiceListing';
 import HowWeWork from '../../components/user/HomePage/HowWeWork';
@@ -14,6 +15,7 @@ const HomePage = () => {
         <div>
             <HomeCarousel />
             <Hero />
+            <DesigningDreams />
             <WhyChooseUs />
             <ServiceListing isHomePage={true} />
             <HowWeWork />
