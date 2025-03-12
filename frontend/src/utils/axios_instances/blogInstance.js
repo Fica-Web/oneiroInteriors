@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const blogInstance = axios.create({
-    baseURL: 'http://localhost:3000/api/blogs',
+    baseURL: import.meta.env.VITE_API_URL + '/blogs',
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',

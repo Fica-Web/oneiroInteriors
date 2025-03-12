@@ -20,7 +20,7 @@ connectDB();
 
 // CORS options to allow requests from specific origin
 const corsOptions = {
-    origin: ['http://localhost:5173', 'http://localhost:5174',], // Allow requests from this frontend domain
+    origin: ['http://localhost:5173', 'http://oneirointeriors.in',], // Allow requests from this frontend domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
     credentials: true, // Include cookies in requests
 };
