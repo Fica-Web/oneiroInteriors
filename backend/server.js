@@ -44,6 +44,10 @@ app.use('/api/carousel', carousalRouter); // Routes for carousal-specific functi
 app.use('/api/projects', completedProjectRouter); // Routes for completed works
 app.use('/api/messages', messageRouter); // Routes for completed works
 
+app.get('/', (req, res) => {
+    res.send('server is running')
+})
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)
 })
