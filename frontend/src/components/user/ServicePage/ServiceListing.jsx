@@ -5,23 +5,34 @@ import kitchen2 from '../../../assets/images/kitchen2.png';
 import KidsRoom1 from '../../../assets/images/kids-room1.png';
 import crockery1 from '../../../assets/images/crockery1.png';
 import livingRoom2 from '../../../assets/images/living-room2.png';
+import paints from '../../../assets/images/paints.jpg';
+import movableFurniture from '../../../assets/images/movable-furniture.jpg';
+import poojaUnit from '../../../assets/images/pooja-unit.jpg';
+import bathroom from '../../../assets/images/bathroom.jpg';
+import falseCeiling from '../../../assets/images/false-ceiling.webp';
+import foyer from '../../../assets/images/foyer.jpg';
+import lights from '../../../assets/images/lights.webp';
+import spaceSavingFurniture from '../../../assets/images/space-saving-furniture.jpg';
+import storage from '../../../assets/images/storage.jpg';
+import Wallpaper from '../../../assets/images/wallpaper.png';
+import studyTable from '../../../assets/images/study-table.jpg';
 
 const services = [
     { id: 1, title: "Crockery Unit", description: "Elegant and space-efficient crockery units for organized and stylish dining spaces.", image: crockery1 },
     { id: 2, title: "Modular Kitchen", description: "Modern, efficient, and stylish modular kitchen designs tailored to your needs.", image: kitchen2 },
     { id: 14, title: "Kids Bedroom", description: "Creative and fun kids' bedroom designs with smart storage solutions.", image: KidsRoom1 },
-    { id: 3, title: "Storage & Wardrobe", description: "Customized wardrobes and storage solutions for a clutter-free and organized space.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
-    { id: 4, title: "Study Table", description: "Ergonomic and stylish study tables designed for comfort and productivity.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
-    { id: 5, title: "False Ceiling", description: "Decorative false ceiling designs that add elegance and sophistication to your interiors.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
-    { id: 6, title: "Bathroom", description: "Luxury and functional bathroom designs with a touch of elegance.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
-    { id: 7, title: "Space Saving Furniture", description: "Innovative space-saving furniture solutions for compact homes.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
-    { id: 8, title: "Lights", description: "Stylish lighting solutions that enhance the ambiance of your home.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
-    { id: 9, title: "Wallpaper", description: "Trendy and durable wallpapers that add character to your walls.", image: "https://media.designcafe.com/wp-content/uploads/2022/07/29185246/tv-unit-design-in-the-living-room-features-floating-cabinet.jpg" },
-    { id: 10, title: "Foyer", description: "Beautifully designed foyers that create a lasting first impression.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
-    { id: 11, title: "Movable Furniture", description: "Flexible and modular furniture solutions that adapt to your changing needs.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
+    { id: 3, title: "Storage & Wardrobe", description: "Customized wardrobes and storage solutions for a clutter-free and organized space.", image: storage },
+    { id: 4, title: "Study Table", description: "Ergonomic and stylish study tables designed for comfort and productivity.", image: studyTable },
+    { id: 5, title: "False Ceiling", description: "Decorative false ceiling designs that add elegance and sophistication to your interiors.", image: falseCeiling },
+    { id: 6, title: "Bathroom", description: "Luxury and functional bathroom designs with a touch of elegance.", image: bathroom },
+    { id: 7, title: "Space Saving Furniture", description: "Innovative space-saving furniture solutions for compact homes.", image: spaceSavingFurniture },
+    { id: 8, title: "Lights", description: "Stylish lighting solutions that enhance the ambiance of your home.", image: lights },
+    { id: 9, title: "Wallpaper", description: "Trendy and durable wallpapers that add character to your walls.", image: Wallpaper },
+    { id: 10, title: "Foyer", description: "Beautifully designed foyers that create a lasting first impression.", image: foyer },
+    { id: 11, title: "Movable Furniture", description: "Flexible and modular furniture solutions that adapt to your changing needs.", image: movableFurniture },
     { id: 12, title: "TV Unit", description: "Sleek and stylish TV units designed for modern living spaces.", image: livingRoom2 },
-    { id: 13, title: "Paints", description: "Premium quality wall paints for a vibrant and durable finish.", image: "https://www.venzahomedecorss.com/blog/wp-content/uploads/2020/10/venza-blog.jpg" },
-    { id: 15, title: "Pooja Unit", description: "Beautifully crafted pooja units designed to bring a spiritual touch to your home.", image: "https://media.designcafe.com/wp-content/uploads/2024/12/27181027/interior-design-trends-in-2025.jpg" },
+    { id: 13, title: "Paints", description: "Premium quality wall paints for a vibrant and durable finish.", image: paints },
+    { id: 15, title: "Pooja Unit", description: "Beautifully crafted pooja units designed to bring a spiritual touch to your home.", image: poojaUnit },
 ];
 
 const ServiceListing = ({ isHomePage }) => {
