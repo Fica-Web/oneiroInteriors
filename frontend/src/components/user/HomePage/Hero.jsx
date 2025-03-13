@@ -18,7 +18,7 @@ const Hero = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8 }}
             >
-                Transforming Dream Into Reality
+                Transforming Dreams Into Reality
             </motion.h1>
 
             {/* Headline - Large Screens */}
