@@ -8,7 +8,6 @@ const CreateBlogPage = () => {
     const handleSubmit = async (formData) => {
         const response = await createBlogApi(formData);
         if (response) {
-            console.log("Blog Created Successfully!");
             setReset(true); // Trigger reset
             setTimeout(() => setReset(false), 500); // Reset the flag to allow future resets
         }

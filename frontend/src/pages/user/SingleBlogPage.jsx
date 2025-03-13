@@ -20,7 +20,6 @@ const SingleBlogPage = () => {
         // Fetch latest blog data by ID
         const fetchLatestBlog = async () => {
             const response = await getLatestBlogApi(id);
-            console.log('res from front:', response)
             setLatestBlogs(response.latestBlogs);
         };
 

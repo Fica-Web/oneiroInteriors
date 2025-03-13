@@ -62,7 +62,6 @@ const AdminLogin = () => {
         try {
             // Make the API call
             const response = await adminLoginApi(formData);
-            console.log('admin login res:', response);
             
             if (response && response.admin) {
             const { username, email } = response.admin;

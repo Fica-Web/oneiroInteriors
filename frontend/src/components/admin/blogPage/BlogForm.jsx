@@ -29,7 +29,7 @@ const BlogForm = ({ onSubmit, reset }) => {
             const fetchBlog = async () => {
                 try {
                     const response = await getSingleBlogApi(id);
-                    console.log('tags:', response.blog.tags)
+                    // console.log('tags:', response.blog.tags)
                     setFormData({
                         ...response.blog,
                         // tags: JSON.parse(response.blog.tags).join(", "), // Convert array to string
@@ -132,13 +132,11 @@ const BlogForm = ({ onSubmit, reset }) => {
                     ...formData,
                     // tags: JSON.stringify(formData.tags.split(",").map(tag => tag.trim())), // Convert tags to array
                 });
-                console.log(' updated', tags);
             } else {
                 await createBlogApi({
                     ...formData,
                     // tags: JSON.stringify(formData.tags.split(",").map(tag => tag.trim())), // Convert tags to array
                 });
-                console.log('create');
             }
         } finally {
             setLoading(false); // 🔹 Hide loading state after response
