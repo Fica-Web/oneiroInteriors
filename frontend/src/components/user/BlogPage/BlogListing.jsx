@@ -22,7 +22,7 @@ const BlogListing = ({ isHomePage }) => {
     const blogsToShow = isHomePage ? blogs.slice(0, 2) : blogs;
 
     return (
-        <div ref={ref} className='w-11/12 mx-auto my-20 lg:my-32' >
+        <div ref={ref} className='w-11/12 mx-auto my-20 lg:my-28' >
             <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10'>
                 {isHomePage && blogs.length > 0 && (
                     <div className="w-full lg:pt-16 p-3 relative group">

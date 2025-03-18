@@ -16,8 +16,8 @@ const HomePage = () => {
             <HomeCarousel />
             <Hero />
             <DesigningDreams />
-            <WhyChooseUs />
             <ServiceListing isHomePage={true} />
+            <WhyChooseUs />
             <HowWeWork />
             <BrandsWeWorkWith />
             <CompletedVideos isHomePage={true} />
