@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { fetchCompanyInfoApi } from '../utils/api/adminApi';
 import { set_company_info } from '../redux/slices/companySlice';
+import ScrollToTop from '../components/shared/ScrollToTop';
 import Navbar from '../components/shared/Navbar';
 import Footer from '../components/shared/Footer';
 import WhatsAppButton from '../components/shared/WhatsappButton';
@@ -27,6 +28,7 @@ const HomeLayout = () => {
 
     return (
         <>
+            <ScrollToTop />
             <Navbar />
             <WhatsAppButton />
             <Outlet />

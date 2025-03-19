@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="w-full bg-gradient-to-b from-secondary via-ternary to-primary mb-32">
             <div
                 ref={ref}
-                className="w-11/12 mx-auto lg:py-28 py-20  text-white p-10 rounded-lg"
+                className="w-11/12 mx-auto lg:py-28 py-20  text-white sm:p-10 p-2 rounded-lg"
             >
                 {/* Headline - Mobile */}
                 <motion.h1
@@ -75,7 +75,7 @@ const Hero = () => {
                             Oneiro believes a home should reflect its owners. Every design is tailored to match each client’s lifestyle and personality, creating spaces that feel both personal and functional.
                         </p>
                         <p className="text-white text-lg leading-relaxed">
-                            Guided by the Golden Ratio, Oneiro ensures balanced proportions, seamless layouts, and elegant craftsmanship. Their approach blends timeless beauty with modern innovation, making every space visually harmonious.
+                            Guided by the Golden Ratio, Oneiro ensures balanced proportions, seamless layouts, and elegant craftsmanship. Our approach blends timeless beauty with modern innovation, making every space visually harmonious.
                         </p>
                         <p className="text-white text-lg leading-relaxed">
                             For Oneiro, a home is more than just a structure—it’s a journey. They transform empty spaces into meaningful experiences, crafting designs that tell a story and bring dreams to life.
