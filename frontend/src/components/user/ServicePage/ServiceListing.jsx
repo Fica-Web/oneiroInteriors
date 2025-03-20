@@ -26,7 +26,7 @@ const services = [
     { id: 5, title: "False Ceiling", description: "Decorative false ceiling designs that add elegance and sophistication to your interiors.", image: falseCeiling },
     { id: 6, title: "Bathroom", description: "Luxury and functional bathroom designs with a touch of elegance.", image: bathroom },
     { id: 7, title: "Space Saving Furniture", description: "Innovative space-saving furniture solutions for compact homes.", image: spaceSavingFurniture },
-    { id: 8, title: "Lights", description: "Stylish lighting solutions that enhance the ambiance of your home.", image: lights },
+    { id: 8, title: "Lights", description: "Stylish lighting solutions that enhance the ambience of your home.", image: lights },
     { id: 9, title: "Wallpaper", description: "Trendy and durable wallpapers that add character to your walls.", image: Wallpaper },
     { id: 10, title: "Foyer", description: "Beautifully designed foyers that create a lasting first impression.", image: foyer },
     { id: 11, title: "Movable Furniture", description: "Flexible and modular furniture solutions that adapt to your changing needs.", image: movableFurniture },

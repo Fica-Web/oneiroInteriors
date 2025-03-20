@@ -93,15 +93,15 @@ const Footer = () => {
                             <h4 className="font-semibold text-lg mb-5">Contact Us</h4>
                             <div className='flex gap-3 items-center text-lg mb-2 opacity-80'>
                                 <FaPhoneAlt className='text-lg' />
-                                <p>+91 { companyInfo?.mobile }</p>
+                                <p>+91 { companyInfo?.mobile || '7411552239'}</p>
                             </div>
                             <div className='flex gap-3 items-center text-lg my-2 opacity-80'>
                                 <IoIosMail className='text-2xl' />
-                                <p>{ companyInfo?.email }</p>
+                                <p>{ companyInfo?.email || 'hello@oneirointeriors.in' }</p>
                             </div>
                             <div className='flex gap-3 items-center text-lg mb-2 opacity-80'>
                                 <IoLocationSharp className='text-xl' />
-                                <p>{ companyInfo?.location }</p>
+                                <p>{ companyInfo?.location || 'Oneiro Interiors, Shivaram Karanth Nagar, Bangalore' }</p>
                             </div>
                         </div>
                     </div>

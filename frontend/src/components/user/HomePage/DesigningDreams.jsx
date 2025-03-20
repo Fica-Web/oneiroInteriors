@@ -22,11 +22,11 @@ const DesigningDreams = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 1, ease: "easeOut" }}
                 style={{
-                    background: "linear-gradient(to right, #fea034, #f7501f, #fea034)",
+                    background: "white",
                     WebkitBackgroundClip: "text", // For Safari support
                     backgroundClip: "text", // For Chrome and other modern browsers
                     color: "transparent", // Make the text color transparent so the background is visible
-                    textShadow: "3px 3px 10px rgba(0, 0, 0, 0.7)",
+                    textShadow: "3px 3px 10px rgba(0, 0, 0, 0.2)",
                 }}
             >
                 Designing Your Dreams
