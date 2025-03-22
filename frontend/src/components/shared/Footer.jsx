@@ -108,7 +108,7 @@ const Footer = () => {
                 </div>
 
                 {/* Footer Bottom Section */}
-                <div className='lg:mt-16 mt-10 text-lg text-center lg:text-start opacity-80'>
+                <div className='lg:mt-16 mt-10 text-lg opacity-80 sm:text-start text-center flex sm:flex-row flex-col sm:justify-between sm:px-10'>
                     <p>
                         ©oneiro.in
                         <span className='mx-3'>
@@ -123,6 +123,9 @@ const Footer = () => {
                             </a>
                         </span>
                     </p>
+                    <Link to={'/privacy-policy'} className='hover:text-white hover:underline'>
+                        Privacy & Policy
+                    </Link>
                 </div>
             </div>
         </div>

@@ -13,6 +13,7 @@ const ServicePage = lazy(() => import('../pages/user/ServicePage'));
 const BlogPage = lazy(() => import('../pages/user/BlogPage'));
 const SingleBlogPage = lazy(() => import('../pages/user/SingleBlogPage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
+const PrivacyPolicy = lazy(() => import('../pages/user/PrivacyPolicy'));
 const Error404 = lazy(() => import('../pages/user/Error404'));
 
 const AdminDashboard = lazy(() => import('../pages/admin/AdminDashboard'));
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
             { path: 'blog', element: <Suspense fallback={<Loading />}><BlogPage /></Suspense> },
             { path: 'blog/:id', element: <Suspense fallback={<Loading />}><SingleBlogPage /></Suspense> },
             { path: 'contact', element: <Suspense fallback={<Loading />}><ContactPage /></Suspense> },
+            { path: 'privacy-policy', element: <Suspense fallback={<Loading />}><PrivacyPolicy /></Suspense> },
         ]
     },
     {
