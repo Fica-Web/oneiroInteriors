@@ -78,7 +78,7 @@ const Hero = () => {
                             Guided by the Golden Ratio, Oneiro ensures balanced proportions, seamless layouts, and elegant craftsmanship. Our approach blends timeless beauty with modern innovation, making every space visually harmonious.
                         </p>
                         <p className="text-white text-lg leading-relaxed">
-                            For Oneiro, a home is more than just a structure—it’s a journey. They transform empty spaces into meaningful experiences, crafting designs that tell a story and bring dreams to life.
+                            For Oneiro, a home is more than just a structure—it’s a journey. We transform empty spaces into meaningful experiences, crafting designs that tell a story and bring dreams to life.
                         </p>
                     </motion.div>
 
