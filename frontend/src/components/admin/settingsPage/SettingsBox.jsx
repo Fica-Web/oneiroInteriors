@@ -62,9 +62,9 @@ const SettingsBox = () => {
             if (
                 ["facebook", "linkedIn", "instagram"].includes(name) &&
                 value.trim() &&
-                !/^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+\/?$/.test(value)
+                !/^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(\/[a-zA-Z0-9-_\/]*)?$/.test(value)
             ) {
-                error = "Enter a valid URL (e.g., https://example.com).";
+                error = "Enter a valid URL (e.g., https://example.com or https://example.com/user).";
             }
         }
         return error;
